@@ -92,7 +92,8 @@ try { //chargement des PORTES
 		System.out.println("fichier non trouvé");
         }// FIN TRY CHARGEMENT PORTES
         }//FIN WILE VOIR LES PORTES SUR LA LIGNE DU HALL
-            hall.Afficher();
+            //hall.Afficher();
+            bercy.ajouterHall(hall);
        }// FIN WHILE HALLS LIGNE
 }catch (IOException e){ // CATCH PORTES
 		System.out.println("fichier non trouvé");

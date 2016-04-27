@@ -27,7 +27,7 @@ public void AjouterPorte(Porte p){
 }
 
 public String toString(){
-  String info = num_hall+"\n Zone d'enregistrement : "+zone_enreg;
+  String info = "Hall "+num_hall+"\n Zone d'enregistrement : "+zone_enreg;
    
  for(int i = 0; i < porte.size(); i++)
     {   
