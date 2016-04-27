@@ -5,12 +5,10 @@ import java.util.Date;
 public class Vol {
 
     private String num_vol;
-
     private String type_vol;
-
     private String dest_or_prov;
-
-    private Date heure;
+    private int heure;
+    private int minute;
 
     public void getNum_vol() {
     }
@@ -31,5 +29,6 @@ public class Vol {
     }
 
     public void afficher() {
+        System.out.println(this.toString());
     }
 }
