@@ -9,6 +9,7 @@ public class Vol {
     private String dest_or_prov;
     private int heure;
     private int minute;
+    private Object avion;
 
     public void getNum_vol() {
     }
