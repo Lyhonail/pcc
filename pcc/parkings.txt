@@ -1,0 +1,16 @@
+PI Papa 
+P2 Papa
+P4 Papa
+RI Roméo
+R2 Roméo
+S4 Sierra
+S5 Sierra
+T3 Tango
+T7 Tango
+U4 Uniform
+V6 Victor
+V7 Victor
+M1 Mike
+M2 Mike
+M3 Mike
+M4 Mike
