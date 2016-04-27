@@ -43,7 +43,7 @@ public class Pcc {
 	} catch (IOException e){
 		System.out.println("fichier non trouvé");
 		}
-        
+      pok^pok;  
 try { //CHARGEMENT HALLS
         BufferedReader halls = new BufferedReader (new FileReader ("halls.txt"));
 	String ligne_halls = null;
@@ -52,9 +52,8 @@ try { //CHARGEMENT HALLS
             String hall_num_hall = tokenHall.nextToken();
             String hall_zone = tokenHall.nextToken();
             Hall hall = new Hall (hall_num_hall, hall_zone);
-            String hall_porte;
-            while ((hall_porte = tokenHall.nextToken()) != null){//WILE VOIR LES PORTES SUR LA LIGNE DU HALL
-            
+            while ((tokenHall.hasMoreTokens()){//WILE VOIR LES PORTES SUR LA LIGNE DU HALL
+            String hall_porte = tokenHall.nextToken();
 try { //chargement des PORTES
 	BufferedReader portes = new BufferedReader (new FileReader ("portes.txt"));
 	String ligne_porte = null;
@@ -79,7 +78,7 @@ try { //chargement des PORTES
                     Parking parking = new Parking (num_parking, zone);
                     Porte porte = new Porte (num_porte, parking);
                     //porte.afficher();
-                    hall.AjouterPorte(porte);
+                    if(num_porte.equals(hall_porte)){hall.AjouterPorte(porte);}
                     } 
 		// traiter mot
 	}//FIN TRY CHARGEMENT DES PARKING
