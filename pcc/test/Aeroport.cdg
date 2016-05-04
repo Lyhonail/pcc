@@ -7,11 +7,12 @@
         <Field name="num_hall" type="String" visibility="private"/>
         <Field name="Porte" type="ArrayList" visibility="private"/>
         <Field name="zone_enreg" type="int" visibility="private"/>
-        <Field name="Hall" type="Hashtable" visibility="private"/>
+        <Field name="lesHalls" type="Hashtable" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
       <Methods>
-        <Method name="Hall" returnType="void" visibility="public"/>
         <Method name="getNum_Hall" returnType="void" visibility="public"/>
         <Method name="getZone_enreg" returnType="void" visibility="public"/>
         <Method name="getPorte" returnType="void" visibility="public"/>
@@ -25,9 +26,10 @@
       <Fields>
         <Field name="nom" type="String" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
       <Methods>
-        <Method name="Aeroport" returnType="void" visibility="public"/>
         <Method name="getNom" returnType="void" visibility="public"/>
         <Method name="getHall" returnType="void" visibility="public"/>
         <Method name="toString" returnType="void" visibility="public"/>
@@ -38,7 +40,7 @@
       <Fields>
         <Field name="code_park" type="String" visibility="private"/>
         <Field name="zone" type="String" visibility="private"/>
-        <Field name="Porte" type="Object" visibility="private"/>
+        <Field name="lesParkings" type="Hashtables" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public"/>
@@ -51,36 +53,40 @@
       <Fields>
         <Field name="num_porte" type="int" visibility="private"/>
         <Field name="Hall" type="Object" visibility="private"/>
-        <Field name="Porte" type="Hashtable" visibility="private"/>
+        <Field name="lesPortes" type="Hashtable" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public"/>
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="Avion" package="" visibility="public" xPosition="895.0" yPosition="16.0">
+    <Class name="Avion" package="" visibility="public" xPosition="751.0" yPosition="379.0">
       <Fields>
         <Field name="nom" type="String" visibility="private"/>
         <Field name="immatriculation" type="String" visibility="private"/>
-        <Field name="Avion" type="Hashtable" visibility="private"/>
+        <Field name="lesAvions" type="Hashtable" visibility="private"/>
+        <Field name="lesVols" type="ArrayList" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
       <Methods>
-        <Method name="Avion" returnType="void" visibility="public"/>
         <Method name="getNom" returnType="void" visibility="public"/>
         <Method name="getImmatriculation" returnType="void" visibility="public"/>
         <Method name="toString" returnType="void" visibility="public"/>
         <Method name="afficher" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Vol" package="" visibility="public" xPosition="962.0" yPosition="327.0">
+    <Class name="Vol" package="" visibility="public" xPosition="976.0" yPosition="345.0">
       <Fields>
         <Field name="num_vol" type="String" visibility="private"/>
         <Field name="Avion" type="Object" visibility="private"/>
         <Field name="Horaire" type="Object" visibility="private"/>
         <Field name="lesVols" type="Hashtable" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
       <Methods>
         <Method name="getNum_vol" returnType="void" visibility="public"/>
         <Method name="getHoraire" returnType="void" visibility="public"/>
@@ -88,37 +94,42 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Sejour" package="" visibility="public" xPosition="685.0" yPosition="129.0">
+    <Class name="Sejour" package="" visibility="public" xPosition="685.0" yPosition="27.0">
       <Fields>
         <Field name="dureeSejour" type="TrancheHoraire" visibility="private"/>
-        <Field name="margeMinutes" type="int" visibility="private"/>
         <Field name="Parking" type="Object" visibility="private"/>
-        <Field name="Avion" type="Object" visibility="private"/>
+        <Field name="lesVolsArrDep" type="ArrayList" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public"/>
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="TrancheHoraire" package="" visibility="public" xPosition="1173.0" yPosition="450.0">
+    <Class name="TrancheHoraire" package="" visibility="public" xPosition="1040.0" yPosition="35.0">
       <Fields/>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
       <Methods/>
     </Class>
-    <Class name="Horaire" package="" visibility="public" xPosition="1173.0" yPosition="232.0">
+    <Class name="Horaire" package="" visibility="public" xPosition="1183.0" yPosition="224.0">
       <Fields>
         <Field name="heures" type="int" visibility="private"/>
         <Field name="minutes" type="int" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
       <Methods/>
     </Class>
-    <Class name="Duree" package="" visibility="public" xPosition="1173.0" yPosition="53.0">
+    <Class name="Duree" package="" visibility="public" xPosition="1198.0" yPosition="16.0">
       <Fields>
         <Field name="heures" type="int" visibility="private"/>
         <Field name="minutes" type="int" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
       <Methods/>
     </Class>
     <Class name="Pcc" package="" visibility="public" xPosition="7.0" yPosition="27.0">
@@ -135,7 +146,9 @@
         <Field name="monControleur" type="Controleur" visibility="private"/>
         <Field name="monEcouteur" type="Ecouteur" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
       <Methods/>
     </Class>
     <Class name="FenetrePiste" package="" visibility="public" xPosition="1385.0" yPosition="258.0">
@@ -143,7 +156,9 @@
         <Field name="monControleur" type="Controleur" visibility="private"/>
         <Field name="monEcouteur" type="Ecouteur" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
       <Methods/>
     </Class>
     <Class name="PorteContact" package="" visibility="public" xPosition="78.0" yPosition="533.0">
@@ -163,7 +178,7 @@
     </Class>
     <Class name="PorteHorsContact" package="" visibility="public" xPosition="270.0" yPosition="533.0">
       <Fields>
-        <Field name="ParkingHorsContact" type="ArrayList" visibility="private"/>
+        <Field name="lesParkingHorsContact" type="ArrayList" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public"/>
@@ -177,7 +192,9 @@
       </Methods>
     </Class>
     <Class name="ParkingContact" package="" visibility="public" xPosition="503.0" yPosition="698.0">
-      <Fields/>
+      <Fields>
+        <Field name="Porte" type="Object" visibility="private"/>
+      </Fields>
       <Constructors>
         <Constructor visibility="public"/>
       </Constructors>
@@ -188,7 +205,9 @@
       </Methods>
     </Class>
     <Class name="ParkingHorsContact" package="" visibility="public" xPosition="685.0" yPosition="698.0">
-      <Fields/>
+      <Fields>
+        <Field name="lesParkingHorsContact" type="ArrayList" visibility="private"/>
+      </Fields>
       <Constructors>
         <Constructor visibility="public"/>
       </Constructors>
@@ -198,7 +217,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="VolArrivee" package="" visibility="public" xPosition="895.0" yPosition="652.0">
+    <Class name="VolArrivee" package="" visibility="public" xPosition="902.0" yPosition="652.0">
       <Fields>
         <Field name="provenance" type="String" visibility="private"/>
         <Field name="lesVolsArrivee" type="ArrayList" visibility="private"/>
@@ -226,16 +245,21 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="HallHasPorte" source="Hall" target="Porte" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
-    <IsRelation name="is" source="PorteHorsContact" target="Porte"/>
+    <HasRelation name="horaire départ" source="TrancheHoraire" target="Horaire" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Avion Has Vol" source="Avion" target="Vol" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="AeroportHasHall" source="Aeroport" target="Hall" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <HasRelation name="PorteAsParking" source="Porte" target="Parking" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="horaire arrivée" source="TrancheHoraire" target="Horaire" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Sejour Has Vol" source="Vol" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="VolDepart" target="Vol"/>
+    <HasRelation name="Vol Has Horaire" source="Horaire" target="Vol" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="ParkingContact" target="Parking"/>
     <IsRelation name="is" source="VolArrivee" target="Vol"/>
-    <HasRelation name="AeroportHasHall" source="Aeroport" target="Hall" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
-    <HasRelation name="horaire départ" source="TrancheHoraire" target="Horaire" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="ParkingHorsContact" target="Parking"/>
-    <IsRelation name="is" source="VolDepart" target="Vol"/>
-    <HasRelation name="horaire arrivée" source="TrancheHoraire" target="Horaire" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Sejour Has Parking" source="Parking" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="PorteContact" target="Porte"/>
-    <HasRelation name="PorteAsParking" source="Porte" target="Parking" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="HallHasPorte" source="Hall" target="Porte" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <IsRelation name="is" source="PorteHorsContact" target="Porte"/>
+    <IsRelation name="is" source="ParkingHorsContact" target="Parking"/>
+    <HasRelation name="Sejour Has TrancheHoraire" source="TrancheHoraire" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
