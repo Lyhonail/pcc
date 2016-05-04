@@ -17,7 +17,7 @@ public Hall(String n, String ze) {
     }
     
 public void Afficher(){
-		System.out.println(this.toString());
+	System.out.println(this.toString());
 }
 
 public void AjouterListePorte(ArrayList<Porte> p){

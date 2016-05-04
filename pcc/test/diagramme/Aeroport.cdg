@@ -36,7 +36,7 @@
         <Method name="afficher" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Parking" package="" visibility="public" xPosition="562.0" yPosition="402.0">
+    <Class name="Parking" package="" visibility="public" xPosition="571.0" yPosition="507.0">
       <Fields>
         <Field name="code_park" type="String" visibility="private"/>
         <Field name="zone" type="String" visibility="private"/>
@@ -49,7 +49,7 @@
         <Method name="afficher" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Porte" package="" visibility="public" xPosition="201.0" yPosition="308.0">
+    <Class name="Porte" package="" visibility="public" xPosition="26.0" yPosition="258.0">
       <Fields>
         <Field name="num_porte" type="int" visibility="private"/>
         <Field name="Hall" type="Object" visibility="private"/>
@@ -58,7 +58,9 @@
       <Constructors>
         <Constructor visibility="public"/>
       </Constructors>
-      <Methods/>
+      <Methods>
+        <Method name="ajouterHall" returnType="void" visibility="public"/>
+      </Methods>
     </Class>
     <Class name="Avion" package="" visibility="public" xPosition="751.0" yPosition="379.0">
       <Fields>
@@ -132,7 +134,7 @@
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="Pcc" package="" visibility="public" xPosition="7.0" yPosition="27.0">
+    <Class name="Pcc" package="" visibility="public" xPosition="-118.0" yPosition="16.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -151,7 +153,7 @@
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="FenetrePistes" package="" visibility="public" xPosition="1385.0" yPosition="258.0">
+    <Class name="FenetrePiste" package="" visibility="public" xPosition="1385.0" yPosition="258.0">
       <Fields>
         <Field name="monControleur" type="Controleur" visibility="private"/>
         <Field name="monEcouteur" type="Ecouteur" visibility="private"/>
@@ -161,7 +163,7 @@
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="PorteContact" package="" visibility="public" xPosition="78.0" yPosition="533.0">
+    <Class name="PorteContact" package="" visibility="public" xPosition="-9.0" yPosition="533.0">
       <Fields>
         <Field name="ParkingContact" type="Object" visibility="private"/>
       </Fields>
@@ -176,7 +178,7 @@
         <Method name="afficher" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="PorteHorsContact" package="" visibility="public" xPosition="270.0" yPosition="533.0">
+    <Class name="PorteHorsContact" package="" visibility="public" xPosition="174.0" yPosition="599.0">
       <Fields>
         <Field name="lesParkingHorsContact" type="ArrayList" visibility="private"/>
       </Fields>
@@ -191,7 +193,7 @@
         <Method name="afficher" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="ParkingContact" package="" visibility="public" xPosition="503.0" yPosition="698.0">
+    <Class name="ParkingContact" package="" visibility="public" xPosition="434.0" yPosition="749.0">
       <Fields>
         <Field name="Porte" type="Object" visibility="private"/>
       </Fields>
@@ -202,11 +204,12 @@
         <Method name="getCode_park" returnType="void" visibility="public"/>
         <Method name="getZone" returnType="void" visibility="public"/>
         <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="ajouterPorte" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="ParkingHorsContact" package="" visibility="public" xPosition="685.0" yPosition="698.0">
+    <Class name="ParkingHorsContact" package="" visibility="public" xPosition="625.0" yPosition="737.0">
       <Fields>
-        <Field name="lesParkingHorsContact" type="ArrayList" visibility="private"/>
+        <Field name="lesPortesHorsContact" type="ArrayList" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public"/>
@@ -215,6 +218,7 @@
         <Method name="getCode_park" returnType="void" visibility="public"/>
         <Method name="getZone" returnType="void" visibility="public"/>
         <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="ajouterPorte" returnType="void" visibility="public"/>
       </Methods>
     </Class>
     <Class name="VolArrivee" package="" visibility="public" xPosition="902.0" yPosition="652.0">

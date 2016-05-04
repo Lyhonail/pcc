@@ -9,6 +9,30 @@ package packaeroport;
  *
  * @author Lionel
  */
-public class PorteContact {
-    
+public class PorteHorsContact extends Temp.Porte {
+
+    private ArrayList lesParkingHorsContact;
+
+    public PorteHorsContact() {
+    }
+
+    public void getNum_porte() {
+    }
+
+    public String toString() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    //public String toString(){
+    //    String info = "Porte : "+ num_porte+" "+parking.toString();
+    //    return info;
+    //}
+
+    public void ajouterParking() {
+    }
+
+    public void retirerParking() {
+    }
+
+    public void afficher() {
+    }
 }

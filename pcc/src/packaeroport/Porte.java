@@ -1,28 +1,35 @@
 package packaeroport;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class Porte {
     
     private String num_porte;
-    private Parking parking;
-    private Hall hall;//ajouté par prof
+    private Hall hall; //ajouté par prof
+    
+    private static Hashtable<String, Porte> lesPortes = new Hashtable<String, Porte>();
    
-
-public Porte(String p, Parking park) {
-        num_porte = p; parking = park;
+    public Porte(String p) {
+        num_porte = p;
+        // ajout dans la Hashtable
+        lesPortes.put (p, this);
     }
 
-public String toString(){
-        String info = "Porte : "+ num_porte+" "+parking.toString();
+    public String toString(){
+        String info = "Porte : "+ num_porte;
         return info;
     }
-public void afficher() {
-        System.out.println(this.toString());
+    
+    public void afficher() {
+            System.out.println(this.toString());
     }
 
-public String getCode(){
-    return num_porte;
+    public String getNum_porte(){
+        return num_porte;
     }
     
+    public void ajouterHall(String noHall,String zoneEnreg){
+        hall = new Hall(noHall,zoneEnreg);
+    }
 }
