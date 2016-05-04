@@ -22,10 +22,12 @@ public class Pcc {
      */
     public static void main(String[] args) {
         
-        		Aeroport bercy = new Aeroport("bercy");
+            Aeroport bercy = new Aeroport("bercy");
 		//Avion a380 = new Avion("ABX00120045", "AIRBUS-A320");
 		//bercy.ajouter(a380);
-		
+                
+        Parking p = new ParkingContact ();
+	/*	
 	try { //chargement des avions
 	BufferedReader entree = new BufferedReader (new FileReader ("avionsFA-16-v1.txt"));
 	String ligne = null;
@@ -75,7 +77,7 @@ try { //chargement des PORTES
                 if (porte_num_parking.equals(num_parking) ){
                     //System.out.println("test : "+porte_num_parking);
                     //System.out.println("test : "+num_parking);
-                    Parking parking = new Parking (num_parking, zone);
+                    ParkingContact parking = new ParkingContact (num_parking, zone);
                     Porte porte = new Porte (num_porte, parking);
                     //porte.afficher();
                     if(num_porte.equals(hall_porte)){hall.AjouterPorte(porte);}
@@ -98,6 +100,7 @@ try { //chargement des PORTES
 		System.out.println("fichier non trouvé");
 }//FIN TRY CHARGEMENT HALLS
 bercy.Afficher();
+*/
     }
     
 }
