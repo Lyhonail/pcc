@@ -2,6 +2,7 @@ package packhoraires;
 
 public class Duree implements Comparable{
   private int heures, minutes;
+  
   public Duree() {
     heures=0;minutes=0;
   }

@@ -1,5 +1,5 @@
 package packvols;
-import packhorraires.*;
+import packhoraires.TrancheHoraire;
 
 import java.util.Date;
 

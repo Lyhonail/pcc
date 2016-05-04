@@ -1,6 +1,7 @@
 package packaeroport;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Iterator;
 
 
@@ -9,6 +10,7 @@ public class Hall {
     private String num_hall;
     private  ArrayList<Porte> porte;
     private String zone_enreg;
+    private static Hashtable<String, Hall> lesHalls = new Hashtable<String, Hall>();
 
 public Hall(String n, String ze) {
         num_hall = n; porte = new ArrayList<Porte>(); zone_enreg = ze;

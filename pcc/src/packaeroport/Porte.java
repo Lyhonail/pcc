@@ -5,10 +5,11 @@ import java.util.ArrayList;
 public class Porte {
     
     private String num_porte;
-    private Object parking;
-    
+    private Parking parking;
+    private Hall hall;//ajouté par prof
+   
 
-public Porte(String p, Object park) {
+public Porte(String p, Parking park) {
         num_porte = p; parking = park;
     }
 
