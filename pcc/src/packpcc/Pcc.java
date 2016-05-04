@@ -26,7 +26,22 @@ public class Pcc {
 		//Avion a380 = new Avion("ABX00120045", "AIRBUS-A320");
 		//bercy.ajouter(a380);
                 
-        Parking p = new ParkingContact ();
+        ParkingHorsContact p = new ParkingHorsContact("Parktest1", "les chameaux", "capt");
+        Parking q = new ParkingContact("Parktest2", "les dromadaires");
+        
+       // p.afficher();
+        //q.afficher();
+        
+        Porte PA = new Porte("PA");
+        
+        p.ajouterPorte(PA);
+        
+        
+        // p.afficherLesParkings();
+        Parking.afficherLesParkings();
+         
+       
+         
 	/*	
 	try { //chargement des avions
 	BufferedReader entree = new BufferedReader (new FileReader ("avionsFA-16-v1.txt"));

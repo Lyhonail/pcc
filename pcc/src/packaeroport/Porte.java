@@ -9,12 +9,12 @@ public class Porte {
     private Hall hall;//ajouté par prof
    
 
-public Porte(String p, Parking park) {
-        num_porte = p; parking = park;
+public Porte(String p) {
+        num_porte = p;
     }
 
 public String toString(){
-        String info = "Porte : "+ num_porte+" "+parking.toString();
+        String info = "Porte : "+ num_porte;
         return info;
     }
 public void afficher() {

@@ -11,7 +11,18 @@ public class ParkingContact extends Parking {
         
     }
 
+   public String toString(){
+        String info = "Parking hors contact "+this.getCode_park()+" "+this.getZone();
+        
+        return info;
+    }
+
     public void afficher() {
         System.out.println(this.toString());
+    }
+    
+    
+    public void ajouterPorte(){
+        
     }
 }
