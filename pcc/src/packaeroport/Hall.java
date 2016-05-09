@@ -49,11 +49,11 @@ public class Hall {
             info += "\n" + lesPortes.get(i);
         }    
 */        
-/*        Iterator it = lesPortes.iterator();
+        Iterator it = lesPortes.iterator();
 		while(it.hasNext()){
                     info += "\n  " + it.next().toString();
 		}
-*/
+
 return info;
     }
     

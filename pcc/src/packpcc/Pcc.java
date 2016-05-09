@@ -1,4 +1,5 @@
-/*
+
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -65,7 +66,7 @@ public class Pcc {
         // affichage de la Hasttable des portes
         //Porte.afficherLesPortes();
         // affichage de la Hasttable des parkingss
-        //Parking.afficherLesParkings();
+        Parking.afficherLesParkings();
         
  /*       // DEBUT TEST ODX -> LES PORTES
             // Creation des Halls
