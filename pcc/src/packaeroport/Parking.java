@@ -12,7 +12,7 @@ public abstract class Parking {
 
     private String code_park;
     private String zone;
-    private Porte porteC;
+    //09-Mai private Porte porteC;
     private static Hashtable<String, Parking> lesParkings = new Hashtable<String, Parking>();
 
     public Parking(String p, String z){
@@ -31,8 +31,8 @@ public abstract class Parking {
     public String toString() {
         String info = "Numéro de parking: "+ code_park + 
                     " Zone: "+zone;
-        if (porteC != null) 
-            info += porteC.toString();
+        //if (porteC != null) 
+        //    info += porteC.toString();
         return info;
     }
     

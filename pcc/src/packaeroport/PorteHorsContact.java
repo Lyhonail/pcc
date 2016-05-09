@@ -14,7 +14,7 @@ import java.util.Iterator;
  */
 public class PorteHorsContact extends Porte {
 
-    private ArrayList lesParkingsHC; // parking hors contact
+    private ArrayList<Parking> lesParkingsHC; // parking hors contact
 
     public PorteHorsContact(String p, String ze) {
         super(p,ze);

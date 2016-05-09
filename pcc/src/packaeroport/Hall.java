@@ -12,8 +12,7 @@ import java.util.StringTokenizer;
 public class Hall {
 
     private String num_hall;
-    //private  ArrayList<Porte> lesPortes;
-    private  ArrayList lesPortes;
+    private  ArrayList<Porte> lesPortes;
     private String zone_enreg;
     private static Hashtable<String, Hall> lesHalls = new Hashtable<String, Hall>();
 
@@ -49,11 +48,11 @@ public class Hall {
             info += "\n" + lesPortes.get(i);
         }    
 */        
-/*        Iterator it = lesPortes.iterator();
+        Iterator it = lesPortes.iterator();
 		while(it.hasNext()){
                     info += "\n  " + it.next().toString();
 		}
-*/
+
 return info;
     }
     

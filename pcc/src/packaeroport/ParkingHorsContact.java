@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class ParkingHorsContact extends Parking {
 
-    private ArrayList lesPortesHorsContact;
+    private ArrayList<Porte> lesPortesHorsContact;
     //private String cap;
     
     public ParkingHorsContact(String code_p, String zone) {

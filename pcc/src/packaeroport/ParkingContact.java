@@ -24,7 +24,6 @@ public class ParkingContact extends Parking {
         System.out.println(this.toString());
     }
     
-    
     public void affecterPorte(Porte p) {
         porteC = p;
     }

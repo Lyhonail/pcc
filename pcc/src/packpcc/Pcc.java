@@ -62,7 +62,7 @@ public class Pcc {
         Aeroport.associerPortesParkings();
 
         // affichage de la Hasttable des halls
-        //Hall.afficherLesHalls();
+        Hall.afficherLesHalls();
         // affichage de la Hasttable des portes
         //Porte.afficherLesPortes();
         // affichage de la Hasttable des parkingss
