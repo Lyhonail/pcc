@@ -2,7 +2,7 @@
 
 <ClassDiagram name="Aeroport">
   <ClassDiagramComponents>
-    <Class name="Hall" package="" visibility="public" xPosition="218.0" yPosition="148.0">
+    <Class name="Hall" package="" visibility="public" xPosition="302.0" yPosition="99.0">
       <Fields>
         <Field name="num_hall" type="String" visibility="private"/>
         <Field name="lesPortes" type="ArrayList" visibility="private"/>
@@ -20,6 +20,8 @@
         <Method name="afficher" returnType="void" visibility="public"/>
         <Method name="ajouterPorte" returnType="void" visibility="public"/>
         <Method name="retirerPorte" returnType="void" visibility="public"/>
+        <Method name="creerHalls" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="afficherLesHalls" returnType="void" visibility="public" isStatic="true"/>
       </Methods>
     </Class>
     <Class name="Aeroport" package="" visibility="public" xPosition="8.0" yPosition="148.0">
@@ -34,6 +36,8 @@
         <Method name="getHall" returnType="void" visibility="public"/>
         <Method name="toString" returnType="void" visibility="public"/>
         <Method name="afficher" returnType="void" visibility="public"/>
+        <Method name="associerHallslPortes" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="associerPortesParkings" returnType="void" visibility="public" isStatic="true"/>
       </Methods>
     </Class>
     <Class name="Parking" package="" visibility="public" isAbstract="true" xPosition="660.0" yPosition="514.0">
@@ -50,24 +54,28 @@
         <Method name="afficherLesParking" returnType="void" visibility="public" isStatic="true"/>
         <Method name="getCode_park" returnType="String" visibility="public"/>
         <Method name="getZone" returnType="String" visibility="public"/>
+        <Method name="creerParking" returnType="void" visibility="public" isStatic="true"/>
       </Methods>
     </Class>
-    <Class name="Porte" package="" visibility="public" isAbstract="true" xPosition="212.0" yPosition="495.0">
+    <Class name="Porte" package="" visibility="public" isAbstract="true" xPosition="215.0" yPosition="476.0">
       <Fields>
         <Field name="num_porte" type="String" visibility="private"/>
         <Field name="hall" type="Hall" visibility="private"/>
         <Field name="lesPortes" type="Hashtable" visibility="private" isStatic="true"/>
+        <Field name="zone_enreg" type="int" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public"/>
       </Constructors>
       <Methods>
-        <Method name="ajouterHall" returnType="void" visibility="public"/>
+        <Method name="affecterHall" returnType="void" visibility="public"/>
         <Method name="afficherLesPortes" returnType="void" visibility="public" isStatic="true"/>
         <Method name="getNum_porte" returnType="String" visibility="public"/>
         <Method name="toString" returnType="String" visibility="public"/>
         <Method name="afficher" returnType="void" visibility="public"/>
         <Method name="getPorte" returnType="void" visibility="public"/>
+        <Method name="getZone_enreg" returnType="void" visibility="public"/>
+        <Method name="creerPortes" returnType="void" visibility="public"/>
       </Methods>
     </Class>
     <Class name="Avion" package="" visibility="public" xPosition="1508.0" yPosition="429.0">
@@ -171,9 +179,9 @@
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="PorteContact" package="" visibility="public" xPosition="103.0" yPosition="830.0">
+    <Class name="PorteContact" package="" visibility="public" xPosition="103.0" yPosition="849.0">
       <Fields>
-        <Field name="parkingC" type="ParkingContact" visibility="private"/>
+        <Field name="parkingC" type="Parking" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public"/>
@@ -183,7 +191,7 @@
         <Method name="affecterParking" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="PorteHorsContact" package="" visibility="public" xPosition="319.0" yPosition="830.0">
+    <Class name="PorteHorsContact" package="" visibility="public" xPosition="319.0" yPosition="839.0">
       <Fields>
         <Field name="lesParkingsHC" type="ArrayList" visibility="private"/>
       </Fields>
@@ -198,7 +206,7 @@
     </Class>
     <Class name="ParkingContact" package="" visibility="public" xPosition="555.0" yPosition="816.0">
       <Fields>
-        <Field name="PorteC" type="Porte" visibility="private"/>
+        <Field name="porteC" type="Porte" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public"/>
@@ -247,7 +255,7 @@
         <Method name="getDestination" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="RefPorteInvalide" package="" visibility="public" xPosition="27.0" yPosition="606.0">
+    <Class name="PorteInvalide" package="" visibility="public" xPosition="27.0" yPosition="476.0">
       <Fields>
         <Field name="num_porte" type="String" visibility="private"/>
       </Fields>
@@ -258,23 +266,45 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
+    <Class name="ParkingInvalide" package="" visibility="public" xPosition="660.0" yPosition="355.0">
+      <Fields>
+        <Field name="num_parking" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="HallInvalide" package="" visibility="public" xPosition="555.0" yPosition="99.0">
+      <Fields>
+        <Field name="num_hall" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="Vol Has Horaire" source="Horaire" target="Vol" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="Avion Has Vol" source="Avion" target="Vol" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="horaire départ" source="TrancheHoraire" target="Horaire" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="PorteAsParking" source="Porte" target="Parking" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <IsRelation name="is" source="ParkingContact" target="Parking"/>
-    <HasRelation name="Sejour Has Vol" source="Vol" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="AeroportHasHall" source="Aeroport" target="Hall" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
-    <IsRelation name="is" source="PorteContact" target="Porte"/>
-    <HasRelation name="horaire arrivée" source="TrancheHoraire" target="Horaire" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="HallHasPorte" source="Hall" target="Porte" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
-    <IsRelation name="is" source="ParkingHorsContact" target="Parking"/>
     <IsRelation name="is" source="VolDepart" target="Vol"/>
+    <HasRelation name="AeroportHasHall" source="Aeroport" target="Hall" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <HasRelation name="horaire arrivée" source="TrancheHoraire" target="Horaire" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Sejour Has TrancheHoraire" source="TrancheHoraire" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="PorteContact" target="Porte"/>
+    <IsRelation name="is" source="ParkingHorsContact" target="Parking"/>
+    <HasRelation name="HallHasPorte" source="Hall" target="Porte" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <IsRelation name="is" source="ParkingContact" target="Parking"/>
+    <HasRelation name="Sejour Has Parking" source="Parking" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="horaire départ" source="TrancheHoraire" target="Horaire" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="VolArrivee" target="Vol"/>
     <IsRelation name="is" source="PorteHorsContact" target="Porte"/>
-    <HasRelation name="Sejour Has TrancheHoraire" source="TrancheHoraire" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="Sejour Has Parking" source="Parking" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Vol Has Horaire" source="Horaire" target="Vol" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Sejour Has Vol" source="Vol" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Avion Has Vol" source="Avion" target="Vol" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="PorteAsParking" source="Porte" target="Parking" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
   </ClassDiagramRelations>
 </ClassDiagram>

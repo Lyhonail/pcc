@@ -26,22 +26,114 @@ public class Pcc {
 		//Avion a380 = new Avion("ABX00120045", "AIRBUS-A320");
 		//bercy.ajouter(a380);
                 
-        ParkingHorsContact p = new ParkingHorsContact("Parktest1", "les chameaux", "capt");
-        Parking q = new ParkingContact("Parktest2", "les dromadaires");
+        //ParkingHorsContact p = new ParkingHorsContact("Parktest1", "les chameaux", "capt");
+        //Parking q = new ParkingContact("Parktest2", "les dromadaires");
         
        // p.afficher();
         //q.afficher();
         
-        Porte PA = new Porte("PA");
+        //Porte PA = new PorteContact("PA");
         
-        p.ajouterPorte(PA);
+        //p.ajouterPorte(PA);
         
         
         // p.afficherLesParkings();
-        Parking.afficherLesParkings();
-         
+        //Parking.afficherLesParkings();
+  
+        // DEBUT TEST ODX
+        // --------------
+        // Creation des Halls en masse
+        Hall.creerHalls();
+        //Hall.afficherLesHalls();
+        
+        // Creation des portes en masse
+        Porte.creerPortes();
+        //Porte.afficherLesPortes();
+        
+        // Creation des parkings en masse
+        Parking.creerParkings();
+        //Parking.afficherLesParkings();
+        
+        // Associer Halls et Portes
+        Aeroport.associerHallslPortes();
+        
+         // Associer Portes et parking
+        Aeroport.associerPortesParkings();
+
+        // affichage de la Hasttable des halls
+        //Hall.afficherLesHalls();
+        // affichage de la Hasttable des portes
+        //Porte.afficherLesPortes();
+        // affichage de la Hasttable des parkingss
+        //Parking.afficherLesParkings();
+        
+ /*       // DEBUT TEST ODX -> LES PORTES
+            // Creation des Halls
+            Hall h1 = new Hall ("Hall1","Zone 10");
+            h1.afficher();
+            
+            Hall h4 = new Hall ("Hall4","Zone 40");
+            h4.afficher();
+            
+            // Création des parkings
+            ParkingHorsContact pa_hc1 = new ParkingHorsContact("M1", "Mike");
+            pa_hc1.afficher();
+
+            ParkingHorsContact pa_hc2 = new ParkingHorsContact("M2", "Mike");
+            pa_hc2.afficher();
+
+            ParkingContact pa_c1 = new ParkingContact("P1", "Papa");
+            pa_c1.afficher();
        
-         
+            // Création des portes contact
+            PorteContact po_c1 = new PorteContact("10A","10");
+            po_c1.affecterHall(h1);
+            //po_c1.affecterHall(null); // pour retirer un hall MAis ne marche pas
+            po_c1.affecterParking(pa_c1);
+            po_c1.afficher();
+            
+            // Création des portes hors contact
+            System.out.println("Creation de portes hors contact");
+            PorteHorsContact po_hc1 = new PorteHorsContact("41","40");
+            po_hc1.affecterHall(h4);
+            po_hc1.ajouterParking(pa_hc1);
+            po_hc1.ajouterParking(pa_hc2);
+            //po_hc1.retirerParking(pa_hc2); // test du remove dans arrayList
+            po_hc1.afficher();
+
+            // ------- Affectation d'une porte a un hall ----------
+            System.out.println("Affectation d'une porte a un hall");
+            h1.ajouterPorte(po_c1);
+            h1.afficher();            
+            
+            // ------- Affectation d'une porte a un parking contact ----------
+            System.out.println("Affectation d'une porte a un parking contact");
+            pa_c1.affecterPorte(po_c1);
+            pa_c1.afficher();
+        
+            // affichage de la Hasttable des portes
+            Porte.afficherLesPortes();
+            
+            // test recup porte dans la hashtable
+            System.out.println("Test recup objet porte dans Hashtable");
+            try {
+                Porte objet_porte = Porte.getPorte("41");
+                objet_porte.afficher();
+            } catch (PorteInvalide e){
+		System.out.println(e.toString());
+            }
+
+            // test recup porte dans la hashtable
+            System.out.println("Test recup objet hall dans Hashtable");
+            try {
+                Hall objet_hall = Hall.getHall("Hall1");
+                objet_hall.afficher();
+            } catch (HallInvalide e){
+		System.out.println(e.toString());
+            }
+            
+       // FIN TEST ODX
+ */        
 	/*	
 	try { //chargement des avions
 	BufferedReader entree = new BufferedReader (new FileReader ("avionsFA-16-v1.txt"));

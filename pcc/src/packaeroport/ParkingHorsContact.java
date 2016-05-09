@@ -6,24 +6,28 @@ import java.util.Iterator;
 public class ParkingHorsContact extends Parking {
 
     private ArrayList lesPortesHorsContact;
-    private String cap;
+    //private String cap;
     
-    public ParkingHorsContact(String code_p, String zone, String c) {
+    public ParkingHorsContact(String code_p, String zone) {
         super(code_p, zone);
-        cap= c;
         lesPortesHorsContact = new ArrayList<Porte>();
     }
 
     public String toString(){
-        String info = "Parking hors contact "+this.getCode_park()+" "+this.getZone()+" le test : "+cap+"\n";
-        
-        Iterator ita = lesPortesHorsContact.iterator();
-		while(ita.hasNext()){
-			Porte p = (Porte) ita.next();
-			info += p.toString() +"\n";	
+        //String info = "Parking hors contact "+this.getCode_park()+" "
+        //        +this.getZone()+"\n";
+        String info = "Parking hors contact "+super.toString() + 
+                " Les Portes Hors Contact associés: " ;
+        Iterator it = lesPortesHorsContact.iterator();
+		while(it.hasNext()){
+                    //Porte p = (Porte) ita.next();
+                    //info += p.toString() +"\n";
+                    info += "\n  " + it.next().toString();
 		}
         
         return info;
+        
+
     }
 
     public void afficher() {

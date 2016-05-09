@@ -5,34 +5,30 @@
  */
 package packaeroport;
 
-/**
- *
- * @author Lionel
- */
-public class PorteHorsContact extends Temp.Porte {
 
-    private ArrayList lesParkingHorsContact;
+public class PorteContact extends Porte {
 
-    public PorteHorsContact() {
+    private Parking parkingC;  // Parking contact
+
+    public PorteContact(String p, String ze) {
+        super(p,ze);
+        parkingC=null;
     }
 
-    public void getNum_porte() {
+    public String toString(){
+        //String info = "Porte Contact: " + super.toString() + 
+        //        " Parking Contact associé: " + parkingC.toString();
+        String info = "Porte Contact: " + super.toString() + 
+                " Parking Contact associé: ";
+        if ( parkingC != null)
+            info += parkingC.toString();      
+        return info;
     }
 
-    public String toString() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-    //public String toString(){
-    //    String info = "Porte : "+ num_porte+" "+parking.toString();
-    //    return info;
-    //}
-
-    public void ajouterParking() {
+    public void affecterParking(Parking p) {
+        parkingC = p;
     }
 
     public void retirerParking() {
-    }
-
-    public void afficher() {
     }
 }
