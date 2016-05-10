@@ -13,7 +13,7 @@ public class Hall {
 
     private String num_hall;
     //private  ArrayList<Porte> lesPortes;
-    private  ArrayList lesPortes;
+    private  ArrayList<Porte> lesPortes ;
     private String zone_enreg;
     private static Hashtable<String, Hall> lesHalls = new Hashtable<String, Hall>();
 
@@ -79,11 +79,11 @@ return info;
     
     public static void afficherLesHalls(){
         // Affichage de la hastable lesHalls
-        System.out.println("Affichage Hashtable lesHalls");
+        System.out.println("Affichage Hashtable lesHalls : \n");
         ArrayList<Hall> halls = new ArrayList<Hall>(lesHalls.values());
         Iterator<Hall> it = halls.iterator(); 
         while(it.hasNext()){
-            it.next().afficher();
+            it.next().afficherListeHalls();
         }
     }
     
@@ -92,5 +92,29 @@ return info;
             throw new HallInvalide(num_hall);
         else
             return (Hall)lesHalls.get(num_hall);
+    }
+    
+    
+    public void afficherListeHalls(){
+        System.out.println(this.toStringListeHalls());
+    }
+    
+    public String toStringListeHalls(){
+        String info = " Hall : "+num_hall+" \n Zone d'enregistrement: "+zone_enreg+
+                " \n Les Portes associés: " ;
+        
+        Iterator it = lesPortes.iterator();
+		while(it.hasNext()){
+                    Porte p = null;
+                    p = (Porte) it.next();
+                    //p.toStringDepuisHall();
+                    info += " | "+p.getNum_porte();
+		}
+
+        return info;
+    }
+    
+    public String getNumHall(){
+       return num_hall;
     }
 }

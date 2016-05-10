@@ -45,7 +45,7 @@ public class Pcc {
         // --------------
         // Creation des Halls en masse
         Hall.creerHalls();
-        //Hall.afficherLesHalls();
+        
         
         // Creation des portes en masse
         Porte.creerPortes();
@@ -54,19 +54,34 @@ public class Pcc {
         // Creation des parkings en masse
         Parking.creerParkings();
         //Parking.afficherLesParkings();
+       
         
         // Associer Halls et Portes
-        Aeroport.associerHallslPortes();
+       Aeroport.associerHallslPortes();
         
          // Associer Portes et parking
-        Aeroport.associerPortesParkings();
-
+       // Aeroport.associerPortesParkings();
+        
+       //Porte porte = new PorteContact("Porte01", "10");
+       //Hall h4 = new Hall ("Hall4","Zone 40");
+       
+       //porte.affecterHall(h4);
+        //Hall.afficherLesHalls();
+        Porte.afficherLesPortes();
+        //Parking.afficherLesParkings();
+        
+        
+       // ParkingContact p = new ParkingContact("Parking01", "Mike");
+        
+        
+        //p.affecterPorte(porte);
+        //p.afficher();
         // affichage de la Hasttable des halls
         //Hall.afficherLesHalls();
         // affichage de la Hasttable des portes
         //Porte.afficherLesPortes();
         // affichage de la Hasttable des parkingss
-        Parking.afficherLesParkings();
+        //Parking.afficherLesParkings();
         
  /*       // DEBUT TEST ODX -> LES PORTES
             // Creation des Halls

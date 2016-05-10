@@ -22,18 +22,34 @@ public abstract class Porte {
         zone_enreg = ze;
         // ajout dans la Hashtable
         lesPortes.put(p, this);
+        Hall hall= null;
     }
 
     public String toString(){
         // affichage 
         //String info = "Numéro de porte: "+ num_porte + 
         //            "Zone d'enregistrement: "+zone_enreg + hall.toString();
-        String info = "Numéro de porte: "+ num_porte + 
-                    " Zone d'enregistrement: "+zone_enreg;
+        String info = "\n Numéro de porte: "+ num_porte + 
+                    " \n Zone d'enregistrement: "+zone_enreg;
         if (hall != null)
             info += hall.toString();
         return info;
     }
+    
+    public String toStringDepuisParking(){
+        String info = num_porte + 
+                    " \n Zone d'enregistrement: "+zone_enreg;
+        if (hall != null)
+            info += hall.toString();
+        return info;
+    }
+    
+    public String toStringDepuisHall(){
+        String info = num_porte;
+        return info;
+    }
+    
+    
     
     public void afficher() {
             System.out.println(this.toString());
@@ -59,12 +75,19 @@ public abstract class Porte {
     
     public static void afficherLesPortes(){
         // Affichage de la hastable lesPortes
-        System.out.println("Affichage Hashtable lesPortes");
+        String info = "Affichage Hashtable lesPortes";
         ArrayList<Porte> portes = new ArrayList<Porte>(lesPortes.values());
         Iterator<Porte> it = portes.iterator(); 
         while(it.hasNext()){
-            it.next().afficher();
+           Porte p = it.next();
+           info += "\n Porte : "+p.getNum_porte();
+           info += " Zone d'enregistrement : "+p.getZone_enreg();
+           if(p.hall != null){
+           info += " Hall : "+p.getHall();
+           }
+           else { info += " Hall : N/A";}
         }
+        System.out.println(info);
     }
     
     public static Porte getPorte(String num_porte) throws PorteInvalide {
@@ -105,4 +128,9 @@ public abstract class Porte {
 		System.out.println("Erreur de lecture fichier: "+File+"\n");
 	}
     }
+    
+    public String getHall(){
+        return hall.getNumHall();
+    }
+    
 }

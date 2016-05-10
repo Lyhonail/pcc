@@ -13,13 +13,15 @@ public class PorteContact extends Porte {
     public PorteContact(String p, String ze) {
         super(p,ze);
         parkingC=null;
+        
+
     }
 
     public String toString(){
         //String info = "Porte Contact: " + super.toString() + 
         //        " Parking Contact associé: " + parkingC.toString();
-        String info = "Porte Contact: " + super.toString() + 
-                " Parking Contact associé: ";
+        String info = "\n PORTE CONACT: " + super.toString() + 
+                " \n Parking Contact associé: ";
         if ( parkingC != null)
             info += parkingC.toString();      
         return info;
@@ -30,5 +32,16 @@ public class PorteContact extends Porte {
     }
 
     public void retirerParking() {
+    }
+
+
+    public String toStringDepuisParking(){
+    String info = "\n PORTE CONACT ASSOCIEE : " + super.toStringDepuisParking();
+    return info;
+    }
+    
+    public String toStringDepuisHall(){
+        String info = super.toStringDepuisHall();
+        return info;
     }
 }

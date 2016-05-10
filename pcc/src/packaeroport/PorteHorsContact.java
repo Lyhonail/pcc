@@ -19,11 +19,12 @@ public class PorteHorsContact extends Porte {
     public PorteHorsContact(String p, String ze) {
         super(p,ze);
         lesParkingsHC = new ArrayList<Parking>();
+        
     }
         
     public String toString() {
-        String info = "Porte Hors Contact : " + super.toString() + 
-                " Les Parkings Hors Contact associés: " ;
+        String info = "PORTE HORS CONTACT : " + super.toString() + 
+                " \n Les Parkings Hors Contact associés: " ;
         // Afficher ArrayList des parkings HorsContact
         Iterator<Parking> it = lesParkingsHC.iterator();
         while (it.hasNext()){
@@ -38,5 +39,15 @@ public class PorteHorsContact extends Porte {
 
     public void retirerParking(Parking p) {
         lesParkingsHC.remove(p);
+    }
+    
+    public String toStringDepuisHall(){
+        String info = super.toStringDepuisHall();
+        return info;
+    }
+    
+    public String toStringDepuisParking(){
+    String info = "\n PORTE CONACT ASSOCIEE : " + super.toStringDepuisParking();
+    return info;
     }
 }

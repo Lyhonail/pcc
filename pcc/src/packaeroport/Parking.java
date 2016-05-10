@@ -29,11 +29,11 @@ public abstract class Parking {
     }
 
     public String toString() {
-        String info = "Numéro de parking: "+ code_park + 
-                    " Zone: "+zone;
+        String info =  code_park + 
+                    "\n Zone: "+zone;
         /* if (porteC != null) 
-            info += porteC.toString();
-        return info; */
+            info += porteC.toString();*/
+        return info; 
     }
     
     public void afficher() {
