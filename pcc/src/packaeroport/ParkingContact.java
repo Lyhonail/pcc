@@ -13,9 +13,9 @@ public class ParkingContact extends Parking {
 
    public String toString(){
         //String info = "Parking contact "+this.getCode_park()+" "+this.getZone();
-        String info = "Parking contact "+ super.toString();
+        String info = "PARKING CONTACT :  "+ super.toString();
         if (porteC != null) 
-            info += porteC.toString();
+            info += porteC.toStringDepuisParking();
         
         return info;
     }
@@ -23,6 +23,7 @@ public class ParkingContact extends Parking {
     public void afficher() {
         System.out.println(this.toString());
     }
+    
     
     public void affecterPorte(Porte p) {
         porteC = p;

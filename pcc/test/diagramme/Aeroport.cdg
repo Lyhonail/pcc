@@ -109,7 +109,6 @@
         <Method name="getHoraire" returnType="Object" visibility="public"/>
         <Method name="afficher" returnType="void" visibility="public"/>
         <Method name="toString" returnType="String" visibility="public"/>
-        <Method name="creerVol" returnType="void" visibility="public"/>
       </Methods>
     </Class>
     <Class name="Sejour" package="" visibility="public" xPosition="945.0" yPosition="495.0">

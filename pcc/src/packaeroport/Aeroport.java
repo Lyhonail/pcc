@@ -72,30 +72,25 @@ public class Aeroport {
                 // recup de l'objet hall correspondant
                 try {
                     hall_find = Hall.getHall(num_hall);
-                } catch (HallInvalide e){
-                    System.out.println(e.toString());
-                }
-                //System.out.println("\nHall: "+hall);
+                    ////System.out.println("\nHall: "+hall);
                 while (tokenHall.hasMoreTokens()){//liste des portes sur la ligne du hall
                     String num_porte = tokenHall.nextToken();
                         // recup de l'objet Porte correspondant
                         try {
                             porte_find = Porte.getPorte(num_porte);
-                        } catch (PorteInvalide e){
-                            System.out.println(e.toString());
-                        }
-                        // Ajouter la porte dans l'ArrayList des portes du hall
-                        hall_find.ajouterPorte(porte_find);    
-                        // affecter le hall à la porte
-                        porte_find.affecterHall(hall_find);
+                           // Ajouter la porte dans l'ArrayList des portes du hall
+                            hall_find.ajouterPorte(porte_find);    
+                            // affecter le hall à la porte
+                            porte_find.affecterHall(hall_find);
+                            //System.out.println(porte_find.getHall());
+                        } catch (PorteInvalide e){ System.out.println(e.toString());}       
+                    }//liste des portes sur la ligne du hall
+                } catch (HallInvalide e){ System.out.println(e.toString());}       
                 }
-            }    
-	} catch (FileNotFoundException e){
-            System.out.println("fichier non trouvé: "+File+"\n");
-        }
+            } catch (FileNotFoundException e){System.out.println("fichier non trouvé: "+File+"\n");}
 	catch (IOException e){
 		System.out.println("Erreur de lecture fichier: "+File+"\n");
-	}
+            }
     }
     
       public static void associerPortesParkings(){
