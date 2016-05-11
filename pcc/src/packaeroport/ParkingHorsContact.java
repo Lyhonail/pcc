@@ -19,15 +19,13 @@ public class ParkingHorsContact extends Parking {
         String info = "Parking hors contact "+super.toString() + 
                 " Les Portes Hors Contact associés: " ;
         Iterator it = lesPortesHorsContact.iterator();
-		while(it.hasNext()){
-                    //Porte p = (Porte) ita.next();
-                    //info += p.toString() +"\n";
-                    info += "\n  " + it.next().toString();
-		}
+            while(it.hasNext()){
+                //Porte p = (Porte) ita.next();
+                //info += p.toString() +"\n";
+                info += "\n  " + it.next().toString();
+	}
         
         return info;
-        
-
     }
 
     public void afficher() {

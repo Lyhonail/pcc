@@ -66,7 +66,7 @@ public abstract class Porte {
             it.next().afficher();
         }
     }
-    
+      
     public static Porte getPorte(String num_porte) throws PorteInvalide {
         if (!lesPortes.containsKey(num_porte))
             throw new PorteInvalide(num_porte);

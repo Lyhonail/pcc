@@ -59,16 +59,16 @@ public class Pcc {
         Aeroport.associerHallslPortes();
         
          // Associer Portes et parking
-        Aeroport.associerPortesParkings();
+        //Aeroport.associerPortesParkings();
 
         // affichage de la Hasttable des halls
-        Hall.afficherLesHalls();
+        //Hall.afficherLesHalls();
         // affichage de la Hasttable des portes
         //Porte.afficherLesPortes();
         // affichage de la Hasttable des parkingss
         //Parking.afficherLesParkings();
         
- /*       // DEBUT TEST ODX -> LES PORTES
+/*        // DEBUT TEST ODX -> LES PORTES
             // Creation des Halls
             Hall h1 = new Hall ("Hall1","Zone 10");
             h1.afficher();
