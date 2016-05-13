@@ -67,8 +67,8 @@ public class Pcc {
        
        //porte.affecterHall(h4);
         //Hall.afficherLesHalls();
-        Porte.afficherLesPortes();
-        //Parking.afficherLesParkings();
+        //Porte.afficherLesPortes();
+        Parking.afficherLesParkings();
         
         
        // ParkingContact p = new ParkingContact("Parking01", "Mike");
@@ -150,7 +150,7 @@ public class Pcc {
             
        // FIN TEST ODX
  */        
-	/*	
+		
 	try { //chargement des avions
 	BufferedReader entree = new BufferedReader (new FileReader ("avionsFA-16-v1.txt"));
 	String ligne = null;
@@ -160,14 +160,16 @@ public class Pcc {
 		String imatavion = st.nextToken();
 		String modelavion = st.nextToken();
 		Avion a = new Avion (imatavion, modelavion);
-		bercy.ajouter(a);
 		// traiter mot
-		//System.out.println("immatriculation : "+imatavion+" Modèle : "+modelavion);
+		
 	}
 	} catch (IOException e){
 		System.out.println("fichier non trouvé");
 		}
- 
+    Avion.afficherLesAvions();
+    Vol.creerLesVols();
+    Vol.afficherLesVols();
+        /*
 try { //CHARGEMENT HALLS
         BufferedReader halls = new BufferedReader (new FileReader ("halls.txt"));
 	String ligne_halls = null;

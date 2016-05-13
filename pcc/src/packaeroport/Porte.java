@@ -36,6 +36,10 @@ public abstract class Porte {
         return info;
     }
     
+    public void afficher() {
+            System.out.println(this.toString());
+    }
+        
     public String toStringDepuisParking(){
         String info = num_porte + 
                     " \n Zone d'enregistrement: "+zone_enreg;
@@ -51,9 +55,7 @@ public abstract class Porte {
     
     
     
-    public void afficher() {
-            System.out.println(this.toString());
-    }
+
 
     public String getNum_porte(){
         return num_porte;
