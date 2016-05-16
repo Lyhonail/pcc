@@ -1,10 +1,8 @@
 package packaeroport;
-//import java.lang.String;
-//import packaeroport.*;
 
 public class ParkingContact extends Parking {
 
-    private Porte porteC;
+    private PorteContact porteC;
 
     public ParkingContact(String code_p, String zone) {
         super(code_p, zone);
@@ -12,20 +10,25 @@ public class ParkingContact extends Parking {
     }
 
    public String toString(){
-        //String info = "Parking contact "+this.getCode_park()+" "+this.getZone();
-        String info = "PARKING CONTACT :  "+ super.toString();
+        String info = "\n PARKING CONTACT:  "+ super.toString() +
+                  "\n   Porte Contact associée: ";;
         if (porteC != null) 
-            info += porteC.toStringDepuisParking();
+            info += porteC.toStringSansParkings();
+        else
+            info += "\n   Porte contact: N/A";
         
         return info;
     }
 
-    public void afficher() {
-        System.out.println(this.toString());
+    public String toStringSansPortes(){
+        return super.toString();
     }
-    
-    
-    public void affecterPorte(Porte p) {
+   
+    public void affecterPorte(PorteContact p) {
         porteC = p;
+    }
+
+    public void desaffecterPorte() {
+        porteC = null;
     }
 }

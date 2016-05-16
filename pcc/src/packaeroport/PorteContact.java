@@ -1,47 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package packaeroport;
 
+package packaeroport;
 
 public class PorteContact extends Porte {
 
-    private Parking parkingC;  // Parking contact
+    private ParkingContact parkingC;  // Parking contact
 
     public PorteContact(String p, String ze) {
         super(p,ze);
         parkingC=null;
-        
-
     }
 
+    public ParkingContact getParkingC(){
+        return parkingC;
+    }
+            
     public String toString(){
-        //String info = "Porte Contact: " + super.toString() + 
-        //        " Parking Contact associé: " + parkingC.toString();
-        String info = "\n PORTE CONACT: " + super.toString() + 
-                " \n Parking Contact associé: ";
+        String info = "\n PORTE CONTACT: " + super.toString() + 
+                "\n   Parking Contact associé: ";
         if ( parkingC != null)
-            info += parkingC.toString();      
+            info += parkingC.toStringSansPortes();  
+        else
+            info += "\n   Parking : N/A";
         return info;
-    }
-
-    public void affecterParking(Parking p) {
-        parkingC = p;
-    }
-
-    public void retirerParking() {
-    }
-
-
-    public String toStringDepuisParking(){
-    String info = "\n PORTE CONACT ASSOCIEE : " + super.toStringDepuisParking();
-    return info;
     }
     
-    public String toStringDepuisHall(){
-        String info = super.toStringDepuisHall();
-        return info;
+    public String toStringSansParkings(){
+        return super.toString();
+    }
+    
+    public void affecterParking(ParkingContact p) {
+        parkingC = p;
+    }
+     
+    public void desaffecterParking() {
+        parkingC = null;
     }
 }

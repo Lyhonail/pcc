@@ -26,33 +26,51 @@ public class Hall {
     public void afficher(){
         System.out.println(this.toString());
     }
+
+//    public void ajouterListePorte(ArrayList<Porte> p){
+//        lesPortes = p;
+//    }
     
     public String toString(){
-        String info = "\n Hall: "+num_hall+" Zone d'enregistrement: "+zone_enreg+
+        String info = " Hall: "+num_hall+" Zone d'enregistrement: "+zone_enreg+
                 "\n Les Portes associées: " ;
         // recuperation de l'arrayList des portes    
         Iterator it = lesPortes.iterator();
 	while(it.hasNext()){
+            //info += "\n  " + it.next().toString();
             info += it.next().toString();
 	}
         return info;
     }
     
     public static void afficherLesHalls(){
-        System.out.println(toStringLesHalls());
-    }
-    
-    public static String toStringLesHalls(){
         // Affichage de la hastable lesHalls
-        String info = "\n Liste des Halls: ";
+        System.out.println("\n Liste des Halls: ");
         ArrayList<Hall> halls = new ArrayList<Hall>(lesHalls.values());
         Iterator<Hall> it = halls.iterator(); 
         while(it.hasNext()){
-            info += it.next().toString();
+            it.next().afficherListeHalls();
+        }
+    }
+    
+    public void afficherListeHalls(){
+        System.out.println(this.toStringListeHalls());
+    }
+    
+    public String toStringListeHalls(){
+        String info = " Hall : "+num_hall+" Zone d'enregistrement: "+zone_enreg+
+                " \n   Les Portes associées: " ;
+        
+        Iterator it = lesPortes.iterator();
+        while(it.hasNext()){
+            Porte p = null;
+            p = (Porte) it.next();
+            //p.toStringDepuisHall();
+            info += " | "+p.getNum_porte();
         }
         return info;
     }
-       
+    
     public static void creerHalls(){
         String File = "03-zones-enreg-et-halls.txt";
         try {
