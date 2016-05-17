@@ -41,6 +41,7 @@ public abstract class Porte {
         System.out.println(this.toString());
     }
 
+
     public String getNum_porte(){
         return num_porte;
     }

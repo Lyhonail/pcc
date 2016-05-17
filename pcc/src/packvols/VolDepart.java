@@ -6,6 +6,7 @@
 package packvols;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import packhoraires.Horaire; 
 
 
@@ -15,13 +16,13 @@ import packhoraires.Horaire;
  */
 public class VolDepart extends Vol {
     String depart;
-    ArrayList<VolDepart> lesVolsArrivee;
+    private static Hashtable <String, Vol> lesVolsDepart = new Hashtable<String, Vol>();
     
     
     public VolDepart(String num_vol, Horaire horaire, Avion avion,String dep) {
         super(num_vol, horaire, avion);
                 depart = dep;
-                lesVolsArrivee  = new ArrayList<VolDepart>();
+                lesVolsDepart.put(num_vol, this);
     }
     
 }
