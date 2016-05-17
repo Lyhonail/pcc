@@ -19,15 +19,18 @@ public class Sejour {
     private Parking parking;
     //private String immatriculation;
     private Avion avion;
-    private VolArrivee volArrivee;
-    private VolDepart volDepart;
+    private Vol volArrivee;
+    private Vol volDepart;
     
     private static Hashtable <String, Sejour> lesSejours = new Hashtable<String, Sejour>();
     
-    public Sejour(TrancheHoraire t, Parking p, Avion a){
+    public Sejour(TrancheHoraire t, Vol va, Vol vd, Parking p, Avion a, String num_volArrivee){
         dureeSejour = t;
         parking = p;
-        avion = a;        
+        avion = a; 
+        volArrivee = va;
+        volDepart = vd;
+        lesSejours.put(num_volArrivee, this);
     }
     
     public String toString(){
@@ -52,14 +55,16 @@ public class Sejour {
                         String provenance = tokenVolArrivee.nextToken();
                         String immatArrivee = tokenVolArrivee.nextToken();
                         
-                       // int hor_arrivee = Integer.parseInt(h_arivee);
-                        //int min_arrivee = Integer.parseInt(m_arivee);
-                        //Horaire h = new Horaire(hor_arrivee, min_arrivee);
-                        avion_find = Avion.getAvion(immatArrivee);
-                        Vol vol_arrivee = Vol.getVol(num_volArrivee);
-                        //VolArrivee v = new VolArrivee(num_vol, h, avion_find, provenance);
+                       //int hor_arrivee = Integer.parseInt(h_arivee);
+                       //int min_arrivee = Integer.parseInt(m_arivee);
+                       //Horaire h = new Horaire(hor_arrivee, min_arrivee);
+                        //avion_find = Avion.getAvion(immatArrivee);
                         
-               
+                        //récupération du vol d'arrivée
+                        Vol vol_arrivee = Vol.getVol(num_volArrivee);
+                        //récupération de l'horraire arrivée
+                        Horaire ha = vol_arrivee.getHoraire();
+                        
                         StringTokenizer tokenVolDepart = new StringTokenizer (ligne);
                         String num_volDepart = tokenVolDepart.nextToken();
                         String h_depart = tokenVolDepart.nextToken();
@@ -72,9 +77,18 @@ public class Sejour {
                         Horaire h = new Horaire(hor_depart, min_depart);
                         avion_find = Avion.getAvion(immatDepart);
                         
-                        //VolDepart v = new VolDepart(num_vol, h, avion_find, destination);
-                  
+                        //récupération du vol d'arrivée
+                        Vol vol_depart = Vol.getVol(num_volDepart);
+                        //récupération de l'horaire de départ
+                        Horaire hd = vol_depart.getHoraire();
                         
+                        //création de la tranche horaire
+                        TrancheHoraire tranche = new TrancheHoraire(ha, hd);
+                        
+                        //création d'un parking de test avant affectation
+                        Parking test = new ParkingContact("test", "test");
+                        
+                        Sejour s = new Sejour(tranche, vol_arrivee, vol_depart, test, avion_find, num_volArrivee );
                         
             }
          }
@@ -83,4 +97,23 @@ public class Sejour {
             System.out.println("fichier non trouvé: "+File+"\n");
             }
     }
+    
+    public static void afficherLesSejpours(){
+        
+        // Affichage de la hastable lesPortes
+        String info = "Affichage Hashtable lesSéjours";
+        
+        
+        ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
+        
+        Iterator<Sejour> it = sejours.iterator(); 
+        while(it.hasNext()){
+           Sejour s = it.next();
+           info += " test \n";
+        System.out.println(info);
+    }
+    }
+    
+    
+    
     }
