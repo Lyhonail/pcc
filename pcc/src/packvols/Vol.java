@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 import packaeroport.Porte;
 import packhoraires.Horaire;
 import  java.util.Collections;
+import packaeroport.PorteInvalide;
 
 public abstract class Vol {
 
@@ -39,8 +40,12 @@ public abstract class Vol {
         return avion;
     }
     
-      public static Vol getVol(String v){
-        return (Vol)lesVols.get(v);
+    public static Vol getVol(String v) throws VolInvalide{
+        // récupération d'un vol de la HashTable des vols
+        if (!lesVols.containsKey(v))
+            throw new VolInvalide(v);
+        else
+            return (Vol)lesVols.get(v);
     }
     
     public static Hashtable <String, Vol> getLesVols(){

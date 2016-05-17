@@ -35,10 +35,13 @@ public class Avion {
 		return immat;
 	}
         
-       public static Avion getAvion(String num_avion) {
-            return (Avion)lesAvions.get(num_avion);
-    }
-                
+       public static Avion getAvion(String num_avion) throws AvionInvalide {
+           // récupération d'un avion dans HashTable des avions
+           if (!lesAvions.containsKey(num_avion))
+               throw new AvionInvalide(num_avion);
+           else
+                return (Avion)lesAvions.get(num_avion);
+    }         
 	
 	public String getModele(){
 		return modele;
