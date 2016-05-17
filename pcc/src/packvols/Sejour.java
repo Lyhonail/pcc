@@ -55,8 +55,8 @@ public class Sejour {
                         String provenance = tokenVolArrivee.nextToken();
                         String immatArrivee = tokenVolArrivee.nextToken();
                         
-                       //int hor_arrivee = Integer.parseInt(h_arivee);
-                       //int min_arrivee = Integer.parseInt(m_arivee);
+                       int hor_arrivee = Integer.parseInt(h_arivee);
+                       int min_arrivee = Integer.parseInt(m_arivee);
                        //Horaire h = new Horaire(hor_arrivee, min_arrivee);
                         //avion_find = Avion.getAvion(immatArrivee);
                         
@@ -110,8 +110,9 @@ public class Sejour {
         while(it.hasNext()){
            Sejour s = it.next();
            info += " test \n";
-        System.out.println(info);
+        
     }
+        System.out.println(info);
     }
     
     
