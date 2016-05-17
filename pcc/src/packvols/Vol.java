@@ -39,7 +39,7 @@ public abstract class Vol {
         return avion;
     }
     
-      public static String getVol(Vol v){
+      public static Vol getVol(String v){
         return (Vol)lesVols.get(v);
     }
     
