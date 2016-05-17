@@ -61,6 +61,7 @@ public class Sejour {
                         //avion_find = Avion.getAvion(immatArrivee);
                         
                         //récupération du vol d'arrivée
+                    try {    
                         Vol vol_arrivee = Vol.getVol(num_volArrivee);
                         //récupération de l'horraire arrivée
                         Horaire ha = vol_arrivee.getHoraire();
@@ -75,21 +76,32 @@ public class Sejour {
                         int hor_depart = Integer.parseInt(h_depart);
                         int min_depart = Integer.parseInt(m_depart);
                         Horaire h = new Horaire(hor_depart, min_depart);
-                        avion_find = Avion.getAvion(immatDepart);
-                        
-                        //récupération du vol d'arrivée
-                        Vol vol_depart = Vol.getVol(num_volDepart);
-                        //récupération de l'horaire de départ
-                        Horaire hd = vol_depart.getHoraire();
-                        
-                        //création de la tranche horaire
-                        TrancheHoraire tranche = new TrancheHoraire(ha, hd);
-                        
-                        //création d'un parking de test avant affectation
-                        Parking test = new ParkingContact("test", "test");
-                        
-                        Sejour s = new Sejour(tranche, vol_arrivee, vol_depart, test, avion_find, num_volArrivee );
-                        
+                    
+                        try {
+                            avion_find = Avion.getAvion(immatDepart);
+
+                            //récupération du vol d'arrivée
+                           try {
+                                Vol vol_depart = Vol.getVol(num_volDepart);
+                                //récupération de l'horaire de départ
+                                Horaire hd = vol_depart.getHoraire();
+
+                                //création de la tranche horaire
+                                TrancheHoraire tranche = new TrancheHoraire(ha, hd);
+
+                                //création d'un parking de test avant affectation
+                                Parking test = new ParkingContact("test", "test");
+
+                                Sejour s = new Sejour(tranche, vol_arrivee, vol_depart, test, avion_find, num_volArrivee );
+                           } catch (    VolInvalide e){ //fin try Vol.getVol(num_volDepart);
+                                System.out.println(e.toString());
+                           } 
+                        } catch (AvionInvalide e){ //fin try Vol.getAvion(immatDepart);
+                            System.out.println(e.toString());
+                        }  
+                    } catch (VolInvalide e){ //fin try Vol.getVol(num_volArrivee);
+                            System.out.println(e.toString());
+                    }  
             }
          }
          

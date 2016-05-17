@@ -88,9 +88,12 @@ public abstract class Vol {
                         int hor_arrivee = Integer.parseInt(h_arivee);
                         int min_arrivee = Integer.parseInt(m_arivee);
                         Horaire h = new Horaire(hor_arrivee, min_arrivee);
-                        avion_find = Avion.getAvion(immat);
-                        
-                        VolArrivee v = new VolArrivee(num_vol, h, avion_find, provenance);
+                        try {
+                            avion_find = Avion.getAvion(immat);
+                            VolArrivee v = new VolArrivee(num_vol, h, avion_find, provenance);
+                        } catch (AvionInvalide e){ 
+                            System.out.println(e.toString());
+                        }     
                     }
                     else {
                         StringTokenizer tokenVol = new StringTokenizer (ligne);
@@ -103,9 +106,12 @@ public abstract class Vol {
                         int hor_depart = Integer.parseInt(h_depart);
                         int min_depart = Integer.parseInt(m_depart);
                         Horaire h = new Horaire(hor_depart, min_depart);
-                        avion_find = Avion.getAvion(immat);
-                        
-                        VolDepart v = new VolDepart(num_vol, h, avion_find, destination);
+                        try {
+                            avion_find = Avion.getAvion(immat);
+                            VolDepart v = new VolDepart(num_vol, h, avion_find, destination);
+                        } catch (AvionInvalide e){ 
+                            System.out.println(e.toString());
+                        }  
                     }
                 }
             }
