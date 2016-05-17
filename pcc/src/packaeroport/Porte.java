@@ -91,11 +91,11 @@ public abstract class Porte {
             BufferedReader portes = new BufferedReader (new FileReader (File));
             String ligne = null;
             while((ligne= portes.readLine()) != null){//WHILE LIGNE des zones
-                StringTokenizer tokenHall = new StringTokenizer (ligne);
-                String zone_enr = tokenHall.nextToken();
+                StringTokenizer tokenPorte = new StringTokenizer (ligne);
+                String zone_enr = tokenPorte.nextToken();
                 //System.out.println("\nZone enregistrement: "+zone_enr);
-                while (tokenHall.hasMoreTokens()){//liste des portes sur la ligne des zones
-                    String num_porte = tokenHall.nextToken();
+                while (tokenPorte.hasMoreTokens()){//liste des portes sur la ligne des zones
+                    String num_porte = tokenPorte.nextToken();
                     if (zone_enr.equals("40")){
                         //porte Hors contact
                         //System.out.println("\nPorte hors contact: "+num_porte);

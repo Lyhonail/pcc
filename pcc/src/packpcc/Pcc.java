@@ -52,9 +52,9 @@ public class Pcc {
         Aeroport.associerPortesParkings();
         
         // Affichage
-       // Hall.afficherLesHalls();
-       // Porte.afficherLesPortes();
-      //  Parking.afficherLesParkings();
+        //Hall.afficherLesHalls();
+        //Porte.afficherLesPortes();
+        //Parking.afficherLesParkings();
               
         
         // DEBUT TEST ODX ->

@@ -58,11 +58,11 @@ public abstract class Parking {
             BufferedReader parkings = new BufferedReader (new FileReader (File));
             String ligne = null;
             while((ligne= parkings.readLine()) != null){//WHILE LIGNE des zones
-                StringTokenizer tokenHall = new StringTokenizer (ligne);
-                String zone = tokenHall.nextToken();
+                StringTokenizer tokenPark = new StringTokenizer (ligne);
+                String zone = tokenPark.nextToken();
                 //System.out.println("\nZone enregistrement: "+zone);
-                while (tokenHall.hasMoreTokens()){//liste des parkings sur la ligne des zones
-                    String num_park = tokenHall.nextToken();
+                while (tokenPark.hasMoreTokens()){//liste des parkings sur la ligne des zones
+                    String num_park = tokenPark.nextToken();
                     if (zone.equals("Mike")){
                         //parking Hors contact
                         //System.out.println("\nParking hors contact: "+num_park);
