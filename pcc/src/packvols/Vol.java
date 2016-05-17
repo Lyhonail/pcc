@@ -54,7 +54,7 @@ public abstract class Vol {
 
 
     public String toString() {
-        String info = "Numero de vol : " + num_vol +"|avion :"+avion +" |horaire: " + horaire ;
+        String info = "Vol : " + num_vol +" à "+horaire+"avion :"+ avion.getImmat()  ;
         return info;
     }
 

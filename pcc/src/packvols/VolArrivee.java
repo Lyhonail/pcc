@@ -26,7 +26,7 @@ public class VolArrivee extends Vol {
     }
     
     public String toString(){
-        String info = " Arrivée "+super.toString();
+        String info = super.toString()+". En provenance de "+provenance;
         //info +=" test ";
         return info;
     }

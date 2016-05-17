@@ -26,7 +26,7 @@ public class VolDepart extends Vol {
     }
     
     public String toString(){
-        String info = " Départ "+super.toString();
+        String info = super.toString()+". A destination de "+depart;
         //info +=" test ";
         return info;
     }
