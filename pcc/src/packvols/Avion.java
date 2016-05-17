@@ -9,9 +9,13 @@ package packvols;
  *
  * @author Lionel
  */
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.StringTokenizer;
 
 public class Avion {
 
@@ -45,6 +49,25 @@ public class Avion {
 		
 		return info;
 	}
+        
+        public static void creerLesAvions(){
+            try { //chargement des avions
+	BufferedReader entree = new BufferedReader (new FileReader ("avionsFA-16-v1.txt"));
+	String ligne = null;
+	while((ligne= entree.readLine()) != null){
+		// decouperla ligne de mots
+		StringTokenizer st = new StringTokenizer (ligne); //separateur = espace
+		String imatavion = st.nextToken();
+		String modelavion = st.nextToken();
+		Avion a = new Avion (imatavion, modelavion);
+		// traiter mot
+		
+	}
+	} catch (IOException e){
+		System.out.println("fichier non trouvé");
+		}
+        }
+        
         
         public static void afficherLesAvions(){
             // Affichage de la hastable lesAvions

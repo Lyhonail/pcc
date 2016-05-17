@@ -1,5 +1,5 @@
 package packaeroport;
-//test
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -16,8 +16,6 @@ public class Aeroport {
     private String nom;
     private Vector<Avion> lesAvions;
     private Vector<Hall> lesHalls;
-    //private static Hashtable<String, Aeroport> LesAeroports = new Hashtable<String, Aeroport>();
-
 	
     public Aeroport(String a){
         nom = a; 
@@ -50,7 +48,7 @@ public class Aeroport {
         return info;
     }
 
-    public void Afficher(){
+    public void afficher(){
         System.out.println(this.toString());
     }
 
@@ -73,8 +71,8 @@ public class Aeroport {
                 try {
                     hall_find = Hall.getHall(num_hall);
                     ////System.out.println("\nHall: "+hall);
-                while (tokenHall.hasMoreTokens()){//liste des portes sur la ligne du hall
-                    String num_porte = tokenHall.nextToken();
+                    while (tokenHall.hasMoreTokens()){//liste des portes sur la ligne du hall
+                        String num_porte = tokenHall.nextToken();
                         // recup de l'objet Porte correspondant
                         try {
                             porte_find = Porte.getPorte(num_porte);
@@ -83,17 +81,23 @@ public class Aeroport {
                             // affecter le hall à la porte
                             porte_find.affecterHall(hall_find);
                             //System.out.println(porte_find.getHall());
-                        } catch (PorteInvalide e){ System.out.println(e.toString());}       
+                        } catch (PorteInvalide e){ 
+                            System.out.println(e.toString());
+                        }       
                     }//liste des portes sur la ligne du hall
-                } catch (HallInvalide e){ System.out.println(e.toString());}       
-                }
-            } catch (FileNotFoundException e){System.out.println("fichier non trouvé: "+File+"\n");}
-	catch (IOException e){
-		System.out.println("Erreur de lecture fichier: "+File+"\n");
+                } catch (HallInvalide e){ 
+                    System.out.println(e.toString());
+                }       
             }
+        } catch (FileNotFoundException e){
+            System.out.println("fichier non trouvé: "+File+"\n");
+        }
+	catch (IOException e){
+            System.out.println("Erreur de lecture fichier: "+File+"\n");
+        }
     }
     
-      public static void associerPortesParkings(){
+    public static void associerPortesParkings(){
         String File = "05-assos-portes-et-parkings.txt";
         Porte porte_find =null;
         PorteContact porte_findC =null;
@@ -113,42 +117,41 @@ public class Aeroport {
                 // recup de l'objet porte correspondant
                 try {
                     porte_find = Porte.getPorte(num_porte);
-                } catch (PorteInvalide e){
-                    System.out.println(e.toString());
-                }
-                //System.out.println("\nPorte: "+num_porte);
-                while (tokenHall.hasMoreTokens()){//liste des parkings sur la ligne de la porte
-                    String num_park = tokenHall.nextToken();
+                    //System.out.println("\nPorte: "+num_porte);
+                    while (tokenHall.hasMoreTokens()){//liste des parkings sur la ligne de la porte
+                        String num_park = tokenHall.nextToken();
                         // recup de l'objet Parking correspondant
                         try {
-                            parking_find = Parking.getParking(num_park);
+                            parking_find = Parking.getParking(num_park);                        
+                            // test si le parking est contact 
+                            if (parking_find instanceof ParkingContact){
+                                // typage de la porte en PorteContact
+                                porte_findC = (PorteContact)porte_find;                                                   
+                                // affecter le parking à la porte ocntact
+                                porte_findC.affecterParking((ParkingContact)parking_find);
+
+                                // typage du parking en ParkingContact
+                                parking_findC = (ParkingContact)parking_find;                                                        
+                                // affecter la porte au parking
+                                parking_findC.affecterPorte((PorteContact)porte_find);
+                            }
+                            else{
+                                // typage de la porte en PorteHorsContact
+                                porte_findHC = (PorteHorsContact)porte_find;
+                                // Ajouter le parking dans l'ArrayList des parkings de la porte
+                                porte_findHC.ajouterParking((ParkingHorsContact)parking_find); 
+
+                                // typage du parking en ParkingHorsContact
+                                parking_findHC = (ParkingHorsContact)parking_find;
+                                // Ajouter la porte dans l'ArrayList des portes du parking
+                                parking_findHC.ajouterPorte(porte_find); 
+                            }                            
                         } catch (ParkingInvalide e){
                             System.out.println(e.toString());
-                        }
-                        // test si le parking est contact 
-                        if (parking_find instanceof ParkingContact){
-                            // typage de la porte en PorteContact
-                            porte_findC = (PorteContact)porte_find;                                                    
-                            // affecter le parking à la porte ocntact
-                            porte_findC.affecterParking(parking_find);
-                            
-                            // typage du parking en ParkingContact
-                            parking_findC = (ParkingContact)parking_find;                                                        
-                            // affecter la porte au parking
-                            parking_findC.affecterPorte(porte_find);
-                        }
-                        else{
-                            // typage de la porte en PorteHorsContact
-                            porte_findHC = (PorteHorsContact)porte_find;
-                            // Ajouter le parking dans l'ArrayList des parkings de la porte
-                            porte_findHC.ajouterParking(parking_find); 
-                            
-                            // typage du parking en ParkingHorsContact
-                            parking_findHC = (ParkingHorsContact)parking_find;
-                            // Ajouter la porte dans l'ArrayList des portes du parking
-                            parking_findHC.ajouterPorte(porte_find); 
-                        }
-          
+                        }          
+                    }  
+                } catch (PorteInvalide e){
+                    System.out.println(e.toString());
                 }
             }    
 	} catch (FileNotFoundException e){

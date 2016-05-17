@@ -1,53 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package packaeroport;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/**
- *
- * @author user
- */
 public class PorteHorsContact extends Porte {
 
-    private ArrayList lesParkingsHC; // parking hors contact
+    private ArrayList<ParkingHorsContact> lesParkingsHC; // parkings hors contact
 
     public PorteHorsContact(String p, String ze) {
         super(p,ze);
-        lesParkingsHC = new ArrayList<Parking>();
+        lesParkingsHC = new ArrayList<ParkingHorsContact>();
         
     }
         
     public String toString() {
-        String info = "PORTE HORS CONTACT : " + super.toString() + 
-                " \n Les Parkings Hors Contact associés: " ;
+        String info = "\n PORTE HORS CONTACT: " + super.toString() + 
+                "\n   Les Parkings Hors Contact associés: " ;
         // Afficher ArrayList des parkings HorsContact
-        Iterator<Parking> it = lesParkingsHC.iterator();
+        Iterator<ParkingHorsContact> it = lesParkingsHC.iterator();
         while (it.hasNext()){
-            info += "\n  " + it.next().toString();
+            info += it.next().toStringSansPortes();
         }             
         return info;
     }
-
-    public void ajouterParking(Parking p) {
+    
+    public String toStringSansParkings(){
+        return super.toString();
+    }
+    
+    public void ajouterParking(ParkingHorsContact p) {
         lesParkingsHC.add(p);
     }
 
-    public void retirerParking(Parking p) {
+    public void retirerParking(ParkingHorsContact p) {
         lesParkingsHC.remove(p);
-    }
-    
-    public String toStringDepuisHall(){
-        String info = super.toStringDepuisHall();
-        return info;
-    }
-    
-    public String toStringDepuisParking(){
-    String info = "\n PORTE CONACT ASSOCIEE : " + super.toStringDepuisParking();
-    return info;
     }
 }

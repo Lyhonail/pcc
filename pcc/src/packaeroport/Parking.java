@@ -12,7 +12,6 @@ public abstract class Parking {
 
     private String code_park;
     private String zone;
-    //private Porte porteC;
     private static Hashtable<String, Parking> lesParkings = new Hashtable<String, Parking>();
 
     public Parking(String p, String z){
@@ -21,7 +20,7 @@ public abstract class Parking {
     }
     
     public String getCode_park() {
-     return code_park;
+        return code_park;
     }
 
     public String getZone() {
@@ -29,10 +28,7 @@ public abstract class Parking {
     }
 
     public String toString() {
-        String info =  code_park + 
-                    "\n Zone: "+zone;
-        /* if (porteC != null) 
-            info += porteC.toString();*/
+        String info =  "\n   Parking: " +code_park + " Zone: " +zone;
         return info; 
     }
     
@@ -41,20 +37,20 @@ public abstract class Parking {
     }
     
     public static String toStringLesParkings(){
-       String info= "Liste des Parkings \n";
-        //Hashtable<String, Parking> parkings = (Hashtable<String, Parking>) lesParkings.values();
-        Iterator it = lesParkings.values().iterator();
+        String info= "\n Liste des Parkings: ";
+        Iterator<Parking> it = lesParkings.values().iterator();
         while(it.hasNext()){
-            Parking p = (Parking) it.next();
-            info += p.toString()+"\n";
+            Parking p = it.next();
+            //recupère le toString d'un parking Contact ou Hors Contact
+            info += p.toString();
         }
         return info;
     }
     
-    public static  void afficherLesParkings(){
+    public static void afficherLesParkings(){
         System.out.println(toStringLesParkings());
     }
-    
+  
     public static void creerParkings(){
         String File = "01-zones-et-parkings.txt";
         try {

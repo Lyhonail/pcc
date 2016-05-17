@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.StringTokenizer;
+import static packaeroport.Parking.toStringLesParkings;
 
 public abstract class Porte {
     
@@ -26,35 +27,19 @@ public abstract class Porte {
     }
 
     public String toString(){
-        // affichage 
-        //String info = "Numéro de porte: "+ num_porte + 
-        //            "Zone d'enregistrement: "+zone_enreg + hall.toString();
-        String info = "\n Numéro de porte: "+ num_porte + 
-                    " \n Zone d'enregistrement: "+zone_enreg;
+        String info = "\n   Numéro de porte: "+ num_porte + 
+                    " Zone d'enregistrement: "+zone_enreg;
         if (hall != null)
-            info += hall.toString();
-        return info;
-    }
-    
-    public void afficher() {
-            System.out.println(this.toString());
-    }
+            info += " Hall: " +hall.getNum_hall();
+        else  
+            info += " Hall : N/A";
         
-    public String toStringDepuisParking(){
-        String info = num_porte + 
-                    " \n Zone d'enregistrement: "+zone_enreg;
-        if (hall != null)
-            info += hall.toString();
         return info;
     }
-    
-    public String toStringDepuisHall(){
-        String info = num_porte;
-        return info;
+   
+    public void afficher() {
+        System.out.println(this.toString());
     }
-    
-    
-    
 
 
     public String getNum_porte(){
@@ -65,34 +50,34 @@ public abstract class Porte {
         return zone_enreg;
     }
     
-    //public void ajouterHall(String noHall,String zoneEnreg){
-    //    hall = new Hall(noHall,zoneEnreg);
-    //}
     public void affecterHall(Hall h){
         // Affectation d'un Hall déjà existant
         hall = h;
     }
     
-    // NE FAUT-IL PAS UNE METHODE RETIRERHALL() ????
+    public void desaffecterHall(){
+        // desaffecter le Hall à la porte
+        hall = null;
+    }
     
     public static void afficherLesPortes(){
+        System.out.println(toStringLesPortes());
+    }
+    
+    public static String toStringLesPortes(){ 
         // Affichage de la hastable lesPortes
-        String info = "Affichage Hashtable lesPortes";
+        String info = "\n Liste des Portes:";
         ArrayList<Porte> portes = new ArrayList<Porte>(lesPortes.values());
         Iterator<Porte> it = portes.iterator(); 
         while(it.hasNext()){
            Porte p = it.next();
-           info += "\n Porte : "+p.getNum_porte();
-           info += " Zone d'enregistrement : "+p.getZone_enreg();
-           if(p.hall != null){
-           info += " Hall : "+p.getHall();
-           }
-           else { info += " Hall : N/A";}
+           info += p.toString();             
         }
-        System.out.println(info);
+        return(info);
     }
-    
+      
     public static Porte getPorte(String num_porte) throws PorteInvalide {
+        // récupération d'une porte de la HashTable des portes
         if (!lesPortes.containsKey(num_porte))
             throw new PorteInvalide(num_porte);
         else
@@ -130,9 +115,4 @@ public abstract class Porte {
 		System.out.println("Erreur de lecture fichier: "+File+"\n");
 	}
     }
-    
-    public String getHall(){
-        return hall.getNumHall();
-    }
-    
 }
