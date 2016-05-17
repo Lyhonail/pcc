@@ -117,7 +117,7 @@ public class Pcc {
     
    //Vol.afficherLesVols();
     Sejour.creerLesSejours();
-    //Sejour.afficherLesSejpours();
+    Sejour.afficherLesSejours();
     
 
     }
