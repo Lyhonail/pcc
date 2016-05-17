@@ -34,8 +34,14 @@ public class Sejour {
     }
     
     public String toString(){
-        String info = "test";
+        String info = "Séjour du vol : "+volDepart.getNum_vol()+"\n";
+        info += volArrivee.toString()+"\n";
+        info += volDepart.toString()+"\n";
         return info;
+    }
+    
+    public void afficher(){
+        System.out.println(this.toString());
     }
     
     public static void creerLesSejours(){
@@ -65,7 +71,9 @@ public class Sejour {
                         Vol vol_arrivee = Vol.getVol(num_volArrivee);
                         //récupération de l'horraire arrivée
                         Horaire ha = vol_arrivee.getHoraire();
+                        //System.out.println("arrivée "+num_volArrivee);
                         
+                        ligne=vol.readLine();
                         StringTokenizer tokenVolDepart = new StringTokenizer (ligne);
                         String num_volDepart = tokenVolDepart.nextToken();
                         String h_depart = tokenVolDepart.nextToken();
@@ -76,7 +84,7 @@ public class Sejour {
                         int hor_depart = Integer.parseInt(h_depart);
                         int min_depart = Integer.parseInt(m_depart);
                         Horaire h = new Horaire(hor_depart, min_depart);
-                    
+                        //System.out.println("départ "+num_volDepart);
                         try {
                             avion_find = Avion.getAvion(immatDepart);
 
@@ -110,7 +118,7 @@ public class Sejour {
             }
     }
     
-    public static void afficherLesSejpours(){
+    public static void afficherLesSejours(){
         
         // Affichage de la hastable lesPortes
         String info = "Affichage Hashtable lesSéjours";
@@ -121,9 +129,10 @@ public class Sejour {
         Iterator<Sejour> it = sejours.iterator(); 
         while(it.hasNext()){
            Sejour s = it.next();
-           info += " test \n";
-        System.out.println(info);
+           s.afficher();
+        
     }
+        System.out.println(info);
     }
     
     
