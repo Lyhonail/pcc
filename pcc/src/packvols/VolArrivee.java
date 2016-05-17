@@ -26,7 +26,7 @@ public class VolArrivee extends Vol {
     }
     
     public String toString(){
-        String info = "Vol N° : "+this.getNum_vol();
+        String info = " Arrivée "+super.toString();
         //info +=" test ";
         return info;
     }
@@ -35,7 +35,7 @@ public class VolArrivee extends Vol {
         return provenance;
     }
     
-    
+    /*
     public static void afficherLesVols(){
         // Affichage de la hastable lesPortes
         String info = "Affichage Hashtable lesVols";
@@ -52,6 +52,6 @@ public class VolArrivee extends Vol {
          info += " "+immat;
         }
         System.out.println(info);
-    }
+    }*/
 
 }

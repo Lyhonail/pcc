@@ -54,12 +54,7 @@ public abstract class Vol {
 
 
     public String toString() {
-        String info = "Numero de vol : " + num_vol +"|avion :"+avion +" |horaire: " + horaire + "\n Liste  des vols du jour pour un avions  : \n";
-        Iterator it = lesVols.values().iterator();
-        while (it.hasNext()) {
-            Vol v = (Vol) it.next();
-            info += v.toString() + "\n";
-        }
+        String info = "Numero de vol : " + num_vol +"|avion :"+avion +" |horaire: " + horaire ;
         return info;
     }
 
@@ -74,10 +69,11 @@ public abstract class Vol {
             // Lecture du fichier
             BufferedReader vol = new BufferedReader (new FileReader (File));
             String ligne = null;
+            boolean arrive=true;
             while((ligne= vol.readLine()) != null){
                  
-                for(int i=0; i<2; i++){
-                    if(i==0){
+                
+                    if(arrive){
                         StringTokenizer tokenVol = new StringTokenizer (ligne);
                         String num_vol = tokenVol.nextToken();
                         String h_arivee = tokenVol.nextToken();
@@ -90,10 +86,12 @@ public abstract class Vol {
                         Horaire h = new Horaire(hor_arrivee, min_arrivee);
                         try {
                             avion_find = Avion.getAvion(immat);
-                            VolArrivee v = new VolArrivee(num_vol, h, avion_find, provenance);
+                            Vol v = new VolArrivee(num_vol, h, avion_find, provenance);
+                            //System.out.println(v);
                         } catch (AvionInvalide e){ 
                             System.out.println(e.toString());
                         }     
+                    arrive = false;
                     }
                     else {
                         StringTokenizer tokenVol = new StringTokenizer (ligne);
@@ -108,12 +106,14 @@ public abstract class Vol {
                         Horaire h = new Horaire(hor_depart, min_depart);
                         try {
                             avion_find = Avion.getAvion(immat);
-                            VolDepart v = new VolDepart(num_vol, h, avion_find, destination);
+                            Vol v = new VolDepart(num_vol, h, avion_find, destination);
+                            //System.out.println(v);
                         } catch (AvionInvalide e){ 
                             System.out.println(e.toString());
                         }  
+                    arrive = true;
                     }
-                }
+                
             }
          }
          
@@ -133,11 +133,14 @@ public abstract class Vol {
         Iterator<Vol> it = vols.iterator(); 
         while(it.hasNext()){
            Vol v = it.next();
-           info += "\n Vol N° : "+v.getNum_vol()+" ";
-           info += v.getHoraire()+" ";
-           Avion a = v.getAvion();
-          String immat = a.getImmat();
-         info += " "+immat;
+          // info += "\n Vol N° : "+v.getNum_vol()+" ";
+           //info += v.getHoraire()+" ";
+           //Avion a = v.getAvion();
+          //String immat = a.getImmat();
+         //info += " "+immat;
+           v.afficher();
+            
+  
         }
         System.out.println(info);
     }

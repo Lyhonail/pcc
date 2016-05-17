@@ -20,9 +20,15 @@ public class VolDepart extends Vol {
     
     
     public VolDepart(String num_vol, Horaire horaire, Avion avion,String dep) {
-        super(num_vol, horaire, avion);
+                super(num_vol, horaire, avion);
                 depart = dep;
                 lesVolsDepart.put(num_vol, this);
+    }
+    
+    public String toString(){
+        String info = " Départ "+super.toString();
+        //info +=" test ";
+        return info;
     }
     
 }
