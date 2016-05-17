@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.StringTokenizer;
 import packaeroport.Porte;
 import packhoraires.Horaire;
+import  java.util.Collections;
 
 public abstract class Vol {
 
@@ -28,6 +29,22 @@ public abstract class Vol {
 
     public String getNum_vol() {
         return num_vol;
+    }
+    
+    public Horaire getHoraire(){
+        return horaire;
+    }
+    
+    public Avion getAvion(){
+        return avion;
+    }
+    
+      public static String getVol(Vol v){
+        return (Vol)lesVols.get(v);
+    }
+    
+    public static Hashtable <String, Vol> getLesVols(){
+        return lesVols;
     }
 
 
@@ -98,13 +115,18 @@ public abstract class Vol {
     public static void afficherLesVols(){
         // Affichage de la hastable lesPortes
         String info = "Affichage Hashtable lesVols";
+        
+        
         ArrayList<Vol> vols = new ArrayList<Vol>(lesVols.values());
+        
         Iterator<Vol> it = vols.iterator(); 
         while(it.hasNext()){
            Vol v = it.next();
-           info += "\n Vol N° : "+v.getNum_vol();
-           System.out.println(" test");
-           
+           info += "\n Vol N° : "+v.getNum_vol()+" ";
+           info += v.getHoraire()+" ";
+           Avion a = v.getAvion();
+          String immat = a.getImmat();
+         info += " "+immat;
         }
         System.out.println(info);
     }

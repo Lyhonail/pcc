@@ -7,6 +7,7 @@ package packvols;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Iterator;
 import packhoraires.Horaire;
 
 /**
@@ -26,7 +27,31 @@ public class VolArrivee extends Vol {
     
     public String toString(){
         String info = "Vol N° : "+this.getNum_vol();
+        //info +=" test ";
         return info;
+    }
+    
+    public String getProv(){
+        return provenance;
+    }
+    
+    
+    public static void afficherLesVols(){
+        // Affichage de la hastable lesPortes
+        String info = "Affichage Hashtable lesVols";
+        
+        ArrayList<Vol> vols = new ArrayList<Vol>(lesVolsArrivee.values());
+        
+        Iterator<Vol> it = vols.iterator(); 
+        while(it.hasNext()){
+           Vol v = it.next();
+           info += "\n Vol Arrivee N° : "+v.getNum_vol()+" ";
+           info += v.getHoraire()+" ";
+           Avion a = v.getAvion();
+          String immat = a.getImmat();
+         info += " "+immat;
+        }
+        System.out.println(info);
     }
 
 }
