@@ -15,7 +15,7 @@ import  java.util.Collections;
 import static packaeroport.Porte.toStringLesPortes;
 import packaeroport.PorteInvalide;
 
-public abstract class Vol {
+public abstract class Vol implements Comparable<Vol> {
 
     private String num_vol;
     private Horaire horaire;
@@ -29,6 +29,10 @@ public abstract class Vol {
         lesVols.put(num_vol, this);
     }
     
+    public int compareTo(Vol v) {
+        return this.horaire.compareTo(v.horaire);
+    }
+
     public String getNum_vol() {
         return num_vol;
     }
@@ -55,7 +59,7 @@ public abstract class Vol {
 
     public String toString() {
         // ici on devrait appeler avion.toString() mais \n dans avion.toString
-        String info = "\n Vol: " + num_vol +" à "+horaire+" Avion: "+ avion.getImmat()  ;
+        String info = "\n Vol: " + num_vol +" à "+horaire.toString()+" Avion: "+ avion.getImmat()  ;
         return info;
     }
 
@@ -125,6 +129,7 @@ public abstract class Vol {
         // Affichage de la hastable lesVols
         String info = "Liste des vols (départ et arrivée)";
         ArrayList<Vol> vols = new ArrayList<Vol>(lesVols.values());
+        Collections.sort(vols);
         Iterator<Vol> it = vols.iterator(); 
         while(it.hasNext()){
            Vol v = it.next();
