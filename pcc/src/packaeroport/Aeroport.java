@@ -98,7 +98,7 @@ public class Aeroport {
     }
     
     public static void associerPortesParkings(){
-        String File = "05-assos-portes-et-parkings.txt";
+        String file = "05-assos-portes-et-parkings.txt";
         Porte porte_find =null;
         PorteContact porte_findC =null;
         PorteHorsContact porte_findHC =null;
@@ -109,7 +109,7 @@ public class Aeroport {
 
         try {
             // Lecture du fichier
-            BufferedReader porte_parks = new BufferedReader (new FileReader (File));
+            BufferedReader porte_parks = new BufferedReader (new FileReader (file));
             String ligne = null;
             while((ligne= porte_parks.readLine()) != null){//WHILE LIGNE de la porte et des parkings associés
                 StringTokenizer tokenHall = new StringTokenizer (ligne);
@@ -155,10 +155,10 @@ public class Aeroport {
                 }
             }    
 	} catch (FileNotFoundException e){
-            System.out.println("fichier non trouvé: "+File+"\n");
+            System.out.println("fichier non trouvé: "+file+"\n");
         }
 	catch (IOException e){
-		System.out.println("Erreur de lecture fichier: "+File+"\n");
+		System.out.println("Erreur de lecture fichier: "+file+"\n");
 	}
       }
 }

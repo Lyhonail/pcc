@@ -51,6 +51,9 @@ public class Pcc {
         // Associer Portes et parking
         Aeroport.associerPortesParkings();
         
+        // Creation des avions
+        Avion.creerLesAvions();
+        
         // Affichage
         //Hall.afficherLesHalls();
         //Porte.afficherLesPortes();
@@ -107,9 +110,35 @@ public class Pcc {
             } catch (HallInvalide e){
 		System.out.println(e.toString());
             }
-*/            
-       // FIN TEST ODX
+*/           
+            // Test des Avions
+/*           Avion.creerLesAvions();
+           // Recup d'un avion dans la Hastable
+           try {
+                Avion objet_avion = Avion.getAvion("ABX00120045");
+                objet_avion.afficher();
+            } catch (AvionInvalide e){
+		System.out.println(e.toString());
+            }
+            
+           Avion.afficherLesAvions();
+*/           
 
+            // Creation des vols
+            Vol.creerLesVols();
+            // Recup d'un avion dans la Hastable
+            try {
+                Vol objet_vol = Vol.getVol("IT4444");
+                objet_vol.afficher();
+            } catch (VolInvalide e){
+		System.out.println(e.toString());
+            }
+           
+            Vol.afficherLesVols();
+             
+       // FIN TEST ODX
+       
+/*
     //Avion.afficherLesAvions();
     Avion.creerLesAvions();
     Vol.creerLesVols();
@@ -118,7 +147,7 @@ public class Pcc {
    //Vol.afficherLesVols();
     Sejour.creerLesSejours();
     Sejour.afficherLesSejours();
-    
+*/    
 
     }
 }

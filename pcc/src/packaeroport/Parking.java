@@ -52,10 +52,10 @@ public abstract class Parking {
     }
   
     public static void creerParkings(){
-        String File = "01-zones-et-parkings.txt";
+        String file = "01-zones-et-parkings.txt";
         try {
             // Lecture du fichier
-            BufferedReader parkings = new BufferedReader (new FileReader (File));
+            BufferedReader parkings = new BufferedReader (new FileReader (file));
             String ligne = null;
             while((ligne= parkings.readLine()) != null){//WHILE LIGNE des zones
                 StringTokenizer tokenPark = new StringTokenizer (ligne);
@@ -76,10 +76,10 @@ public abstract class Parking {
                 }
             }    
 	} catch (FileNotFoundException e){
-            System.out.println("fichier non trouvé: "+File+"\n");
+            System.out.println("fichier non trouvé: "+file+"\n");
         }
 	catch (IOException e){
-		System.out.println("Erreur de lecture fichier: "+File+"\n");
+		System.out.println("Erreur de lecture fichier: "+file+"\n");
 	}
     }
     

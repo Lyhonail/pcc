@@ -1,6 +1,7 @@
 package packvols;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.StringTokenizer;
 import packaeroport.Porte;
 import packhoraires.Horaire;
 import  java.util.Collections;
+import static packaeroport.Porte.toStringLesPortes;
 import packaeroport.PorteInvalide;
 
 public abstract class Vol {
@@ -27,7 +29,6 @@ public abstract class Vol {
         lesVols.put(num_vol, this);
     }
     
-
     public String getNum_vol() {
         return num_vol;
     }
@@ -52,9 +53,9 @@ public abstract class Vol {
         return lesVols;
     }
 
-
     public String toString() {
-        String info = "Vol : " + num_vol +" à "+horaire+"avion :"+ avion.getImmat()  ;
+        // ici on devrait appeler avion.toString() mais \n dans avion.toString
+        String info = "\n Vol: " + num_vol +" à "+horaire+" Avion: "+ avion.getImmat()  ;
         return info;
     }
 
@@ -63,106 +64,76 @@ public abstract class Vol {
     }
     
     public static void creerLesVols(){
-        String File = "ProgrammeVolsFA-16-v1.txt";
+        String file = "ProgrammeVolsFA-16-v1.txt";
         Avion avion_find = null;
-         try {
+        try {
             // Lecture du fichier
-            BufferedReader vol = new BufferedReader (new FileReader (File));
+            BufferedReader vol = new BufferedReader (new FileReader (file));
             String ligne = null;
-            boolean arrive=true;
-            while((ligne= vol.readLine()) != null){
-                 
-                
-                    if(arrive){
-                        StringTokenizer tokenVol = new StringTokenizer (ligne);
-                        String num_vol = tokenVol.nextToken();
-                        String h_arivee = tokenVol.nextToken();
-                        String m_arivee = tokenVol.nextToken();
-                        String provenance = tokenVol.nextToken();
-                        String immat = tokenVol.nextToken();
-                        
-                        int hor_arrivee = Integer.parseInt(h_arivee);
-                        int min_arrivee = Integer.parseInt(m_arivee);
-                        Horaire h = new Horaire(hor_arrivee, min_arrivee);
-                        try {
-                            avion_find = Avion.getAvion(immat);
-                            Vol v = new VolArrivee(num_vol, h, avion_find, provenance);
-                            //System.out.println(v);
-                        } catch (AvionInvalide e){ 
-                            System.out.println(e.toString());
-                        }     
-                    arrive = false;
-                    }
-                    else {
-                        StringTokenizer tokenVol = new StringTokenizer (ligne);
-                        String num_vol = tokenVol.nextToken();
-                        String h_depart = tokenVol.nextToken();
-                        String m_depart = tokenVol.nextToken();
-                        String destination = tokenVol.nextToken();
-                        String immat = tokenVol.nextToken();
-                        
-                        int hor_depart = Integer.parseInt(h_depart);
-                        int min_depart = Integer.parseInt(m_depart);
-                        Horaire h = new Horaire(hor_depart, min_depart);
-                        try {
-                            avion_find = Avion.getAvion(immat);
-                            Vol v = new VolDepart(num_vol, h, avion_find, destination);
-                            //System.out.println(v);
-                        } catch (AvionInvalide e){ 
-                            System.out.println(e.toString());
-                        }  
-                    arrive = true;
-                    }
-                
+            boolean arrivee=true;
+            while((ligne= vol.readLine()) != null){           
+                if(arrivee){
+                    StringTokenizer tokenVol = new StringTokenizer (ligne);
+                    String num_vol = tokenVol.nextToken();
+                    String h_arivee = tokenVol.nextToken();
+                    String m_arivee = tokenVol.nextToken();
+                    String provenance = tokenVol.nextToken();
+                    String immat = tokenVol.nextToken();
+
+                    int hor_arrivee = Integer.parseInt(h_arivee);
+                    int min_arrivee = Integer.parseInt(m_arivee);
+                    Horaire h = new Horaire(hor_arrivee, min_arrivee);
+                    try {
+                        avion_find = Avion.getAvion(immat);
+                        Vol v = new VolArrivee(num_vol, h, avion_find, provenance);
+                        arrivee = false;
+                        //System.out.println(v);
+                    } catch (AvionInvalide e){ 
+                        System.out.println(e.toString());
+                    }               
+                }
+                else {
+                    StringTokenizer tokenVol = new StringTokenizer (ligne);
+                    String num_vol = tokenVol.nextToken();
+                    String h_depart = tokenVol.nextToken();
+                    String m_depart = tokenVol.nextToken();
+                    String destination = tokenVol.nextToken();
+                    String immat = tokenVol.nextToken();
+
+                    int hor_depart = Integer.parseInt(h_depart);
+                    int min_depart = Integer.parseInt(m_depart);
+                    Horaire h = new Horaire(hor_depart, min_depart);
+                    try {
+                        avion_find = Avion.getAvion(immat);
+                        Vol v = new VolDepart(num_vol, h, avion_find, destination);
+                        arrivee = true;
+                        //System.out.println(v);
+                    } catch (AvionInvalide e){ 
+                        System.out.println(e.toString());
+                    }              
+                }         
             }
-         }
-         
-         catch (IOException e){
-            System.out.println("fichier non trouvé: "+File+"\n");
-            }
-        
+        } catch (FileNotFoundException e){
+            System.out.println("fichier non trouvé: "+file+"\n");
+        }
+	catch (IOException e){
+            System.out.println("Erreur de lecture fichier: "+file+"\n");
+	}
     }
     
-    public static void afficherLesVols(){
-        // Affichage de la hastable lesPortes
-        String info = "Affichage Hashtable lesVols";
-        
-        
+    public static String toStringLesVols(){
+        // Affichage de la hastable lesVols
+        String info = "Liste des vols (départ et arrivée)";
         ArrayList<Vol> vols = new ArrayList<Vol>(lesVols.values());
-        
         Iterator<Vol> it = vols.iterator(); 
         while(it.hasNext()){
            Vol v = it.next();
-          // info += "\n Vol N° : "+v.getNum_vol()+" ";
-           //info += v.getHoraire()+" ";
-           //Avion a = v.getAvion();
-          //String immat = a.getImmat();
-         //info += " "+immat;
-           v.afficher();
-            
-  
+           info +=v.toString();
         }
-        System.out.println(info);
+        return (info);
     }
         
-        
-        
-    }
-    
-    
-    /*
-    public class numvolInvalide extends Exception {
-
-        private String numvol;
-
-        public numvolInvalide(String numvol) {
-            this.numvol = numvol;
-        }
-
-        public String toString() {
-            return "numero de vol" + numvol + "  est inexistante !!";
-        }
-
-    }
-*/
-
+    public static void afficherLesVols(){
+        System.out.println(toStringLesVols());
+    }       
+}

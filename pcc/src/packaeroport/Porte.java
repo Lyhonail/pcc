@@ -85,10 +85,10 @@ public abstract class Porte {
     }
     
     public static void creerPortes(){
-        String File = "02-zones-enreg-et-portes.txt";
+        String file = "02-zones-enreg-et-portes.txt";
         try {
             // Lecture du fichier
-            BufferedReader portes = new BufferedReader (new FileReader (File));
+            BufferedReader portes = new BufferedReader (new FileReader (file));
             String ligne = null;
             while((ligne= portes.readLine()) != null){//WHILE LIGNE des zones
                 StringTokenizer tokenPorte = new StringTokenizer (ligne);
@@ -109,10 +109,10 @@ public abstract class Porte {
                 }
             }    
 	} catch (FileNotFoundException e){
-            System.out.println("fichier non trouvé: "+File+"\n");
+            System.out.println("fichier non trouvé: "+file+"\n");
         }
 	catch (IOException e){
-		System.out.println("Erreur de lecture fichier: "+File+"\n");
+		System.out.println("Erreur de lecture fichier: "+file+"\n");
 	}
     }
 }

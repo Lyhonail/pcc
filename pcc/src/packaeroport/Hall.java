@@ -54,10 +54,10 @@ public class Hall {
     }
        
     public static void creerHalls(){
-        String File = "03-zones-enreg-et-halls.txt";
+        String file = "03-zones-enreg-et-halls.txt";
         try {
             // Lecture du fichier
-            BufferedReader halls = new BufferedReader (new FileReader (File));
+            BufferedReader halls = new BufferedReader (new FileReader (file));
             String ligne = null;
             while((ligne= halls.readLine()) != null){//liste des halls
                 StringTokenizer tokenHall = new StringTokenizer (ligne);
@@ -66,10 +66,10 @@ public class Hall {
                 Hall lesHalls = new Hall (num_hall, zone_enr);
             } 
 	} catch (FileNotFoundException e){
-            System.out.println("Fichier non trouvé: "+File+"\n");
+            System.out.println("Fichier non trouvé: "+file+"\n");
         }
 	catch (IOException e){
-		System.out.println("Erreur de lecture fichier: "+File+"\n");
+		System.out.println("Erreur de lecture fichier: "+file+"\n");
 	}
     }
     
