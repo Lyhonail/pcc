@@ -2,7 +2,8 @@ package packhoraires;
 
 
 public class Horaire implements Comparable, Cloneable{
-  private int heures,minutes;
+  
+    private int heures,minutes;
 
   public Horaire() {
     heures=0;

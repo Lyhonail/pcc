@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.ArrayList;
 import packvols.*;
 import packaeroport.*;
+import packhoraires.*;
 
 
 public class Pcc {
@@ -117,8 +118,31 @@ public class Pcc {
     
    //Vol.afficherLesVols();
     Sejour.creerLesSejours();
+    Aeroport.affecterLesParkings();
     Sejour.afficherLesSejours();
     
-
+    System.out.println("\nHoraire A ");
+    Horaire adebut = new Horaire (8, 30);
+    adebut.afficher();
+    Horaire afin = new Horaire (10, 30);
+    afin.afficher();
+    
+    System.out.println("\nHoraire B ");
+    Horaire bdebut = new Horaire (9, 30);
+    bdebut.afficher();
+    Horaire bfin = new Horaire (12, 30);
+    bfin.afficher();
+    
+    TrancheHoraire A = new TrancheHoraire(adebut, afin);
+    TrancheHoraire B = new TrancheHoraire(bdebut, bfin);
+    
+    /* if(A.dansTrancheHoraire(A)) System.out.println("\n Vrai danstranche");
+    else System.out.println("\n faux danstranche");
+    
+   if(A.contient(B)) System.out.println("\n Vrai contient ");
+   else System.out.println("\n faux contient"); */
+   
+   if(A.contientStrictement(bdebut)) System.out.println("\n contient l'horraire de début");
+   else System.out.println("\n ne contient pas l'horraire");
     }
 }

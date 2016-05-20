@@ -37,6 +37,7 @@ public class Sejour {
         String info = "Séjour du vol : "+volDepart.getNum_vol()+"\n";
         info += volArrivee.toString()+"\n";
         info += volDepart.toString()+"\n";
+        info += "Parking affecté : "+parking.getCode_park()+"\n";
         return info;
     }
     
@@ -130,11 +131,21 @@ public class Sejour {
         while(it.hasNext()){
            Sejour s = it.next();
            s.afficher();
-        
-    }
+           
+        }
         System.out.println(info);
     }
     
+   public static Sejour getSejour(String num_sejour) {
+            return (Sejour)lesSejours.get(num_sejour);
+    }
     
+   public void affecterParking(Parking p) {
+        parking = p;
+    }
+   
+   public void desaffecterParking() {
+        parking = null;
+    }
     
     }

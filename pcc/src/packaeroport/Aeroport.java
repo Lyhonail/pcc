@@ -10,6 +10,7 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.util.Vector;
+import packvols.Sejour;
 
 public class Aeroport {
 	
@@ -161,4 +162,39 @@ public class Aeroport {
 		System.out.println("Erreur de lecture fichier: "+File+"\n");
 	}
       }
+    
+     public static void affecterLesParkings(){
+        
+         String FileSejour = "ProgrammeVolsFA-16-v1.txt";
+         
+         try {
+         BufferedReader parking_sejour = new BufferedReader (new FileReader (FileSejour));
+            String ligne = null;
+            Sejour sejourFind = null;
+            while((ligne= parking_sejour.readLine()) != null){//WHILE LIGNE de la porte et des parkings associés
+                
+                //Récupération du n° de vol d'arrvié, qui est l'identifiant du séjour
+                StringTokenizer tokenSejour = new StringTokenizer (ligne);
+                String num_volArrivee = tokenSejour.nextToken();
+                
+                //lecture de la 2nde ligne qui récupère le N° de vol départ
+                ligne=parking_sejour.readLine();
+                StringTokenizer tokenVolDepart = new StringTokenizer (ligne);
+                String num_volDepart = tokenVolDepart.nextToken();
+                
+                sejourFind = Sejour.getSejour(num_volArrivee);
+                Porte porte = new PorteContact ("porteTEST", "enregistrementTEST");
+                Parking p = new ParkingContact("codeTEST", "zoneTEST");
+                
+                
+                sejourFind.affecterParking(p);
+                
+                
+            }
+        
+            } catch (IOException e){
+		System.out.println("Erreur de lecture fichier: "+FileSejour+"\n");
+	}
+    }
+    
 }
