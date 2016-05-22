@@ -57,6 +57,10 @@ public class Sejour implements Comparable<Sejour> {
         System.out.println(this.toString());
     }
     
+    public static Hashtable <String, Sejour> getLesSejours(){
+        return lesSejours;
+    }
+        
     public static Sejour getSejour(String s) throws SejourInvalide{
         // récupération d'un sejour dans la HashTable des sejours
         if (!lesSejours.containsKey(s))
@@ -129,7 +133,7 @@ public class Sejour implements Comparable<Sejour> {
     }    
     
     public static String toStringLesSejours(){
-        // Affichage de la hastable lesPortes
+        // Affichage de la hastable lesSejours
         String info = "Liste des séjours";
         ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
         Collections.sort(sejours);
@@ -139,5 +143,28 @@ public class Sejour implements Comparable<Sejour> {
            info +=s.toString()+"\n";   
         }
         return(info);
+    }
+        
+    public static void associerSejoursParkings(){
+        ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
+        Collections.sort(sejours);
+        Iterator<Sejour> it = sejours.iterator(); 
+        while(it.hasNext()){
+            Sejour s = it.next();
+            //System.out.println (s.toString()+"\n");   
+            // ALGO A CONTINUER...
+/*            if (s.parking != null){
+                //Lire les parkings
+                Hashtable <String, Parking> lesParkings = Parking.getLesParkings();
+                Iterator<Parking> itp = lesParkings.values().iterator();
+                while(it.hasNext()){
+                    Parking p = itp.next();
+                    //Affecter le 1er parking Trouvé
+                    s.parking = p;
+
+                }
+           }
+*/
+        }
     }
 }

@@ -4,9 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.StringTokenizer;
+import packvols.Sejour;
 
 public abstract class Parking {
 
@@ -27,6 +29,10 @@ public abstract class Parking {
         return zone;
     }
 
+    public static Hashtable <String, Parking> getLesParkings(){
+        return lesParkings;
+    }
+        
     public String toString() {
         String info =  "\n   Parking: " +code_park + " Zone: " +zone;
         return info; 
@@ -38,6 +44,7 @@ public abstract class Parking {
     
     public static String toStringLesParkings(){
         String info= "\n Liste des Parkings: ";
+        //Collections.sort(lesParkings);
         Iterator<Parking> it = lesParkings.values().iterator();
         while(it.hasNext()){
             Parking p = it.next();

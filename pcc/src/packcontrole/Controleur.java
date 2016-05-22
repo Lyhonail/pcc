@@ -49,4 +49,14 @@ public class Controleur {
     public String toStringLesSejours(){
         return Sejour.toStringLesSejours();
     }
+    
+    public String toStringEcranLesVols(){
+        return Vol.toStringEcranLesVols();
+    }
+    public String toStringEcranVolsArrivee(){
+        return VolArrivee.toStringEcranLesVols();
+    }
+    public String toStringEcranVolsDepart(){
+        return VolDepart.toStringEcranLesVols();
+    }
 }

@@ -29,6 +29,10 @@ public class Pcc {
         Vol.creerLesVols();
         // Création des séjours
         Sejour.creerLesSejours();
+        
+        // Associer les sejours aux parkings
+        //Aeroport.associerSejoursParkings();
+        Sejour.associerSejoursParkings();
             
         // Affichage dans fenetre
         Controleur unControleur = new Controleur();

@@ -6,10 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import packvols.Avion;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.util.Vector;
+import packvols.Sejour;
 
 public class Aeroport {
 	
@@ -161,4 +163,20 @@ public class Aeroport {
 		System.out.println("Erreur de lecture fichier: "+file+"\n");
 	}
       }
+    
+/*    TRANSFERE DANS SEJOUR -> A CONFIRMER 
+    public static void associerSejoursParkings(){
+        Hashtable <String, Sejour> lesSejours = Sejour.getLesSejours();
+        ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
+        Collections.sort(sejours);
+        Iterator<Sejour> it = sejours.iterator(); 
+        while(it.hasNext()){
+           Sejour s = it.next();
+           //System.out.println (s.toString()+"\n");   
+           // ALGO A CONTINUER...
+           
+           
+        }
+    }
+*/
 }

@@ -50,6 +50,9 @@ public  class FenetrePrincipale extends JFrame {
         afficherLesVolsArrivee=new JMenuItem("afficher les vols d'arrivee");
         afficherLesVolsDepart=new JMenuItem("afficher les vols de depart");
         afficherLesSejours=new JMenuItem("afficher les sejours");
+        afficherEcranLesVols=new JMenuItem("afficher Ecran Passagers tous les vols");
+        afficherEcranVolsArrivee=new JMenuItem("afficher Ecran Passagers les vols d'arrivee");
+        afficherEcranVolsDepart=new JMenuItem("afficher Ecran Passagers les vols de depart");
         
         //creation de la zone d'affichage
         zoneTexte=new JTextArea();
@@ -68,7 +71,10 @@ public  class FenetrePrincipale extends JFrame {
         afficherLesVolsArrivee.addActionListener(monEcouteur);
         afficherLesVolsDepart.addActionListener(monEcouteur);
         afficherLesSejours.addActionListener(monEcouteur);
-
+        afficherEcranLesVols.addActionListener(monEcouteur);
+        afficherEcranVolsArrivee.addActionListener(monEcouteur);
+        afficherEcranVolsDepart.addActionListener(monEcouteur);
+        
         //Ajouts des composants
         // affectation des sous-menus
         menuSaisie.add(saisieEtudiant); 
@@ -81,6 +87,9 @@ public  class FenetrePrincipale extends JFrame {
         menuAffichage.add(afficherLesVolsArrivee);
         menuAffichage.add(afficherLesVolsDepart);
         menuAffichage.add(afficherLesSejours);
+        menuAffichage.add(afficherEcranLesVols);
+        menuAffichage.add(afficherEcranVolsArrivee);
+        menuAffichage.add(afficherEcranVolsDepart);
         
         // Affichage Titre sur bandeau supérieur de la fenetre 
         this.add(texteAsc);
@@ -146,6 +155,21 @@ public  class FenetrePrincipale extends JFrame {
                 afficherLesSejours();
                 return;
             }
+            if(source==afficherEcranLesVols) { 
+                System.out.println("afficher Ecran les vols");
+                afficherEcranLesVols();
+                return;
+            }
+            if(source==afficherEcranVolsArrivee) { 
+                System.out.println("afficher Ecran les vols d'arrivee");
+                afficherEcranVolsArrivee();
+                return;
+            }
+            if(source==afficherEcranVolsDepart) { 
+                System.out.println("afficher Ecran les vols de départ");
+                afficherEcranVolsDepart();
+                return;
+            }
         }
     }
 
@@ -160,8 +184,11 @@ public  class FenetrePrincipale extends JFrame {
                         afficherLesVols,
                         afficherLesVolsArrivee,
                         afficherLesVolsDepart,
-                        afficherLesSejours;
-
+                        afficherLesSejours,
+                        afficherEcranLesVols,
+                        afficherEcranVolsArrivee,
+                        afficherEcranVolsDepart;
+                        
     private JTextArea zoneTexte;
 
     // les  méthodes
@@ -202,6 +229,19 @@ public  class FenetrePrincipale extends JFrame {
     
     public void afficherLesSejours(){
         String info=monControleur.toStringLesSejours();
+        zoneTexte.setText(info);
+    }
+    
+    public void afficherEcranLesVols(){
+        String info=monControleur.toStringEcranLesVols();
+        zoneTexte.setText(info);
+    }
+    public void afficherEcranVolsArrivee(){
+        String info=monControleur.toStringEcranVolsArrivee();
+        zoneTexte.setText(info);
+    }
+    public void afficherEcranVolsDepart(){
+        String info=monControleur.toStringEcranVolsDepart();
         zoneTexte.setText(info);
     }
 }

@@ -125,6 +125,27 @@ public abstract class Vol implements Comparable<Vol>  {
 	}
     }
     
+    public static String toStringEcranLesVols(){
+        // Affichage de la hastable lesVols
+        String info = "Horaire     Vol  Arrivée/Départ  Destination/Provenance   Hall  Porte ";
+        ArrayList<Vol> vols = new ArrayList<Vol>(lesVols.values());
+        Collections.sort(vols);
+        Iterator<Vol> it = vols.iterator(); 
+        while(it.hasNext()){
+           Vol v = it.next();
+           info +="\n" + v.getHoraire() +"   "+ v.getNum_vol()+"  ";
+           if (v instanceof VolArrivee)
+               info += "     A              "+((VolArrivee) v).provenance ;
+           else
+               info += "     D              "+((VolDepart) v).destination ;
+        }   
+        return(info);
+    }
+    
+    public static void afficherEcranLesVols(){
+        System.out.println(toStringLesVols());
+    }   
+    
     public static String toStringLesVols(){
         // Affichage de la hastable lesVols
         String info = "Liste des vols (départ et arrivée)";

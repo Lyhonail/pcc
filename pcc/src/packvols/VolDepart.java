@@ -9,7 +9,7 @@ import packhoraires.Horaire;
 
 public class VolDepart extends Vol {
     String destination;
-    private static Hashtable <String, Vol> lesVolsDepart = new Hashtable<String, Vol>();
+    private static Hashtable <String, VolDepart> lesVolsDepart = new Hashtable<String, VolDepart>();
     
     public VolDepart(String num_vol, Horaire horaire, Avion avion,String dep) {
                 super(num_vol, horaire, avion);
@@ -38,6 +38,20 @@ public class VolDepart extends Vol {
         }
         return (info);
     }
+        
+    public static String toStringEcranLesVols(){
+        // Affichage de la hastable Vols
+        String info = "Horaire    Vol  Destination            Hall  Porte ";
+        ArrayList<VolDepart> vols = new ArrayList<VolDepart>(lesVolsDepart.values());
+        Collections.sort(vols);
+        Iterator<VolDepart> it = vols.iterator(); 
+        while(it.hasNext()){
+           VolDepart v = it.next();
+           info +="\n" + v.getHoraire() +"   "+ v.getNum_vol()+"  ";
+           info += v.destination ;
+        }   
+        return(info);
+    }  
         
     //public static void afficherLesVols(){
     //    System.out.println(toStringLesVols());
