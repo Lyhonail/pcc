@@ -1,19 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package packvols;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
 import packhoraires.Horaire;
 
-/**
- *
- * @author user
- */
 public class VolArrivee extends Vol {
 
     String provenance;
@@ -27,7 +20,6 @@ public class VolArrivee extends Vol {
     
     public String toString(){
         String info = super.toString()+" En provenance de: "+provenance;
-        //info +=" test ";
         return info;
     }
     
@@ -35,23 +27,20 @@ public class VolArrivee extends Vol {
         return provenance;
     }
     
-    /*
-    public static void afficherLesVols(){
-        // Affichage de la hastable lesPortes
-        String info = "Affichage Hashtable lesVols";
-        
-        ArrayList<Vol> vols = new ArrayList<Vol>(lesVolsArrivee.values());
-        
-        Iterator<Vol> it = vols.iterator(); 
+    public static String toStringLesVols(){
+        // Affichage de la hastable lesVols arrivee
+        String info = "Liste des vols d'arrivée";
+        ArrayList<Vol> vols_arr = new ArrayList<Vol>(lesVolsArrivee.values());
+        Collections.sort(vols_arr);
+        Iterator<Vol> it = vols_arr.iterator(); 
         while(it.hasNext()){
            Vol v = it.next();
-           info += "\n Vol Arrivee N° : "+v.getNum_vol()+" ";
-           info += v.getHoraire()+" ";
-           Avion a = v.getAvion();
-          String immat = a.getImmat();
-         info += " "+immat;
+           info +=v.toString();
         }
-        System.out.println(info);
-    }*/
-
+        return (info);
+    }
+        
+    //public static void afficherLesVols(){
+    //    System.out.println(toStringLesVols());
+    //}       
 }

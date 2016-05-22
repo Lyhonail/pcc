@@ -2,7 +2,9 @@
 package packvols;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
+import java.util.Iterator;
 import packhoraires.Horaire; 
 
 public class VolDepart extends Vol {
@@ -23,4 +25,21 @@ public class VolDepart extends Vol {
     public String getdestination(){
         return destination;
     }
+    
+    public static String toStringLesVols(){
+        // Affichage de la hastable lesVols arrivee
+        String info = "Liste des vols de départ";
+        ArrayList<Vol> vols_dep = new ArrayList<Vol>(lesVolsDepart.values());
+        Collections.sort(vols_dep);
+        Iterator<Vol> it = vols_dep.iterator(); 
+        while(it.hasNext()){
+           Vol v = it.next();
+           info +=v.toString();
+        }
+        return (info);
+    }
+        
+    //public static void afficherLesVols(){
+    //    System.out.println(toStringLesVols());
+    //}       
 }

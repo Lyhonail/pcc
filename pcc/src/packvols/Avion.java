@@ -43,7 +43,7 @@ public class Avion {
     }
 	
     public String toString(){
-        String info = "\n Immatriculation: "+immat+" Modèle: "+modele;
+        String info = "\n Avion -> Immatriculation: "+immat+" Modèle: "+modele;
         return info;
     }
         
