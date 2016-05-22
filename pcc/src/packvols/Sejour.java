@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
 import packaeroport.*;
 import packhoraires.Horaire;
 
-public class Sejour {
+public class Sejour implements Comparable<Sejour> {
     private TrancheHoraire dureeSejour; 
     //private int margeMinutes;
     private Parking parking;
@@ -34,10 +34,10 @@ public class Sejour {
         lesSejours.put(num_volArrivee, this);
     }
     
-    //public int compareTo(Sejour v) {
-        //return this.horaire.compareTo(v.horaire);
-    //    return this.dureeSejour.getDebutTrancheHoraire().compareTo(v.dureeSejour.getDebutTrancheHoraire());
-    //}
+    public int compareTo(Sejour v) {
+        return this.dureeSejour.getDebutTrancheHoraire().compareTo(v.dureeSejour.getDebutTrancheHoraire());
+    }
+    
     public String toString(){
         //String info = "\n Séjour du vol: "+ num_volArrivee + "\n";
         //info += volArrivee.toString()+"\n";
@@ -49,13 +49,7 @@ public class Sejour {
              info += parking.toString();
         else  
             info += " Hall : N/A";
-        
-       /* if (hall != null)
-            info += " Hall: " +hall.getNum_hall();
-        else  
-            info += " Hall : N/A";
-        info += avion.toString();
-*/
+       
         return info;
     }
     
@@ -138,6 +132,7 @@ public class Sejour {
         // Affichage de la hastable lesPortes
         String info = "Liste des séjours";
         ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
+        Collections.sort(sejours);
         Iterator<Sejour> it = sejours.iterator(); 
         while(it.hasNext()){
            Sejour s = it.next();
