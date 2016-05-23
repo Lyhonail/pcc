@@ -103,17 +103,14 @@ public class Sejour implements Comparable<Sejour> {
                         //création de la tranche horaire
                         TrancheHoraire tranche = new TrancheHoraire(ha, hd);
                         
-                        try {
+                        
                             // Recuperation d'un parking pour test
-                            Parking objet_parking = Parking.getParking("V7");
+                            Parking objet_parking = null;
                             ParkingContact objPC = (ParkingContact)objet_parking;                                               
                             
                             // Creation du sejour
                             Sejour s = new Sejour(tranche, vol_arrivee, vol_depart, objPC, avion_find, num_volArrivee );
-                        }
-                        catch (ParkingInvalide e){
-                            System.out.println(e.toString());
-                        }      
+                           
                     } catch (    VolInvalide e){ //fin try Vol.getVol(num_volDepart);
                         System.out.println(e.toString());
                     }  
@@ -147,26 +144,69 @@ public class Sejour implements Comparable<Sejour> {
     }
         
     public static void associerSejoursParkings(){
-        ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
-        Collections.sort(sejours);
-        Iterator<Sejour> it = sejours.iterator(); 
-        while(it.hasNext()){
-            Sejour s = it.next();
-            //System.out.println (s.toString()+"\n");   
-            // ALGO A CONTINUER...
-/*            if (s.parking != null){
-                //Lire les parkings
+                //On ouvre la liste des parkings
                 Hashtable <String, Parking> lesParkings = Parking.getLesParkings();
                 Iterator<Parking> itp = lesParkings.values().iterator();
-                while(it.hasNext()){
-                    Parking p = itp.next();
-                    //Affecter le 1er parking Trouvé
-                    s.parking = p;
-
-                }
+                 
+                //Tant qu'il y a un parking dans la liste
+                while(itp.hasNext()){
+                    Parking p = itp.next();//on prend un parking
+                    //on creer une Hashtable à ce parking qui contiendra la liste des séjours(TrancheHoraire)
+                    Hashtable <String, TrancheHoraire> lesSejoursAffectes = new Hashtable <String, TrancheHoraire>() ;
+                    
+                    // on ouvre la liste des séjours
+                    ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
+                    Collections.sort(sejours);
+                    Iterator<Sejour> it = sejours.iterator();
+                    //tant qu'il y a un sejour
+                    while(it.hasNext()){
+                        Sejour s = it.next();
+                        if(s.parking == null){
+                            Boolean dispo = true;
+                            //cherche d'autres séjours avec tranche horaire non chevauchante
+                            
+                            if(lesSejoursAffectes==null) {
+                                lesSejoursAffectes.put(s.volArrivee.getNum_vol(), s.getTrancheHoraire());
+                                s.affecterParking(p);
+                                }
+                            else {
+                                ArrayList<TrancheHoraire> lesTranches = new ArrayList<TrancheHoraire>(lesSejoursAffectes.values());
+                                Iterator<TrancheHoraire> tranche = lesTranches.iterator(); 
+                                while(tranche.hasNext()){
+                                    TrancheHoraire t = tranche.next();
+                            
+                                    if(s.dureeSejour.contient(t.getDebutTrancheHoraire()) || s.dureeSejour.contient(t.getFinTrancheHoraire()) || t.contient(s.dureeSejour) || s.dureeSejour.contient(t)){
+                                        dispo = false;
+                                        //System.out.println("faux");
+                                        } //else System.out.println("vrai");
+                            
+                                    }//fin tranche.hasNext() liste des tranche horraires du parking
+                                if(dispo==true){
+                                //on ajoute le séjour à la liste du parking
+                                lesSejoursAffectes.put(s.volArrivee.getNum_vol(), s.getTrancheHoraire());
+                                //on affecte le parking au séjour
+                                s.affecterParking(p);
+                                }
+                            }//fin if s.parking != null
+                       }
+                    }//fin it.hasNext() iterator des sejours
+                
            }
-*/
+           // on affecte la liste des séjours trouvés au parking
+           
+           
+
         }
+    
+    
+    
+    public TrancheHoraire getTrancheHoraire(){
+        return dureeSejour;
     }
+    
+    public void affecterParking(Parking p){
+        parking = p;
+    }
+    
 }
 

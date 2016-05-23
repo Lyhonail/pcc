@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.StringTokenizer;
+import packhoraires.TrancheHoraire;
 import packvols.Sejour;
 
 public abstract class Parking {
@@ -15,10 +16,12 @@ public abstract class Parking {
     private String code_park;
     private String zone;
     private static Hashtable<String, Parking> lesParkings = new Hashtable<String, Parking>();
+    private static Hashtable <String, TrancheHoraire> lesSejoursAffectés = new Hashtable<String, TrancheHoraire>();
 
     public Parking(String p, String z){
         code_park = p; zone = z;
         lesParkings.put(p, this);
+        lesSejoursAffectés = null;
     }
     
     public String getCode_park() {
@@ -31,6 +34,10 @@ public abstract class Parking {
 
     public static Hashtable <String, Parking> getLesParkings(){
         return lesParkings;
+    }
+    
+    public void AffecterSejour(Hashtable <String, TrancheHoraire> liste){        
+        lesSejoursAffectés = liste;        
     }
         
     public String toString() {

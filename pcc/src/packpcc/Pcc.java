@@ -32,6 +32,7 @@ public class Pcc {
         Vol.creerLesVols();
         // Création des séjours
         Sejour.creerLesSejours();
+        Sejour.associerSejoursParkings();
         
         // Associer les sejours aux parkings
         //Aeroport.associerSejoursParkings();
@@ -39,6 +40,26 @@ public class Pcc {
             
         // Affichage dans fenetre
         Controleur unControleur = new Controleur();
+        
+        Horaire adebut = new Horaire (8, 30);
+        Horaire afin = new Horaire (12, 30);
+        
+        Horaire bdebut = new Horaire (8, 30);
+        Horaire bfin = new Horaire (12, 30);
+        
+        TrancheHoraire ta = new TrancheHoraire(adebut, afin);
+        TrancheHoraire tb = new TrancheHoraire(bdebut, bfin);
+        
+        System.out.println(ta);
+        System.out.println(tb);
+        
+        
+        //System.out.println(ta.contient(tb));
+        //System.out.println(ta.contientStrictement(bdebut));
+        System.out.println(ta.contientStrictement(bdebut));
+        
+        
+        //if(! ta.contient(tb))System.out.println("vrai") ;
              
     }
 }
