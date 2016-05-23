@@ -1,0 +1,289 @@
+Séjour du vol : IT6101
+
+ Vol: IT6100 à 15 h 55 Avion: ADA00010001 En provenance de: RENNES
+
+ Vol: IT6101 à 16 h 40 Avion: ADA00010001 A destination de: RENNES
+
+Séjour du vol : AF0012
+
+ Vol: AF0010 à 12 h 15 Avion: CDA12300001 En provenance de: ROME
+
+ Vol: AF0012 à 13 h 25 Avion: CDA12300001 A destination de: AMSTERDAM
+
+Séjour du vol : TWA021
+
+ Vol: TWA019 à 7 h 00 Avion: TBV00001001 En provenance de: ORLANDO
+
+ Vol: TWA021 à 11 h 40 Avion: TBV00001001 A destination de: ORLANDO
+
+Séjour du vol : CAL105
+
+ Vol: CAL103 à 20 h 05 Avion: CCC00001233 En provenance de: CUBA
+
+ Vol: CAL105 à 23 h 10 Avion: CCC00001233 A destination de: CUBA
+
+Séjour du vol : IT2002
+
+ Vol: IT9876 à 9 h 00 Avion: BCD05020306 En provenance de: TOULOUSE
+
+ Vol: IT2002 à 10 h 15 Avion: BCD05020306 A destination de: TOULOUSE
+
+Séjour du vol : AF6867
+
+ Vol: AF3434 à 17 h 30 Avion: ABC01230542 En provenance de: NAIROBI
+
+ Vol: AF6867 à 20 h 35 Avion: ABC01230542 A destination de: NAIROBI
+
+Séjour du vol : IT6002
+
+ Vol: IT6001 à 8 h 05 Avion: ADA00010001 En provenance de: RENNES
+
+ Vol: IT6002 à 8 h 45 Avion: ADA00010001 A destination de: RENNES
+
+Séjour du vol : CAL009
+
+ Vol: CAL007 à 15 h 15 Avion: CCC00001231 En provenance de: PEKIN
+
+ Vol: CAL009 à 20 h 20 Avion: CCC00001231 A destination de: PEKIN
+
+Séjour du vol : JAL027
+
+ Vol: JAL025 à 17 h 15 Avion: JCD01234003 En provenance de: OSAKA
+
+ Vol: JAL027 à 20 h 30 Avion: JCD01234003 A destination de: OSAKA
+
+Séjour du vol : IT1243
+
+ Vol: IT6767 à 9 h 30 Avion: TTC00400032 En provenance de: TOULOUSE
+
+ Vol: IT1243 à 11 h 35 Avion: TTC00400032 A destination de: BORDEAUX
+
+Séjour du vol : AF0005
+
+ Vol: AF0003 à 15 h 30 Avion: CDA00004568 En provenance de: DAKAR
+
+ Vol: AF0005 à 20 h 15 Avion: CDA00004568 A destination de: DAKAR
+
+Séjour du vol : AF0002
+
+ Vol: AF0001 à 7 h 10 Avion: CDA00004567 En provenance de: FORT-DE-FRANCE
+
+ Vol: AF0002 à 12 h 20 Avion: CDA00004567 A destination de: FORT-DE-FRANCE
+
+Séjour du vol : MAL010
+
+ Vol: MAL008 à 17 h 00 Avion: CCC00001232 En provenance de: TANANARIVE
+
+ Vol: MAL010 à 20 h 25 Avion: CCC00001232 A destination de: DZADZOUI
+
+Séjour du vol : AF5070
+
+ Vol: AF5068 à 7 h 10 Avion: TTX00004567 En provenance de: TUNIS
+
+ Vol: AF5070 à 8 h 20 Avion: TTX00004567 A destination de: TUNIS
+
+Séjour du vol : IT0650
+
+ Vol: IT7777 à 17 h 10 Avion: CDC78945612 En provenance de: MARSEILLE
+
+ Vol: IT0650 à 18 h 40 Avion: CDC78945612 A destination de: MARSEILLE
+
+Séjour du vol : IT0653
+
+ Vol: IT7776 à 21 h 05 Avion: CDC78945612 En provenance de: MARSEILLE
+
+ Vol: IT0653 à 21 h 55 Avion: CDC78945612 A destination de: MARSEILLE
+
+Séjour du vol : AF5066
+
+ Vol: AF5064 à 20 h 30 Avion: TTX00004567 En provenance de: ALGER
+
+ Vol: AF5066 à 21 h 55 Avion: TTX00004567 A destination de: ALGER
+
+Séjour du vol : IT0654
+
+ Vol: IT7772 à 12 h 00 Avion: CDC78945612 En provenance de: MARSEILLE
+
+ Vol: IT0654 à 13 h 10 Avion: CDC78945612 A destination de: MARSEILLE
+
+Séjour du vol : AF5062
+
+ Vol: AF5060 à 12 h 20 Avion: TTX00004567 En provenance de: TUNIS
+
+ Vol: AF5062 à 16 h 30 Avion: TTX00004567 A destination de: ALGER
+
+Séjour du vol : IT0651
+
+ Vol: IT7770 à 8 h 10 Avion: CDC78945612 En provenance de: MARSEILLE
+
+ Vol: IT0651 à 9 h 10 Avion: CDC78945612 A destination de: MARSEILLE
+
+Séjour du vol : IT0056
+
+ Vol: IT4444 à 13 h 10 Avion: ABX00120045 En provenance de: RENNES
+
+ Vol: IT0056 à 15 h 00 Avion: ABX00120045 A destination de: TOULOUSE
+
+Séjour du vol : JAL014
+
+ Vol: JAL012 à 15 h 20 Avion: JCD01234001 En provenance de: TOKYO
+
+ Vol: JAL014 à 18 h 30 Avion: JCD01234001 A destination de: TOKYO
+
+Séjour du vol : PAN233
+
+ Vol: PAN234 à 12 h 05 Avion: TBV00001231 En provenance de: MIAMI
+
+ Vol: PAN233 à 17 h 15 Avion: TBV00001231 A destination de: NEW-ORLEANS
+
+Séjour du vol : IT0412
+
+ Vol: IT3332 à 11 h 20 Avion: ZXX00150056 En provenance de: BORDEAUX
+
+ Vol: IT0412 à 12 h 30 Avion: ZXX00150056 A destination de: BORDEAUX
+
+Séjour du vol : IT0413
+
+ Vol: IT3331 à 8 h 10 Avion: ZXX00150056 En provenance de: BORDEAUX
+
+ Vol: IT0413 à 9 h 05 Avion: ZXX00150056 A destination de: BORDEAUX
+
+Séjour du vol : IT0411
+
+ Vol: IT3330 à 15 h 30 Avion: ZXX00150056 En provenance de: BORDEAUX
+
+ Vol: IT0411 à 17 h 30 Avion: ZXX00150056 A destination de: BORDEAUX
+
+Séjour du vol : IT0666
+
+ Vol: IT2222 à 16 h 00 Avion: KKX00780012 En provenance de: MARSEILLE
+
+ Vol: IT0666 à 19 h 50 Avion: KKX00780012 A destination de: LYON
+
+Séjour du vol : IT0985
+
+ Vol: IT1919 à 12 h 30 Avion: AAA00012345 En provenance de: STRASBOURG
+
+ Vol: IT0985 à 16 h 15 Avion: AAA00012345 A destination de: STRASBOURG
+
+Séjour du vol : IT0001
+
+ Vol: IT1111 à 6 h 30 Avion: TTX00980032 En provenance de: LYON
+
+ Vol: IT0001 à 9 h 00 Avion: TTX00980032 A destination de: MULHOUSE
+
+Séjour du vol : IT1945
+
+ Vol: IT1914 à 6 h 55 Avion: AAC00000123 En provenance de: BORDEAUX
+
+ Vol: IT1945 à 9 h 05 Avion: AAC00000123 A destination de: MARSEILLE
+
+Séjour du vol : TWA120
+
+ Vol: TWA123 à 7 h 10 Avion: TBV00001232 En provenance de: LOS-ANGELES
+
+ Vol: TWA120 à 10 h 30 Avion: TBV00001232 A destination de: SAN-DIEGO
+
+Séjour du vol : AF6542
+
+ Vol: AF9879 à 6 h 40 Avion: CCC04040202 En provenance de: WASHINGTON
+
+ Vol: AF6542 à 7 h 00 Avion: CCC04040202 A destination de: NEW-YORK
+
+Séjour du vol : TAL666
+
+ Vol: TAL555 à 16 h 20 Avion: XCB12340061 En provenance de: PAPEETE
+
+ Vol: TAL666 à 19 h 50 Avion: XCB12340061 A destination de: PAPEETE
+
+Séjour du vol : CAL918
+
+ Vol: CAL917 à 6 h 30 Avion: XCC12340010 En provenance de: SHANGAI
+
+ Vol: CAL918 à 8 h 30 Avion: XCC12340010 A destination de: SHANGAI
+
+Séjour du vol : IT6012
+
+ Vol: IT6011 à 11 h 05 Avion: ADA00010001 En provenance de: RENNES
+
+ Vol: IT6012 à 12 h 15 Avion: ADA00010001 A destination de: RENNES
+
+Séjour du vol : AF1234
+
+ Vol: AF7655 à 16 h 40 Avion: ITX00330044 En provenance de: BAMAKO
+
+ Vol: AF1234 à 20 h 35 Avion: ITX00330044 A destination de: ABIDJAN
+
+Séjour du vol : JAL034
+
+ Vol: JAL033 à 13 h 20 Avion: XCB12340055 En provenance de: TOKYO
+
+ Vol: JAL034 à 16 h 40 Avion: XCB12340055 A destination de: TOKYO
+
+Séjour du vol : CAL302
+
+ Vol: CAL301 à 18 h 05 Avion: XCC12340001 En provenance de: PEKIN
+
+ Vol: CAL302 à 21 h 15 Avion: XCC12340001 A destination de: PEKIN
+
+Séjour du vol : AF7560
+
+ Vol: AF7650 à 12 h 10 Avion: CDB10203040 En provenance de: ATHENE
+
+ Vol: AF7560 à 16 h 30 Avion: CDB10203040 A destination de: ISTAMBUL
+
+Séjour du vol : IT6201
+
+ Vol: IT6200 à 19 h 20 Avion: ADA00010001 En provenance de: RENNES
+
+ Vol: IT6201 à 20 h 10 Avion: ADA00010001 A destination de: RENNES
+
+Séjour du vol : AF6540
+
+ Vol: AF6541 à 7 h 05 Avion: CDA12300001 En provenance de: AMSTERDAM
+
+ Vol: AF6540 à 10 h 05 Avion: CDA12300001 A destination de: ROME
+
+Séjour du vol : PAL007
+
+ Vol: PAL005 à 15 h 20 Avion: CDA00004569 En provenance de: LIMA
+
+ Vol: PAL007 à 20 h 10 Avion: CDA00004569 A destination de: BOGOTA
+
+Séjour du vol : AF5162
+
+ Vol: AF7878 à 9 h 35 Avion: BCC00770088 En provenance de: BANGKOK
+
+ Vol: AF5162 à 12 h 45 Avion: BCC00770088 A destination de: BANGKOK
+
+Séjour du vol : IT4445
+
+ Vol: IT0058 à 18 h 20 Avion: ABX00120045 En provenance de: TOULOUSE
+
+ Vol: IT4445 à 20 h 10 Avion: ABX00120045 A destination de: RENNES
+
+Séjour du vol : IT4443
+
+ Vol: IT0057 à 7 h 00 Avion: AAB00001234 En provenance de: TOULOUSE
+
+ Vol: IT4443 à 9 h 10 Avion: AAB00001234 A destination de: BORDEAUX
+
+Séjour du vol : AF9903
+
+ Vol: AF9902 à 15 h 25 Avion: AAB00001212 En provenance de: ST-DENIS-LA-REUNION
+
+ Vol: AF9903 à 18 h 30 Avion: AAB00001212 A destination de: ST-DENIS-LA-REUNION
+
+Séjour du vol : AF0015
+
+ Vol: AF0014 à 16 h 30 Avion: CDA12300001 En provenance de: AMSTERDAM
+
+ Vol: AF0015 à 17 h 45 Avion: CDA12300001 A destination de: AMSTERDAM
+
+Séjour du vol : PAN120
+
+ Vol: PAN123 à 12 h 20 Avion: TBV00001230 En provenance de: HOUSTON
+
+ Vol: PAN120 à 16 h 15 Avion: TBV00001230 A destination de: HOUSTON
+
+Affichage Hashtable lesSéjours

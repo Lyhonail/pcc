@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import packvols.Avion;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.StringTokenizer;
@@ -101,7 +102,7 @@ public class Aeroport {
     }
     
     public static void associerPortesParkings(){
-        String File = "05-assos-portes-et-parkings.txt";
+        String file = "05-assos-portes-et-parkings.txt";
         Porte porte_find =null;
         PorteContact porte_findC =null;
         PorteHorsContact porte_findHC =null;
@@ -112,7 +113,7 @@ public class Aeroport {
 
         try {
             // Lecture du fichier
-            BufferedReader porte_parks = new BufferedReader (new FileReader (File));
+            BufferedReader porte_parks = new BufferedReader (new FileReader (file));
             String ligne = null;
             while((ligne= porte_parks.readLine()) != null){//WHILE LIGNE de la porte et des parkings associés
                 StringTokenizer tokenHall = new StringTokenizer (ligne);
@@ -158,69 +159,27 @@ public class Aeroport {
                 }
             }    
 	} catch (FileNotFoundException e){
-            System.out.println("fichier non trouvé: "+File+"\n");
+            System.out.println("fichier non trouvé: "+file+"\n");
         }
 	catch (IOException e){
-		System.out.println("Erreur de lecture fichier: "+File+"\n");
+		System.out.println("Erreur de lecture fichier: "+file+"\n");
 	}
       }
     
-     public static void affecterLesParkings(){
-        
-         String FileSejour = "ProgrammeVolsFA-16-v1.txt";
-         
-         try {
-         BufferedReader parking_sejour = new BufferedReader (new FileReader (FileSejour));
-            String ligne = null;
-            Sejour sejourFind = null;
-            while((ligne= parking_sejour.readLine()) != null){//on parcours le fichier
-                
-                //Récupération du n° de vol d'arrvié, qui est l'identifiant du séjour
-                StringTokenizer tokenSejour = new StringTokenizer (ligne);
-                String num_volArrivee = tokenSejour.nextToken();
-                
-                //lecture de la 2nde ligne qui récupère le N° de vol départ
-                ligne=parking_sejour.readLine();
-                StringTokenizer tokenVolDepart = new StringTokenizer (ligne);
-                String num_volDepart = tokenVolDepart.nextToken();
-                
-                sejourFind = Sejour.getSejour(num_volArrivee);
-                
-                //On va récupérer les parking un par un, et remplir à chacun son planning de la journée
-                Parking p = null;
-                boolean disponible = false;
-                Hashtable<String, Parking> lesParkings = Parking.getLesParkings();
-                ArrayList<Parking> parkings = new ArrayList<Parking>(lesParkings.values());
-                Iterator<Parking> it = parkings.iterator(); 
-                
-                while(it.hasNext() && p == null){//on parcours la liste des parkings, on sort de la boucle dès qu'un parking est affecté
-                   Parking park = it.next();
-                   Hashtable <String, Sejour> SejourParkingFind = Sejour.getLesSejours();
-                   ArrayList<Sejour> sejours = new ArrayList<Sejour>(SejourParkingFind.values());
-                   Iterator<Sejour> itSejour = sejours.iterator();
-                   Sejour s = null;
-                    while(it.hasNext()){//on parcours la liste des sejour pour voir leur parkings affectés
-                        s = itSejour.next();
-                        if(s.getCodeParking()==park.getCode_park() && num_volArrivee != s.getCodeSejour()){
-                            //le parking est déjà utilisé, chercher selon l'horraire
-                            disponible = false;
-                        }// fin if s.getParking
-                        else { //le parking n'est pas affecté à ce séjour, on continue a renvoyer true "disponible"
-                            disponible = true;
-                        }//fin else
-                        
-                    }//fin while it.hasNext()
-                    if(disponible == true) { p = s.getParking();  }
-                }//fin while it.hasNext() && p == null
 
-                sejourFind.affecterParking(p);
-                
-                
-            }
-        
-            } catch (IOException e){
-		System.out.println("Erreur de lecture fichier: "+FileSejour+"\n");
-	}
+/*    TRANSFERE DANS SEJOUR -> A CONFIRMER 
+    public static void associerSejoursParkings(){
+        Hashtable <String, Sejour> lesSejours = Sejour.getLesSejours();
+        ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
+        Collections.sort(sejours);
+        Iterator<Sejour> it = sejours.iterator(); 
+        while(it.hasNext()){
+           Sejour s = it.next();
+           //System.out.println (s.toString()+"\n");   
+           // ALGO A CONTINUER...
+           
+           
+        }
     }
-    
+*/
 }

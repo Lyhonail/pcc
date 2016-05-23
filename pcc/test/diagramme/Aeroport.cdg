@@ -120,7 +120,7 @@
         <Method name="afficher" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Vol" package="" visibility="public" isAbstract="true" xPosition="1380.0" yPosition="429.0">
+    <Class name="Vol" package="" visibility="public" isAbstract="true" xPosition="1403.0" yPosition="429.0">
       <Fields>
         <Field name="num_vol" type="String" visibility="private"/>
         <Field name="avion" type="Avion" visibility="private"/>
@@ -138,7 +138,7 @@
         <Method name="creerVol" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Sejour" package="" visibility="public" xPosition="1099.0" yPosition="495.0">
+    <Class name="Sejour" package="" visibility="public" xPosition="1147.0" yPosition="495.0">
       <Fields>
         <Field name="dureeSejour" type="TrancheHoraire" visibility="private"/>
         <Field name="parking" type="Parking" visibility="private"/>
@@ -344,21 +344,21 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="Vol Has Horaire" source="Horaire" target="Vol" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="HallHasPorte" source="Hall" target="Porte" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
-    <IsRelation name="is" source="PorteContact" target="Porte"/>
-    <HasRelation name="Sejour Has TrancheHoraire" source="TrancheHoraire" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="VolDepart" target="Vol"/>
-    <HasRelation name="horaire arrivée" source="TrancheHoraire" target="Horaire" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="Avion Has Vol" source="Avion" target="Vol" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="Sejour Has Parking" source="Parking" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="PorteHorsContact" target="Porte"/>
+    <HasRelation name="Sejour Has Parking" source="Parking" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="AeroportHasHall" source="Aeroport" target="Hall" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <HasRelation name="HallHasPorte" source="Hall" target="Porte" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <HasRelation name="Sejour Has Vol" source="Vol" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Avion Has Vol" source="Avion" target="Vol" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="VolDepart" target="Vol"/>
     <HasRelation name="PorteAsParking" source="Porte" target="Parking" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <IsRelation name="is" source="ParkingContact" target="Parking"/>
     <HasRelation name="horaire départ" source="TrancheHoraire" target="Horaire" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="Sejour Has Vol" source="Vol" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="AeroportHasHall" source="Aeroport" target="Hall" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <IsRelation name="is" source="PorteContact" target="Porte"/>
     <IsRelation name="is" source="ParkingHorsContact" target="Parking"/>
+    <HasRelation name="Vol Has Horaire" source="Horaire" target="Vol" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="VolArrivee" target="Vol"/>
+    <HasRelation name="horaire arrivée" source="TrancheHoraire" target="Horaire" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Sejour Has TrancheHoraire" source="TrancheHoraire" target="Sejour" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

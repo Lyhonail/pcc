@@ -4,9 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.StringTokenizer;
+import packvols.Sejour;
 
 public abstract class Parking {
 
@@ -27,6 +29,10 @@ public abstract class Parking {
         return zone;
     }
 
+    public static Hashtable <String, Parking> getLesParkings(){
+        return lesParkings;
+    }
+        
     public String toString() {
         String info =  "\n   Parking: " +code_park + " Zone: " +zone;
         return info; 
@@ -38,6 +44,7 @@ public abstract class Parking {
     
     public static String toStringLesParkings(){
         String info= "\n Liste des Parkings: ";
+        //Collections.sort(lesParkings);
         Iterator<Parking> it = lesParkings.values().iterator();
         while(it.hasNext()){
             Parking p = it.next();
@@ -52,17 +59,17 @@ public abstract class Parking {
     }
   
     public static void creerParkings(){
-        String File = "01-zones-et-parkings.txt";
+        String file = "01-zones-et-parkings.txt";
         try {
             // Lecture du fichier
-            BufferedReader parkings = new BufferedReader (new FileReader (File));
+            BufferedReader parkings = new BufferedReader (new FileReader (file));
             String ligne = null;
             while((ligne= parkings.readLine()) != null){//WHILE LIGNE des zones
-                StringTokenizer tokenHall = new StringTokenizer (ligne);
-                String zone = tokenHall.nextToken();
+                StringTokenizer tokenPark = new StringTokenizer (ligne);
+                String zone = tokenPark.nextToken();
                 //System.out.println("\nZone enregistrement: "+zone);
-                while (tokenHall.hasMoreTokens()){//liste des parkings sur la ligne des zones
-                    String num_park = tokenHall.nextToken();
+                while (tokenPark.hasMoreTokens()){//liste des parkings sur la ligne des zones
+                    String num_park = tokenPark.nextToken();
                     if (zone.equals("Mike")){
                         //parking Hors contact
                         //System.out.println("\nParking hors contact: "+num_park);
@@ -76,10 +83,10 @@ public abstract class Parking {
                 }
             }    
 	} catch (FileNotFoundException e){
-            System.out.println("fichier non trouvé: "+File+"\n");
+            System.out.println("fichier non trouvé: "+file+"\n");
         }
 	catch (IOException e){
-		System.out.println("Erreur de lecture fichier: "+File+"\n");
+		System.out.println("Erreur de lecture fichier: "+file+"\n");
 	}
     }
     
@@ -90,7 +97,4 @@ public abstract class Parking {
             return (Parking)lesParkings.get(num_park);
     }
     
-    public static Hashtable<String, Parking> getLesParkings(){
-        return lesParkings;
-    }
 }
