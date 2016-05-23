@@ -89,4 +89,8 @@ public abstract class Parking {
         else
             return (Parking)lesParkings.get(num_park);
     }
+    
+    public static Hashtable<String, Parking> getLesParkings(){
+        return lesParkings;
+    }
 }

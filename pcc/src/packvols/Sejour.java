@@ -139,6 +139,10 @@ public class Sejour {
    public static Sejour getSejour(String num_sejour) {
             return (Sejour)lesSejours.get(num_sejour);
     }
+   
+    public static Hashtable <String, Sejour> getLesSejours() {
+            return lesSejours;
+    }
     
    public void affecterParking(Parking p) {
         parking = p;
@@ -147,5 +151,16 @@ public class Sejour {
    public void desaffecterParking() {
         parking = null;
     }
+   public String getCodeParking(){
+       return parking.getCode_park();
+   }
+   
+   public Parking getParking(){
+       return parking;
+   }
+   
+   public String getCodeSejour(){
+       return volArrivee.getNum_vol();
+   }
     
     }

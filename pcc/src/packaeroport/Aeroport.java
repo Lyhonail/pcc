@@ -56,6 +56,8 @@ public class Aeroport {
     public String getNom(){
         return nom;
     }
+    
+    
 
     public static void associerHallslPortes(){
         String File = "04-assos-halls-et-portes.txt";
@@ -171,7 +173,7 @@ public class Aeroport {
          BufferedReader parking_sejour = new BufferedReader (new FileReader (FileSejour));
             String ligne = null;
             Sejour sejourFind = null;
-            while((ligne= parking_sejour.readLine()) != null){//WHILE LIGNE de la porte et des parkings associés
+            while((ligne= parking_sejour.readLine()) != null){//on parcours le fichier
                 
                 //Récupération du n° de vol d'arrvié, qui est l'identifiant du séjour
                 StringTokenizer tokenSejour = new StringTokenizer (ligne);
@@ -183,10 +185,34 @@ public class Aeroport {
                 String num_volDepart = tokenVolDepart.nextToken();
                 
                 sejourFind = Sejour.getSejour(num_volArrivee);
-                Porte porte = new PorteContact ("porteTEST", "enregistrementTEST");
-                Parking p = new ParkingContact("codeTEST", "zoneTEST");
                 
+                //On va récupérer les parking un par un, et remplir à chacun son planning de la journée
+                Parking p = null;
+                boolean disponible = false;
+                Hashtable<String, Parking> lesParkings = Parking.getLesParkings();
+                ArrayList<Parking> parkings = new ArrayList<Parking>(lesParkings.values());
+                Iterator<Parking> it = parkings.iterator(); 
                 
+                while(it.hasNext() && p == null){//on parcours la liste des parkings, on sort de la boucle dès qu'un parking est affecté
+                   Parking park = it.next();
+                   Hashtable <String, Sejour> SejourParkingFind = Sejour.getLesSejours();
+                   ArrayList<Sejour> sejours = new ArrayList<Sejour>(SejourParkingFind.values());
+                   Iterator<Sejour> itSejour = sejours.iterator();
+                   Sejour s = null;
+                    while(it.hasNext()){//on parcours la liste des sejour pour voir leur parkings affectés
+                        s = itSejour.next();
+                        if(s.getCodeParking()==park.getCode_park() && num_volArrivee != s.getCodeSejour()){
+                            //le parking est déjà utilisé, chercher selon l'horraire
+                            disponible = false;
+                        }// fin if s.getParking
+                        else { //le parking n'est pas affecté à ce séjour, on continue a renvoyer true "disponible"
+                            disponible = true;
+                        }//fin else
+                        
+                    }//fin while it.hasNext()
+                    if(disponible == true) { p = s.getParking();  }
+                }//fin while it.hasNext() && p == null
+
                 sejourFind.affecterParking(p);
                 
                 

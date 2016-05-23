@@ -1,12 +1,16 @@
 package packaeroport;
 
+import java.util.Hashtable;
+
 public class ParkingContact extends Parking {
 
     private PorteContact porteC;
+    private static Hashtable<String, ParkingContact> lesParkingsContact = new Hashtable<String, ParkingContact>();
 
     public ParkingContact(String code_p, String zone) {
         super(code_p, zone);
         porteC = null;
+        lesParkingsContact.put(code_p, this);
     }
 
    public String toString(){
@@ -18,6 +22,10 @@ public class ParkingContact extends Parking {
             info += "\n   Porte contact: N/A";
         
         return info;
+    }
+   
+   public static void afficherLesParkingsContact(){
+        System.out.println(toStringLesParkings());
     }
 
     public String toStringSansPortes(){
