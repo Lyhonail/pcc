@@ -58,6 +58,8 @@ public class Pcc {
         //System.out.println(ta.contientStrictement(bdebut));
         System.out.println(ta.contientStrictement(bdebut));
         
+        ParkingHorsContact.afficherLesParkings();
+        
         
         //if(! ta.contient(tb))System.out.println("vrai") ;
              

@@ -39,4 +39,8 @@ public class ParkingContact extends Parking {
     public void desaffecterPorte() {
         porteC = null;
     }
+    
+    public static Hashtable <String, ParkingContact> getLesParkingsContact(){
+        return lesParkingsContact;
+    }
 }
