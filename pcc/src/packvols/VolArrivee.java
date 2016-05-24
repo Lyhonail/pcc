@@ -42,14 +42,15 @@ public class VolArrivee extends Vol {
         
     public static String toStringEcranLesVols(){
         // Affichage de la hastable Vols
-        String info = "Horaire    Vol  Provenance            Hall  Porte ";
+        String info = String.format("\n%-8s %-8s %-20s %-10s %-10s",
+            "Horaire","Vol","Provenance","Hall","Porte");
         ArrayList<VolArrivee> vols = new ArrayList<VolArrivee>(lesVolsArrivee.values());
         Collections.sort(vols);
         Iterator<VolArrivee> it = vols.iterator(); 
         while(it.hasNext()){
            VolArrivee v = it.next();
-           info +="\n" + v.getHoraire() +"   "+ v.getNum_vol()+"  ";
-           info += v.provenance ;
+           info += String.format("\n%-8s %-8s %-20s %-10s %-10s",
+                   v.getHoraire(),v.getNum_vol(),v.provenance, "1","PI");
         }   
         return(info);
     }  
