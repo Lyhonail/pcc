@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.StringTokenizer;
+import packhoraires.Horaire;
 import packhoraires.TrancheHoraire;
 import packvols.Sejour;
 
@@ -15,25 +17,53 @@ public abstract class Parking {
 
     private String code_park;
     private String zone;
+    private TrancheHoraire dispo;
+    private ArrayList<TrancheHoraire> test;
+    private Hashtable <String, TrancheHoraire> trancheOccupee = new Hashtable<String, TrancheHoraire>();
     private static Hashtable<String, Parking> lesParkings = new Hashtable<String, Parking>();
     private static Hashtable <String, TrancheHoraire> lesSejoursAffectés = new Hashtable<String, TrancheHoraire>();
 
     public Parking(String p, String z){
         code_park = p; zone = z;
         lesParkings.put(p, this);
-        lesSejoursAffectés = null;
+        lesSejoursAffectés = new Hashtable <String, TrancheHoraire>();
+        trancheOccupee = new Hashtable <String, TrancheHoraire>() ;
+        test = new ArrayList<TrancheHoraire>() ;
+        Horaire h = new Horaire(0,0);
+        TrancheHoraire t = new TrancheHoraire(h,h);
+        dispo = t;
     }
     
     public String getCode_park() {
         return code_park;
     }
+    
+    public TrancheHoraire getDispo(){
+        return dispo;
+    }
 
     public String getZone() {
         return zone;
     }
+    
+    public ArrayList getTest(){
+        return test;
+    }
 
     public static Hashtable <String, Parking> getLesParkings(){
         return lesParkings;
+    }
+    
+    public void majTranche(TrancheHoraire t, TrancheHoraire hd){
+        dispo = t;
+        test.add(hd);
+        trancheOccupee.put("0", hd);
+    }
+    
+    
+    public void majTrancheOccupee(TrancheHoraire t, String n){
+        lesSejoursAffectés.put(n, t);
+        
     }
     
     public void AffecterSejour(Hashtable <String, TrancheHoraire> liste){        
@@ -57,6 +87,25 @@ public abstract class Parking {
             Parking p = it.next();
             //recupère le toString d'un parking Contact ou Hors Contact
             info += p.toString();
+            info += "\n Programme de la journée : ";
+            Horaire h = new Horaire(0,0);
+            
+            
+            TrancheHoraire th = new TrancheHoraire(h,h);
+            if(p.dispo.equals(th)){
+                info += " N/A \n";    
+            }
+            else {
+                info += p.getDispo();
+                //ArrayList<TrancheHoraire> lesSejours = new ArrayList<TrancheHoraire>(trancheOccupee.values());
+                //Iterator<TrancheHoraire> itSejour = p.getTest().iterator();
+                Iterator<TrancheHoraire> itSejour = p.getTest().iterator(); 
+                while(itSejour.hasNext()){
+                    TrancheHoraire t = itSejour.next();
+                    //recupère le toString d'un parking Contact ou Hors Contact
+                    info += "\n"+t.toString();
+                    }
+                } 
         }
         return info;
     }
