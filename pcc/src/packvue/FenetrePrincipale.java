@@ -53,6 +53,7 @@ public  class FenetrePrincipale extends JFrame {
         afficherEcranLesVols=new JMenuItem("afficher Ecran Passagers tous les vols");
         afficherEcranVolsArrivee=new JMenuItem("afficher Ecran Passagers les vols d'arrivee");
         afficherEcranVolsDepart=new JMenuItem("afficher Ecran Passagers les vols de depart");
+        afficherEcranHall=new JMenuItem("afficher Ecran Hall");
         
         //creation de la zone d'affichage
         zoneTexte=new JTextArea();
@@ -74,6 +75,7 @@ public  class FenetrePrincipale extends JFrame {
         afficherEcranLesVols.addActionListener(monEcouteur);
         afficherEcranVolsArrivee.addActionListener(monEcouteur);
         afficherEcranVolsDepart.addActionListener(monEcouteur);
+        afficherEcranHall.addActionListener(monEcouteur);
         
         //Ajouts des composants
         // affectation des sous-menus
@@ -90,6 +92,7 @@ public  class FenetrePrincipale extends JFrame {
         menuAffichage.add(afficherEcranLesVols);
         menuAffichage.add(afficherEcranVolsArrivee);
         menuAffichage.add(afficherEcranVolsDepart);
+        menuAffichage.add(afficherEcranHall);
         
         // Affichage Titre sur bandeau supérieur de la fenetre 
         this.add(texteAsc);
@@ -170,6 +173,11 @@ public  class FenetrePrincipale extends JFrame {
                 afficherEcranVolsDepart();
                 return;
             }
+            if(source==afficherEcranHall) { 
+                System.out.println("afficher Ecran Hall");
+                afficherEcranHall();
+                return;
+            }
         }
     }
 
@@ -187,7 +195,8 @@ public  class FenetrePrincipale extends JFrame {
                         afficherLesSejours,
                         afficherEcranLesVols,
                         afficherEcranVolsArrivee,
-                        afficherEcranVolsDepart;
+                        afficherEcranVolsDepart,
+                        afficherEcranHall;
                         
     private JTextArea zoneTexte;
 
@@ -242,6 +251,10 @@ public  class FenetrePrincipale extends JFrame {
     }
     public void afficherEcranVolsDepart(){
         String info=monControleur.toStringEcranVolsDepart();
+        zoneTexte.setText(info);
+    }
+    public void afficherEcranHall(){
+        String info=monControleur.toStringEcranHall();
         zoneTexte.setText(info);
     }
 }

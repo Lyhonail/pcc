@@ -14,7 +14,7 @@ public abstract class Porte {
     
     private String num_porte;
     private String zone_enreg;
-    private Hall hall; //ajouté par prof
+    private Hall hall;
     
     private static Hashtable<String, Porte> lesPortes = new Hashtable<String, Porte>();
    
@@ -41,13 +41,16 @@ public abstract class Porte {
         System.out.println(this.toString());
     }
 
-
     public String getNum_porte(){
         return num_porte;
     }
     
     public String getZone_enreg(){
         return zone_enreg;
+    }
+    
+    public Hall getHall(){
+        return hall;
     }
     
     public void affecterHall(Hall h){

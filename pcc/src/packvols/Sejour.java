@@ -19,12 +19,12 @@ public class Sejour implements Comparable<Sejour> {
     private Parking parking;
     private String num_volArrivee;
     private Avion avion;
-    private Vol volArrivee;
-    private Vol volDepart;
+    private VolArrivee volArrivee;
+    private VolDepart  volDepart;
     
     private static Hashtable <String, Sejour> lesSejours = new Hashtable<String, Sejour>();
     
-    public Sejour(TrancheHoraire t, Vol va, Vol vd, Parking p, Avion a, String num_va){
+    public Sejour(TrancheHoraire t, VolArrivee va, VolDepart vd, Parking p, Avion a, String num_va){
         num_volArrivee = num_va;
         dureeSejour = t;
         parking = p;
@@ -54,6 +54,10 @@ public class Sejour implements Comparable<Sejour> {
         return info;
     }
     
+    public Parking getParking(){
+        return parking;
+    }
+            
     public void afficher(){
         System.out.println(this.toString());
     }
@@ -84,7 +88,7 @@ public class Sejour implements Comparable<Sejour> {
                 String num_volArrivee = tokenVolArrivee.nextToken();                        
                 try {    
                     //récupération du vol d'arrivée
-                    Vol vol_arrivee = Vol.getVol(num_volArrivee);
+                    VolArrivee vol_arrivee = (VolArrivee) Vol.getVol(num_volArrivee);
                     //récupération de l'horaire arrivée
                     Horaire ha = vol_arrivee.getHoraire();
                     //Recuperation de l'Avion
@@ -96,7 +100,8 @@ public class Sejour implements Comparable<Sejour> {
                     String num_volDepart = tokenVolDepart.nextToken();                        
                     //récupération du vol de depart
                     try {
-                        Vol vol_depart = Vol.getVol(num_volDepart);
+                        
+                        VolDepart vol_depart = (VolDepart) Vol.getVol(num_volDepart);
                         //récupération de l'horaire de départ
                         Horaire hd = vol_depart.getHoraire();
 
@@ -143,74 +148,6 @@ public class Sejour implements Comparable<Sejour> {
         return(info);
     }
     
-    /*
-    public static void associerSejoursParkings(){
-                //On ouvre la liste des parkings
-                Hashtable<String, ParkingContact> lesParkingsContact = ParkingContact.getLesParkingsContact();
-                Iterator<ParkingContact> itpc = lesParkingsContact.values().iterator();
-                
-                
-                Hashtable<String, ParkingHorsContact> lesParkingsHorsContact = ParkingHorsContact.getLesParkingsHorsContact();
-                Iterator<ParkingHorsContact> itphc = lesParkingsHorsContact.values().iterator();
-                
-                
-                Hashtable<String, Parking> lesParkings = Parking.getLesParkings();
-                Iterator<Parking> itp = lesParkings.values().iterator();
-                //Collections.sort(itp);
-                
-                
-                //Tant qu'il y a un parking dans la liste
-                while(itpc.hasNext()){
-                        
-                    Parking p = itpc.next();//on prend un parking
-                    //on creer une Hashtable à ce parking qui contiendra la liste des séjours(TrancheHoraire)
-                    Hashtable <String, TrancheHoraire> lesSejoursAffectes = new Hashtable <String, TrancheHoraire>() ;
-                    
-                    // on ouvre la liste des séjours
-                    ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
-                    Collections.sort(sejours);
-                    Iterator<Sejour> it = sejours.iterator();
-                    //tant qu'il y a un sejour
-                    while(it.hasNext()){
-                        Sejour s = it.next();
-                        if(s.parking == null){
-                            Boolean dispo = true;
-                            //cherche d'autres séjours avec tranche horaire non chevauchante
-                            
-                            if(lesSejoursAffectes==null) {
-                                lesSejoursAffectes.put(s.volArrivee.getNum_vol(), s.getTrancheHoraire());
-                                s.affecterParking(p);
-                                }
-                            else {
-                                ArrayList<TrancheHoraire> lesTranches = new ArrayList<TrancheHoraire>(lesSejoursAffectes.values());
-                                Iterator<TrancheHoraire> tranche = lesTranches.iterator(); 
-                                while(tranche.hasNext()){
-                                    TrancheHoraire t = tranche.next();
-                            
-                                    if(s.dureeSejour.contient(t.getDebutTrancheHoraire()) || s.dureeSejour.contient(t.getFinTrancheHoraire()) || t.contient(s.dureeSejour) || s.dureeSejour.contient(t)){
-                                        dispo = false;
-                                        //System.out.println("faux");
-                                        } //else System.out.println("vrai");
-                            
-                                    }//fin tranche.hasNext() liste des tranche horraires du parking
-                                if(dispo==true){
-                                //on ajoute le séjour à la liste temporaire du parking
-                                lesSejoursAffectes.put(s.volArrivee.getNum_vol(), s.getTrancheHoraire());
-                                //on affecte le parking au séjour
-                                s.affecterParking(p);
-                                
-                                }
-                            }//fin if s.parking != null
-                       } 
-                    }//fin it.hasNext() iterator des sejours
-                //p.AffecterSejour(lesSejoursAffectes);
-           }
-           // on affecte la liste des séjours trouvés au parking
-           
-           
-
-        }
-    */
     public static void associerSejoursParkings(){
         // on ouvre la liste des séjours
         ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
@@ -231,6 +168,8 @@ public class Sejour implements Comparable<Sejour> {
                     }// fin if(p.getDispo().contient(h))
                     else {
                         s.affecterParking(p);
+                        s.volArrivee.affecterSejour(s);
+                        s.volDepart.affecterSejour(s);
                         TrancheHoraire th = new TrancheHoraire(p.getDispo().getDebutTrancheHoraire(), s.dureeSejour.getFinTrancheHoraire());
                         TrancheHoraire hd = new TrancheHoraire(s.dureeSejour.getDebutTrancheHoraire(), s.dureeSejour.getFinTrancheHoraire());
                         p.majTranche(th, hd);
@@ -239,23 +178,25 @@ public class Sejour implements Comparable<Sejour> {
                     
                 }//fin  while(itpc.hasNext())
                 if(affecte == false){
-                        Hashtable<String, ParkingHorsContact> lesParkingsHorsContact = ParkingHorsContact.getLesParkingsHorsContact();
-                        Iterator<ParkingHorsContact> itphc = lesParkingsHorsContact.values().iterator();
-                        while(itphc.hasNext() && affecte == false){
-                            Parking phc = itphc.next();
-                            Horaire hhc = s.dureeSejour.getDebutTrancheHoraire();
-                            if(phc.getDispo().contient(hhc)){
-                                //ne rien faire
-                            }// fin if(phc.getDispo().contient(hhc))
-                            else {
-                                s.affecterParking(phc);
-                                TrancheHoraire thhc = new TrancheHoraire(phc.getDispo().getDebutTrancheHoraire(), s.dureeSejour.getFinTrancheHoraire());
-                                TrancheHoraire hd = new TrancheHoraire(s.dureeSejour.getDebutTrancheHoraire(), s.dureeSejour.getFinTrancheHoraire());
-                                phc.majTranche(thhc, hd);
-                                affecte = true;
-                            } //fin else
-                        }//fin while(itphc.hasNext() && affecte == false)
-                        }//fin if(affecte == false)
+                    Hashtable<String, ParkingHorsContact> lesParkingsHorsContact = ParkingHorsContact.getLesParkingsHorsContact();
+                    Iterator<ParkingHorsContact> itphc = lesParkingsHorsContact.values().iterator();
+                    while(itphc.hasNext() && affecte == false){
+                        Parking phc = itphc.next();
+                        Horaire hhc = s.dureeSejour.getDebutTrancheHoraire();
+                        if(phc.getDispo().contient(hhc)){
+                            //ne rien faire
+                        }// fin if(phc.getDispo().contient(hhc))
+                        else {
+                            s.affecterParking(phc);
+                            s.volArrivee.affecterSejour(s);
+                            s.volDepart.affecterSejour(s);
+                            TrancheHoraire thhc = new TrancheHoraire(phc.getDispo().getDebutTrancheHoraire(), s.dureeSejour.getFinTrancheHoraire());
+                            TrancheHoraire hd = new TrancheHoraire(s.dureeSejour.getDebutTrancheHoraire(), s.dureeSejour.getFinTrancheHoraire());
+                            phc.majTranche(thhc, hd);
+                            affecte = true;
+                        } //fin else
+                    }//fin while(itphc.hasNext() && affecte == false)
+                }//fin if(affecte == false)
      
             }// fin if(s.parking == null)
         }//fin it.hasNext() >> on lit les sejours
@@ -271,5 +212,35 @@ public class Sejour implements Comparable<Sejour> {
         parking = p;
     }
     
+    public static String toStringEcranHall(String numHall){
+        // Affichage de la hastable lesSejours
+        // numHall = "3";
+        //String info = "Liste des séjours au  Hall "+numHall;
+        String format = "dd/MM/yy HH:mm:ss";
+        java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
+        java.util.Date date = new java.util.Date();
+        String dateCourante= formater.format( date ); 
+
+        String info = "\nSéjours du Hall "+numHall+ "        "+ dateCourante;
+        info += String.format("\n%-8s %-14s %-9s %-13s %-10s %-10s",
+            "Parking","Heure Arrivee","No Vol","Heure Départ","No Vol","No Avion");
+        ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
+        Collections.sort(sejours);
+        Iterator<Sejour> it = sejours.iterator(); 
+        while(it.hasNext()){
+           Sejour s = (Sejour)it.next();
+           Parking objet_parking =s.parking;
+           if (objet_parking instanceof ParkingContact&&((ParkingContact) objet_parking).getPorteC().getHall().getNum_hall().startsWith(numHall)
+               ||
+               objet_parking instanceof ParkingHorsContact&&((ParkingHorsContact) objet_parking).getPorteHC().getHall().getNum_hall().startsWith(numHall)     
+              )   
+               info += String.format("\n%-8s %-14s %-9s %-13s %-10s %-10s",
+                       s.parking.getCode_park(),
+                       s.volArrivee.getHoraire(),s.volArrivee.getNum_vol(),
+                       s.volDepart.getHoraire(),s.volDepart.getNum_vol(),
+                       s.avion.getImmat());
+        }
+        return(info);
+    }
 }
 

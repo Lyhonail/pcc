@@ -40,4 +40,10 @@ public class ParkingHorsContact extends Parking {
     public static Hashtable <String, ParkingHorsContact> getLesParkingsHorsContact(){
         return lesParkingsHorsContact;
     }
+    
+    public Porte getPorteHC(){
+        Iterator<PorteHorsContact> it = lesPortesHorsContact.iterator();  
+        Porte porteHC = it.next();
+        return porteHC;
+    }
 }

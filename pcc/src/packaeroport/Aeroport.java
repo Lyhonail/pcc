@@ -26,7 +26,7 @@ public class Aeroport {
     }
 
     public void ajouter(Avion a){
-        lesAvions.add(a);//hghghg
+        lesAvions.add(a);
     }
 
     public void ajouterHall(Hall h){

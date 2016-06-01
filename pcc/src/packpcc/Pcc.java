@@ -41,7 +41,7 @@ public class Pcc {
         // Affichage dans fenetre
         Controleur unControleur = new Controleur();
         
-        Horaire adebut = new Horaire (8, 30);
+ /*       Horaire adebut = new Horaire (8, 30);
         Horaire afin = new Horaire (12, 30);
         
         Horaire bdebut = new Horaire (8, 30);
@@ -59,7 +59,7 @@ public class Pcc {
         System.out.println(ta.contientStrictement(bdebut));
         
         ParkingHorsContact.afficherLesParkings();
-        
+ */       
         
         //if(! ta.contient(tb))System.out.println("vrai") ;
              

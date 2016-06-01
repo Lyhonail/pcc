@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
+import packaeroport.ParkingContact;
+import packaeroport.ParkingHorsContact;
+import packaeroport.PorteContact;
+import packaeroport.PorteHorsContact;
 import packhoraires.Horaire; 
 
 public class VolDepart extends Vol {
@@ -48,14 +52,24 @@ public class VolDepart extends Vol {
         Collections.sort(vols);
         Iterator<VolDepart> it = vols.iterator(); 
         while(it.hasNext()){
-           VolDepart v = it.next();
-           info += String.format("\n%-8s %-8s %-20s %-10s %-10s",
-                   v.getHoraire(),v.getNum_vol(),v.destination, "1","PI");
+            String hall = null, porte = null;
+            VolDepart v = it.next();
+            if (v.getSejour().getParking() instanceof ParkingContact  ){
+                ParkingContact p = (ParkingContact) v.getSejour().getParking();
+                PorteContact porteC = (PorteContact) p.getPorteC();
+                hall = porteC.getHall().getNum_hall();
+                porte = porteC.getNum_porte();
+            }
+            else {
+                ParkingHorsContact p = (ParkingHorsContact) v.getSejour().getParking();
+                PorteHorsContact porteHC = (PorteHorsContact) p.getPorteHC();
+                hall = porteHC.getHall().getNum_hall();
+                porte = porteHC.getNum_porte();
+            }
+            info += String.format("\n%-8s %-8s %-20s %-10s %-10s",
+                   v.getHoraire(),v.getNum_vol(),v.destination, hall,porte);
         }   
         return(info);
-    }  
-        
-    //public static void afficherLesVols(){
-    //    System.out.println(toStringLesVols());
-    //}       
+    }       
+   
 }

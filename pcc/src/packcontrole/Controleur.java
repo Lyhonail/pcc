@@ -59,4 +59,12 @@ public class Controleur {
     public String toStringEcranVolsDepart(){
         return VolDepart.toStringEcranLesVols();
     }
+    public String toStringEcranHall(){
+        // ODX: no de hall En dur pour l'instant
+        String info = Sejour.toStringEcranHall("1");
+        info += Sejour.toStringEcranHall("2");
+        info += Sejour.toStringEcranHall("3");
+        info += Sejour.toStringEcranHall("4");
+        return info;
+    }
 }

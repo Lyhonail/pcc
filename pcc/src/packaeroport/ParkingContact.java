@@ -24,6 +24,10 @@ public class ParkingContact extends Parking {
         return info;
     }
    
+   public Porte getPorteC(){
+       return porteC;
+   }
+   
    public static void afficherLesParkingsContact(){
         System.out.println(toStringLesParkings());
     }

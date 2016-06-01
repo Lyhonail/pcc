@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 import packaeroport.Porte;
 import packhoraires.Horaire;
 import  java.util.Collections;
+import packaeroport.*;
 import static packaeroport.Porte.toStringLesPortes;
 import packaeroport.PorteInvalide;
 
@@ -20,6 +21,7 @@ public abstract class Vol implements Comparable<Vol>  {
     private String num_vol;
     private Horaire horaire;
     private Avion avion;
+    private Sejour sejour;
     private static Hashtable <String, Vol> lesVols = new Hashtable<String, Vol>();
 
     public Vol(String num_vol, Horaire horaire, Avion avion) {
@@ -27,6 +29,10 @@ public abstract class Vol implements Comparable<Vol>  {
         this.horaire = horaire;
         this.avion = avion;
         lesVols.put(num_vol, this);
+    }
+    
+    public void affecterSejour(Sejour s){
+        sejour = s;
     }
     
     public int compareTo(Vol v) {
@@ -43,6 +49,10 @@ public abstract class Vol implements Comparable<Vol>  {
     
     public Avion getAvion(){
         return avion;
+    }
+    
+    public Sejour getSejour(){
+        return sejour;
     }
     
     public static Vol getVol(String v) throws VolInvalide{
@@ -124,7 +134,7 @@ public abstract class Vol implements Comparable<Vol>  {
             System.out.println("Erreur de lecture fichier: "+file+"\n");
 	}
     }
-    
+  
     public static String toStringEcranLesVols(){
         // Affichage de la hastable lesVols
         String info = String.format("\n%-8s %-8s %-15s %-25s %-10s %-10s",
@@ -133,16 +143,31 @@ public abstract class Vol implements Comparable<Vol>  {
         Collections.sort(vols);
         Iterator<Vol> it = vols.iterator(); 
         while(it.hasNext()){
+           String hall = null, porte = null;
            Vol v = it.next();
            info += String.format("\n%-8s %-14s ",v.getHoraire(),v.getNum_vol());
            if (v instanceof VolArrivee)
                info += String.format("%-9s %-25s ", "A",((VolArrivee) v).provenance);
            else
                info += String.format("%-9s %-25s ", "D",((VolDepart) v).destination);
-           info += String.format("%-10s %-10s","1","PI");
+               
+           if (v.sejour.getParking() instanceof ParkingContact  ){
+               ParkingContact p = (ParkingContact) v.sejour.getParking();
+               PorteContact porteC = (PorteContact) p.getPorteC();
+               hall = porteC.getHall().getNum_hall();
+               porte = porteC.getNum_porte();
+           }
+           else {
+               ParkingHorsContact p = (ParkingHorsContact) v.sejour.getParking();
+               PorteHorsContact porteHC = (PorteHorsContact) p.getPorteHC();
+               hall = porteHC.getHall().getNum_hall();
+               porte = porteHC.getNum_porte();
+           }
+           info += String.format("%-10s %-10s", hall ,porte);
         }   
         return(info);
     }
+
     
     public static void afficherEcranLesVols(){
         System.out.println(toStringLesVols());
