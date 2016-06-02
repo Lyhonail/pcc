@@ -102,7 +102,7 @@ public class Hall {
         lesPortes.remove(p);
     }
     
-    public static String toStringEcranHallParkings(){
+    public static String toStringEcranHallParkings(String numHall){
         String info = "Affichages des parkings : \n";
         Parking p = null;
         //Affichage des Halls
@@ -110,43 +110,54 @@ public class Hall {
         Iterator<Hall> it = halls.iterator();
         while(it.hasNext()){
             Hall h = it.next();
-            info += "\n Hall "+h.num_hall+"\n";
-            info += "Parking | VolArrivee | Heure Arrivee | Vol Depart | Heure Depart\n";
-            //Récupération des portes
-            Iterator itPortes = h.getLesPortes().iterator();
-            while(itPortes.hasNext()){
-            Porte porte = (Porte) itPortes.next();
-            
-            //récupération du parking en fonction de la porte
-            if(porte instanceof PorteHorsContact){ 
-              p = ((PorteHorsContact) porte).getParkingHC();
-              //info += "HorsContact\n";
-            } 
-            if(porte instanceof PorteContact){
-              p = ((PorteContact) porte).getParkingC();
-              //info += "contact\n";
-            }
+            if (h.num_hall.equals(numHall)){
+                info += "\n Hall "+h.num_hall+"\n";
+                info += "Parking | VolArrivee | Heure Arrivee | Vol Depart | Heure Depart | No Avion \n";
+                //Récupération des portes
+                Iterator itPortes = h.getLesPortes().iterator();
+                while(itPortes.hasNext()){
+                Porte porte = (Porte) itPortes.next();
 
-            //à partir de la on a le Hall 'h', la porte 'porte' et la parking 'p'
-            //avec le parking 'p', il faut récupérer les séjours 's'
-            //Récupération des séjours
-                ArrayList<Sejour> lesSejours = new ArrayList<Sejour>(p.getLesSejours());
-                Iterator<Sejour> itSejour = lesSejours.iterator();
-            
-                while(itSejour.hasNext()){
-                    Sejour s = itSejour.next();
-                
-                    info += "  "+p.getCode_park()+"    |   "+s.getNumVolArrivee()+"   | "+s.getTrancheHoraire().getDebutTrancheHoraire();
-                    info += "       |  "+s.getNumVolDepart()+"  |     "+s.getTrancheHoraire().getFinTrancheHoraire()+"\n";
+                //récupération du parking en fonction de la porte
+                if(porte instanceof PorteHorsContact){ 
+                  p = ((PorteHorsContact) porte).getParkingHC();
+                  //info += "HorsContact\n";
+                } 
+                if(porte instanceof PorteContact){
+                  p = ((PorteContact) porte).getParkingC();
+                  //info += "contact\n";
                 }
-            }//fin while(itParking.hasNext())
-        }//Fin while(it.hasNext())
-        
+
+                //à partir de la on a le Hall 'h', la porte 'porte' et la parking 'p'
+                //avec le parking 'p', il faut récupérer les séjours 's'
+                //Récupération des séjours
+                    ArrayList<Sejour> lesSejours = new ArrayList<Sejour>(p.getLesSejours());
+                    Iterator<Sejour> itSejour = lesSejours.iterator();
+
+                    boolean parkAffiche = false;
+                    while(itSejour.hasNext()){
+                        // Affichage du parking une seule fois
+                        if (parkAffiche == false){
+                            info += "\n  "+p.getCode_park()+"\n";
+                            parkAffiche = true;
+                        }
+                        Sejour s = itSejour.next();
+                        s.getAvion().getImmat();
+                        info += "            " + s.getNumVolArrivee()+"   | "+ s.getTrancheHoraire().getDebutTrancheHoraire();               
+                        //info += "  "+p.getCode_park()+"    |   "+s.getNumVolArrivee()+"   | "+s.getTrancheHoraire().getDebutTrancheHoraire();
+                        info += "       |  "+s.getNumVolDepart()+"  |     "+s.getTrancheHoraire().getFinTrancheHoraire()+"   |    "+s.getAvion().getImmat()+"\n";
+                    }
+                }//fin while(itParking.hasNext())
+            }//Fin du if
+        } // Fin while(it.hasNext())
         
         return info;
     }
     
     public static void afficherEcranHallParkings(){
-        System.out.println(toStringEcranHallParkings());
+        System.out.println(toStringEcranHallParkings("1"));
+        System.out.println(toStringEcranHallParkings("2"));
+        System.out.println(toStringEcranHallParkings("3"));
+        System.out.println(toStringEcranHallParkings("4"));
     }
 }

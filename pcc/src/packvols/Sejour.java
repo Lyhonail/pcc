@@ -65,6 +65,10 @@ public class Sejour implements Comparable<Sejour> {
     public String getNumVolDepart(){
         return this.volDepart.getNum_vol();
     }
+    
+    public Avion getAvion(){
+        return avion;
+    }
             
     public void afficher(){
         System.out.println(this.toString());
