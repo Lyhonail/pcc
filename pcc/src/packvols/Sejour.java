@@ -57,6 +57,14 @@ public class Sejour implements Comparable<Sejour> {
     public Parking getParking(){
         return parking;
     }
+    
+    public String getNumVolArrivee(){
+        return this.volArrivee.getNum_vol();
+    }
+    
+    public String getNumVolDepart(){
+        return this.volDepart.getNum_vol();
+    }
             
     public void afficher(){
         System.out.println(this.toString());
@@ -194,6 +202,7 @@ public class Sejour implements Comparable<Sejour> {
                             TrancheHoraire thhc = new TrancheHoraire(phc.getDispo().getDebutTrancheHoraire(), s.dureeSejour.getFinTrancheHoraire());
                             TrancheHoraire hd = new TrancheHoraire(s.dureeSejour.getDebutTrancheHoraire(), s.dureeSejour.getFinTrancheHoraire());
                             phc.majTranche(thhc, hd);
+                            phc.majSejour(s);
                             affecte = true;
                         } //fin else
                     }//fin while(itphc.hasNext() && affecte == false)

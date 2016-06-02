@@ -90,6 +90,10 @@ public class Hall {
        return zone_enreg;
     }
     
+    public ArrayList<Porte> getLesPortes(){
+        return lesPortes;
+    }
+    
     public void ajouterPorte(Porte p){
         lesPortes.add(p);
     }
@@ -98,41 +102,51 @@ public class Hall {
         lesPortes.remove(p);
     }
     
-    public void toStringEcranHallParkings(){
-        String info = null;
+    public static String toStringEcranHallParkings(){
+        String info = "Affichages des parkings : \n";
         Parking p = null;
         //Affichage des Halls
         ArrayList<Hall> halls = new ArrayList<Hall>(lesHalls.values());
-        Iterator<Hall> it = halls.iterator(); 
+        Iterator<Hall> it = halls.iterator();
         while(it.hasNext()){
             Hall h = it.next();
+            info += "\n Hall "+h.num_hall+"\n";
+            info += "Parking | VolArrivee | Heure Arrivee | Vol Depart | Heure Depart\n";
             //Récupération des portes
-            Iterator itPortes = lesPortes.iterator();
+            Iterator itPortes = h.getLesPortes().iterator();
             while(itPortes.hasNext()){
             Porte porte = (Porte) itPortes.next();
             
             //récupération du parking en fonction de la porte
+            if(porte instanceof PorteHorsContact){ 
+              p = ((PorteHorsContact) porte).getParkingHC();
+              //info += "HorsContact\n";
+            } 
             if(porte instanceof PorteContact){
               p = ((PorteContact) porte).getParkingC();
+              //info += "contact\n";
             }
-            if(porte instanceof PorteHorsContact){ {
-              p = ((PorteHorsContact) porte).getParkingHC();
-            }
+
             //à partir de la on a le Hall 'h', la porte 'porte' et la parking 'p'
             //avec le parking 'p', il faut récupérer les séjours 's'
             //Récupération des séjours
-            //---JE ME SUIS ARRETE LA <<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> le reste est un brouillon
                 ArrayList<Sejour> lesSejours = new ArrayList<Sejour>(p.getLesSejours());
                 Iterator<Sejour> itSejour = lesSejours.iterator();
             
                 while(itSejour.hasNext()){
                     Sejour s = itSejour.next();
                 
-                    info += h.getNum_hall()+" | "+p.getCode_park()+" | "+s.getTrancheHoraire();
+                    info += "  "+p.getCode_park()+"    |   "+s.getNumVolArrivee()+"   | "+s.getTrancheHoraire().getDebutTrancheHoraire();
+                    info += "       |  "+s.getNumVolDepart()+"  |     "+s.getTrancheHoraire().getFinTrancheHoraire()+"\n";
                 }
             }//fin while(itParking.hasNext())
         }//Fin while(it.hasNext())
-        System.out.println( "salut hall parking \n"+info);
-        }
+        
+        
+        return info;
+    }
+    
+    public static void afficherEcranHallParkings(){
+        System.out.println(toStringEcranHallParkings());
     }
 }

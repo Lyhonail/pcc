@@ -63,6 +63,7 @@ public class Pcc {
         
         //if(! ta.contient(tb))System.out.println("vrai") ;
              
-
+Hall.afficherEcranHallParkings();
+//Parking.testString();
     }
 }
