@@ -25,6 +25,13 @@ public class PorteHorsContact extends Porte {
         return info;
     }
     
+    public ParkingHorsContact getParkingHC(){
+        ParkingHorsContact parkingHC = null;
+        Iterator<ParkingHorsContact> it = lesParkingsHC.iterator();
+        parkingHC = it.next();
+        return parkingHC;
+    }
+    
     public String toStringSansParkings(){
         return super.toString();
     }
