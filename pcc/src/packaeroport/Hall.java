@@ -5,9 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.StringTokenizer;
+import packvols.Sejour;
 
 public class Hall {
 
@@ -94,5 +96,28 @@ public class Hall {
     
     public void retirerPorte(Porte p){
         lesPortes.remove(p);
-    } 
+    }
+    
+    public static void toStringEcranHallParkings(){
+        String info = null;
+        //Affichage des parkings
+        ArrayList<Parking> sejours = new ArrayList<Parking>(Parking.getLesParkings().values());
+        //Collections.sort(sejours);
+        Iterator<Parking> itParking = sejours.iterator();
+        while(itParking.hasNext()){
+        Parking p = itParking.next();
+        info += "\n"+p.getCode_park()+" : \n";
+            //Affichage des séjours affectés
+            ArrayList<Sejour> lesSejours = new ArrayList<Sejour>(p.getLesSejours());
+            Iterator<Sejour> itSejour = lesSejours.iterator();
+            
+            while(itSejour.hasNext()){
+                Sejour s = itSejour.next();
+                
+                info += "\n"+s.getTrancheHoraire();
+            }
+        }//fin while(itParking.hasNext())
+        
+                 System.out.println( "salut hall parking \n"+info);
+    }
 }

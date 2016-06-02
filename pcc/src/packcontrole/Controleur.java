@@ -67,4 +67,6 @@ public class Controleur {
         info += Sejour.toStringEcranHall("4");
         return info;
     }
+    
+
 }

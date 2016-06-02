@@ -18,17 +18,20 @@ public abstract class Parking {
     private String code_park;
     private String zone;
     private TrancheHoraire dispo;
-    private ArrayList<TrancheHoraire> test;
+    private ArrayList<TrancheHoraire> tranche;
     private Hashtable <String, TrancheHoraire> trancheOccupee = new Hashtable<String, TrancheHoraire>();
     private static Hashtable<String, Parking> lesParkings = new Hashtable<String, Parking>();
-    private static Hashtable <String, TrancheHoraire> lesSejoursAffectés = new Hashtable<String, TrancheHoraire>();
+    private static Hashtable <String, TrancheHoraire> lesTranchessAffectés = new Hashtable<String, TrancheHoraire>();
+    
+    private ArrayList <Sejour> lesSejoursAffectés = new ArrayList <Sejour>();
 
     public Parking(String p, String z){
         code_park = p; zone = z;
         lesParkings.put(p, this);
-        lesSejoursAffectés = new Hashtable <String, TrancheHoraire>();
+        lesTranchessAffectés = new Hashtable <String, TrancheHoraire>();
         trancheOccupee = new Hashtable <String, TrancheHoraire>() ;
-        test = new ArrayList<TrancheHoraire>() ;
+        lesSejoursAffectés = new ArrayList <Sejour>();
+        tranche = new ArrayList<TrancheHoraire>() ;
         Horaire h = new Horaire(0,0);
         TrancheHoraire t = new TrancheHoraire(h,h);
         dispo = t;
@@ -46,8 +49,12 @@ public abstract class Parking {
         return zone;
     }
     
-    public ArrayList getTest(){
-        return test;
+    public ArrayList getTranche(){
+        return tranche;
+    }
+    
+    public ArrayList <Sejour> getLesSejours(){
+        return lesSejoursAffectés;
     }
 
     public static Hashtable <String, Parking> getLesParkings(){
@@ -56,18 +63,24 @@ public abstract class Parking {
     
     public void majTranche(TrancheHoraire t, TrancheHoraire hd){
         dispo = t;
-        test.add(hd);
+        tranche.add(hd);
         trancheOccupee.put("0", hd);
+        
+    }
+    
+    public void majSejour(Sejour s){
+        lesSejoursAffectés.add(s);
+        
     }
     
     
     public void majTrancheOccupee(TrancheHoraire t, String n){
-        lesSejoursAffectés.put(n, t);
+        lesTranchessAffectés.put(n, t);
         
     }
     
     public void AffecterSejour(Hashtable <String, TrancheHoraire> liste){        
-        lesSejoursAffectés = liste;        
+        lesTranchessAffectés = liste;        
     }
         
     public String toString() {
@@ -99,13 +112,16 @@ public abstract class Parking {
                 info += p.getDispo();
                 //ArrayList<TrancheHoraire> lesSejours = new ArrayList<TrancheHoraire>(trancheOccupee.values());
                 //Iterator<TrancheHoraire> itSejour = p.getTest().iterator();
-                Iterator<TrancheHoraire> itSejour = p.getTest().iterator(); 
-                while(itSejour.hasNext()){
-                    TrancheHoraire t = itSejour.next();
+                Iterator<TrancheHoraire> itTranche = p.getTranche().iterator(); 
+                while(itTranche.hasNext()){
+                    TrancheHoraire t = itTranche.next();
                     //recupère le toString d'un parking Contact ou Hors Contact
                     info += "\n"+t.toString();
                     }
-                } 
+                }
+            
+           
+            
         }
         return info;
     }

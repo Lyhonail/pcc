@@ -173,6 +173,7 @@ public class Sejour implements Comparable<Sejour> {
                         TrancheHoraire th = new TrancheHoraire(p.getDispo().getDebutTrancheHoraire(), s.dureeSejour.getFinTrancheHoraire());
                         TrancheHoraire hd = new TrancheHoraire(s.dureeSejour.getDebutTrancheHoraire(), s.dureeSejour.getFinTrancheHoraire());
                         p.majTranche(th, hd);
+                        p.majSejour(s);
                         affecte = true;
                     } //fin else
                     
