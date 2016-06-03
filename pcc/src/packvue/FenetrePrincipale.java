@@ -35,14 +35,14 @@ public  class FenetrePrincipale extends JFrame {
         // cr�ation des menus associ�s aux bandeau de la JFrame
         menu=new JMenuBar();
         this.setJMenuBar(menu);
-        menuSaisie=new  JMenu ("Saisie") ;
+        //menuSaisie=new  JMenu ("Saisie") ;
         menuAffichage=new JMenu("Affichage"); 
-        menu.add(menuSaisie); 
+        //menu.add(menuSaisie); 
         menu.add(menuAffichage);
 
         //cr�ation des composants
-        saisieEtudiant=new JMenuItem("SaisieXXX"); 
-        saisieNotes=new JMenuItem("SaisieYYY");
+        //saisieEtudiant=new JMenuItem("SaisieXXX"); 
+        //saisieNotes=new JMenuItem("SaisieYYY");
         afficherLesAvions=new JMenuItem("afficher les avions");
         afficherLesHalls=new JMenuItem("afficher les halls");
         afficherLesPortes=new JMenuItem("afficher les portes");
@@ -83,8 +83,8 @@ public  class FenetrePrincipale extends JFrame {
         
         //Ajouts des composants
         // affectation des sous-menus
-        menuSaisie.add(saisieEtudiant); 
-        menuSaisie.add(saisieNotes);
+        //menuSaisie.add(saisieEtudiant); 
+        //menuSaisie.add(saisieNotes);
         menuAffichage.add(afficherLesAvions);
         menuAffichage.add(afficherLesHalls);
         menuAffichage.add(afficherLesPortes);
@@ -112,7 +112,7 @@ public  class FenetrePrincipale extends JFrame {
     private class Ecouteur implements ActionListener{
         public void actionPerformed(ActionEvent ev){
             Object source=ev.getSource();
-            if(source==saisieEtudiant){
+            /*if(source==saisieEtudiant){
                 System.out. println("saisie xxxx");
                 //saisirEtudiant();
                 return;
@@ -121,7 +121,7 @@ public  class FenetrePrincipale extends JFrame {
                 System.out.println("saisie yyyy");
                 //saisirNotes();
                 return;
-            }
+            }*/
             if(source==afficherLesAvions) { 
                 System.out.println("afficher les Avions");
                 afficherLesAvions();
@@ -187,9 +187,10 @@ public  class FenetrePrincipale extends JFrame {
 
     //  les attributs
     private JMenuBar menu;
-    private JMenu menuSaisie,menuAffichage;
-    private JMenuItem   saisieEtudiant,saisieNotes,
-                        afficherLesAvions,
+    //private JMenu menuSaisie,menuAffichage;
+    //private JMenuItem   saisieEtudiant,saisieNotes,
+    private JMenu menuAffichage;  
+    private JMenuItem   afficherLesAvions,
                         afficherLesHalls,
                         afficherLesPortes,
                         afficherLesParkings,
@@ -265,8 +266,24 @@ public  class FenetrePrincipale extends JFrame {
                 "Saisie No Hall");
         if(numHall!=null){
             String info=monControleur.getNumHallString(numHall);
-            if (info!=null)
-                JOptionPane.showMessageDialog(this, info);
+            if (info!=null){
+                // recup carateristique de OptionPanel pour les restituer après
+                Object optionPaneBG = UIManager.get("OptionPane.background");
+                Object panelBG = UIManager.get("Panel.background");
+                Object msgFor = UIManager.get("OptionPane.messageForeground");
+                UIManager UI=new UIManager();   
+                // Modif couleur de fond et couleur du texte
+                UI.put("OptionPane.background", Color.BLUE);
+                UI.put("Panel.background", Color.BLUE);
+                UI.put("OptionPane.messageForeground", Color.WHITE);
+                
+                // affichage boite d'affichage
+                JOptionPane.showMessageDialog(this, info,"Ecran Hall",JOptionPane.PLAIN_MESSAGE);
+                // Restitution des caratèristiaues
+                UI.put("OptionPane.background", optionPaneBG);
+                UI.put("Panel.background", panelBG);
+                UI.put("OptionPane.messageForeground",msgFor);
+            }
             else
                 JOptionPane.showMessageDialog(this,"Hall: "+  numHall+
                     " inexistant!!!") ;
