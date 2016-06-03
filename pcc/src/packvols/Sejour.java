@@ -225,7 +225,7 @@ public class Sejour implements Comparable<Sejour> {
     public void affecterParking(Parking p){
         parking = p;
     }
-    
+/*    
     public static String toStringEcranHall(String numHall){
         // Affichage de la hastable lesSejours
         // numHall = "3";
@@ -256,5 +256,6 @@ public class Sejour implements Comparable<Sejour> {
         }
         return(info);
     }
+*/
 }
 

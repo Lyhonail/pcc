@@ -3,6 +3,7 @@ package packcontrole;
 import packvue.FenetrePrincipale;
 import java.util.Vector;
 import packaeroport.Hall;
+import packaeroport.HallInvalide;
 import packaeroport.Parking;
 import packaeroport.Porte;
 import packvols.Avion;
@@ -59,14 +60,25 @@ public class Controleur {
     public String toStringEcranVolsDepart(){
         return VolDepart.toStringEcranLesVols();
     }
+/*
     public String toStringEcranHall(){
         // ODX: no de hall En dur pour l'instant
-        String info = Sejour.toStringEcranHall("1");
-        info += Sejour.toStringEcranHall("2");
-        info += Sejour.toStringEcranHall("3");
-        info += Sejour.toStringEcranHall("4");
+        String info = Hall.toStringEcranHall("1");
+        info += Hall.toStringEcranHall("2");
+        info += Hall.toStringEcranHall("3");
+        info += Hall.toStringEcranHall("4");
         return info;
     }
-    
+*/    
+    public String getNumHallString(String numHall){ 
+        String info=null;
+        //try{
+            //info=Hall.getHall(numHall).toString();
+            info = Hall.toStringEcranHall(numHall);
+        //}
+        //catch(HallInvalide e){
+        //}
+        return info;
+    }
 
 }

@@ -1,6 +1,7 @@
 package packvue;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.HeadlessException;
 import static java.awt.SystemColor.menu;
 import java.awt.event.ActionEvent;
@@ -58,9 +59,12 @@ public  class FenetrePrincipale extends JFrame {
         //creation de la zone d'affichage
         zoneTexte=new JTextArea();
         JScrollPane texteAsc=new JScrollPane(zoneTexte);
-        System.setProperty("myColor", "0X87CEFA");
-        zoneTexte.setBackground(Color.getColor("myColor"));
-
+        //System.setProperty("myColor", "0X87CEFA");
+        //zoneTexte.setBackground(Color.getColor("myColor"));
+        zoneTexte.setBackground(Color.blue);
+        zoneTexte.setForeground(Color.WHITE);
+        //zoneTexte.setFont(new Font("Cambria", Font.BOLD, 16));
+        
         //Ajout des �couteur
         //saisieEtudiant.addActionListener(monEcouteur); 
         //saisieNotes.addActionListener(monEcouteur); 
@@ -254,7 +258,18 @@ public  class FenetrePrincipale extends JFrame {
         zoneTexte.setText(info);
     }
     public void afficherEcranHall(){
-        String info=monControleur.toStringEcranHall();
-        zoneTexte.setText(info);
+        //String info=monControleur.toStringEcranHall();
+        //zoneTexte.setText(info);
+        
+        String numHall=JOptionPane.showInputDialog(this,  "No Hall?",
+                "Saisie No Hall");
+        if(numHall!=null){
+            String info=monControleur.getNumHallString(numHall);
+            if (info!=null)
+                JOptionPane.showMessageDialog(this, info);
+            else
+                JOptionPane.showMessageDialog(this,"Hall: "+  numHall+
+                    " inexistant!!!") ;
+        }
     }
 }
