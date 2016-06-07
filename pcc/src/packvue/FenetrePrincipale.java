@@ -6,15 +6,19 @@ import java.awt.HeadlessException;
 import static java.awt.SystemColor.menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
 import static jdk.nashorn.internal.objects.NativeRegExp.source;
 import packcontrole.Controleur;
 import packvols.Avion;
@@ -55,10 +59,15 @@ public  class FenetrePrincipale extends JFrame {
         afficherEcranVolsArrivee=new JMenuItem("afficher Ecran Passagers les vols d'arrivee");
         afficherEcranVolsDepart=new JMenuItem("afficher Ecran Passagers les vols de depart");
         afficherEcranHall=new JMenuItem("afficher Ecran Hall");
-        
+        //Pour affichage image de fond
+        //JLabel label1 = new JLabel(new ImageIcon("avion.jpg"));
+
+
         //creation de la zone d'affichage
         zoneTexte=new JTextArea();
         JScrollPane texteAsc=new JScrollPane(zoneTexte);
+        // pour affichage image de fond
+        //zoneTexte.add(label1);
         //System.setProperty("myColor", "0X87CEFA");
         //zoneTexte.setBackground(Color.getColor("myColor"));
         zoneTexte.setBackground(Color.blue);
@@ -104,6 +113,7 @@ public  class FenetrePrincipale extends JFrame {
         setBounds(5,5,750,750);
         setVisible(true);
         this.setTitle("Aeroport ORLY W") ;
+ 
 
         //arr�t de l'ex�cution sur fermeture de la fen�tre
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -204,6 +214,7 @@ public  class FenetrePrincipale extends JFrame {
                         afficherEcranHall;
                         
     private JTextArea zoneTexte;
+    private JLabel label1;
 
     // les  méthodes
     public void afficherLesAvions(){
@@ -249,14 +260,20 @@ public  class FenetrePrincipale extends JFrame {
     public void afficherEcranLesVols(){
         String info=monControleur.toStringEcranLesVols();
         zoneTexte.setText(info);
+        //positionner l'ascenceur en position 
+        zoneTexte.setCaretPosition(0);
     }
     public void afficherEcranVolsArrivee(){
         String info=monControleur.toStringEcranVolsArrivee();
         zoneTexte.setText(info);
+        //positionner l'ascenceur en position 
+        zoneTexte.setCaretPosition(0);
     }
     public void afficherEcranVolsDepart(){
         String info=monControleur.toStringEcranVolsDepart();
         zoneTexte.setText(info);
+        //positionner l'ascenceur en position 
+        zoneTexte.setCaretPosition(0);
     }
     public void afficherEcranHall(){
         //String info=monControleur.toStringEcranHall();
@@ -276,9 +293,13 @@ public  class FenetrePrincipale extends JFrame {
                 UI.put("OptionPane.background", Color.BLUE);
                 UI.put("Panel.background", Color.BLUE);
                 UI.put("OptionPane.messageForeground", Color.WHITE);
+                // Modif Police pour que l'affichage ne soit pas décaler
+                Font f1 = new Font("Monospaced",Font.BOLD,12);
+                UI.put("OptionPane.messageFont",f1);
                 
                 // affichage boite d'affichage
-                JOptionPane.showMessageDialog(this, info,"Ecran Hall",JOptionPane.PLAIN_MESSAGE);
+                
+                JOptionPane.showMessageDialog(this, info,"Ecran Hall no "+numHall ,JOptionPane.PLAIN_MESSAGE);
                 // Restitution des caratèristiaues
                 UI.put("OptionPane.background", optionPaneBG);
                 UI.put("Panel.background", panelBG);
