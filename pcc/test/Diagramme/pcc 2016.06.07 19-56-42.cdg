@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="pcc">
+  <ClassDiagramComponents>
+    <Class name="Aeroport" package="packaeroport" visibility="public" xPosition="775.0" yPosition="55.0">
+      <Fields>
+        <Field name="nom" type="String" visibility="private"/>
+        <Field name="lesAvions" type="Vector&lt;Avion&gt;" visibility="private"/>
+        <Field name="lesHalls" type="Vector&lt;Hall&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="a"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="ajouter" returnType="void" visibility="public">
+          <Argument type="Avion" name="a"/>
+        </Method>
+        <Method name="ajouterHall" returnType="void" visibility="public">
+          <Argument type="Hall" name="h"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="afficher" returnType="void" visibility="public"/>
+        <Method name="getNom" returnType="String" visibility="public"/>
+        <Method name="associerHallslPortes" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="associerPortesParkings" returnType="void" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="Hall" package="packaeroport" visibility="public" xPosition="1194.0" yPosition="31.0">
+      <Fields>
+        <Field name="num_hall" type="String" visibility="private"/>
+        <Field name="lesPortes" type="ArrayList&lt;Porte&gt;" visibility="private"/>
+        <Field name="zone_enreg" type="String" visibility="private"/>
+        <Field name="lesHalls" type="Hashtable&lt;String, Hall&gt;" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="n"/>
+          <Argument type="String" name="ze"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getHall" returnType="Hall" visibility="public" isStatic="true">
+          <Argument type="String" name="num_hall"/>
+        </Method>
+        <Method name="getNum_hall" returnType="String" visibility="public"/>
+        <Method name="getZone_enreg" returnType="String" visibility="public"/>
+        <Method name="getLesPortes" returnType="ArrayList&lt;Porte&gt;" visibility="public"/>
+        <Method name="afficher" returnType="void" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="ajouterPorte" returnType="void" visibility="public">
+          <Argument type="Porte" name="p"/>
+        </Method>
+        <Method name="retirerPorte" returnType="void" visibility="public">
+          <Argument type="Porte" name="p"/>
+        </Method>
+        <Method name="afficherLesHalls" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="toStringLesHalls" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="creerHalls" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="toStringEcranHall" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="numHall"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="HallInvalide" package="packaeroport" visibility="public" xPosition="20.0" yPosition="197.0">
+      <Fields>
+        <Field name="num_hall" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="num_hall"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Parking" package="packaeroport" visibility="public" isAbstract="true" xPosition="2461.0" yPosition="971.0">
+      <Fields>
+        <Field name="code_park" type="String" visibility="private"/>
+        <Field name="zone" type="String" visibility="private"/>
+        <Field name="dispo" type="TrancheHoraire" visibility="private"/>
+        <Field name="tranche" type="ArrayList&lt;TrancheHoraire&gt;" visibility="private"/>
+        <Field name="lesSejoursAffectes" type="ArrayList&lt;Sejour&gt;" visibility="private"/>
+        <Field name="trancheOccupee" type="Hashtable&lt;String, TrancheHoraire&gt;" visibility="private"/>
+        <Field name="lesParkings" type="Hashtable&lt;String, Parking&gt;" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="lesTranchessAffectes" type="Hashtable&lt;String, TrancheHoraire&gt;" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="p"/>
+          <Argument type="String" name="z"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCode_park" returnType="String" visibility="public"/>
+        <Method name="getDispo" returnType="TrancheHoraire" visibility="public"/>
+        <Method name="getZone" returnType="String" visibility="public"/>
+        <Method name="getTranche" returnType="ArrayList" visibility="public"/>
+        <Method name="getLesSejours" returnType="ArrayList&lt;Sejour&gt;" visibility="public"/>
+        <Method name="getLesParkings" returnType="Hashtable&lt;String, Parking&gt;" visibility="public" isStatic="true"/>
+        <Method name="majTranche" returnType="void" visibility="public">
+          <Argument type="TrancheHoraire" name="t"/>
+          <Argument type="TrancheHoraire" name="hd"/>
+        </Method>
+        <Method name="majSejour" returnType="void" visibility="public">
+          <Argument type="Sejour" name="s"/>
+        </Method>
+        <Method name="majTrancheOccupee" returnType="void" visibility="public">
+          <Argument type="TrancheHoraire" name="t"/>
+          <Argument type="String" name="n"/>
+        </Method>
+        <Method name="AffecterSejour" returnType="void" visibility="public">
+          <Argument type="Hashtable&lt;String, TrancheHoraire&gt;" name="liste"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="afficher" returnType="void" visibility="public"/>
+        <Method name="toStringLesParkings" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="afficherLesParkings" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="creerParkings" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="getParking" returnType="Parking" visibility="public" isStatic="true">
+          <Argument type="String" name="num_park"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ParkingContact" package="packaeroport" visibility="public" xPosition="2970.0" yPosition="256.0">
+      <Fields>
+        <Field name="porteC" type="PorteContact" visibility="private"/>
+        <Field name="lesParkingsContact" type="Hashtable&lt;String, ParkingContact&gt;" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="code_p"/>
+          <Argument type="String" name="zone"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getPorteC" returnType="Porte" visibility="public"/>
+        <Method name="afficherLesParkingsContact" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="toStringSansPortes" returnType="String" visibility="public"/>
+        <Method name="affecterPorte" returnType="void" visibility="public">
+          <Argument type="PorteContact" name="p"/>
+        </Method>
+        <Method name="desaffecterPorte" returnType="void" visibility="public"/>
+        <Method name="getLesParkingsContact" returnType="Hashtable&lt;String, ParkingContact&gt;" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="ParkingHorsContact" package="packaeroport" visibility="public" xPosition="2426.0" yPosition="529.0">
+      <Fields>
+        <Field name="lesPortesHorsContact" type="ArrayList" visibility="private"/>
+        <Field name="lesParkingsHorsContact" type="Hashtable&lt;String, ParkingHorsContact&gt;" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="code_p"/>
+          <Argument type="String" name="zone"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toStringSansPortes" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="ajouterPorte" returnType="void" visibility="public">
+          <Argument type="Porte" name="porte"/>
+        </Method>
+        <Method name="retirerPorte" returnType="void" visibility="public">
+          <Argument type="Porte" name="porte"/>
+        </Method>
+        <Method name="getLesParkingsHorsContact" returnType="Hashtable&lt;String, ParkingHorsContact&gt;" visibility="public" isStatic="true"/>
+        <Method name="getPorteHC" returnType="Porte" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ParkingInvalide" package="packaeroport" visibility="public" xPosition="22.0" yPosition="1036.0">
+      <Fields>
+        <Field name="num_park" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="num_park"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Porte" package="packaeroport" visibility="public" isAbstract="true" xPosition="1764.0" yPosition="31.0">
+      <Fields>
+        <Field name="num_porte" type="String" visibility="private"/>
+        <Field name="zone_enreg" type="String" visibility="private"/>
+        <Field name="hall" type="Hall" visibility="private"/>
+        <Field name="lesPortes" type="Hashtable&lt;String, Porte&gt;" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="p"/>
+          <Argument type="String" name="ze"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="afficher" returnType="void" visibility="public"/>
+        <Method name="getNum_porte" returnType="String" visibility="public"/>
+        <Method name="getZone_enreg" returnType="String" visibility="public"/>
+        <Method name="getHall" returnType="Hall" visibility="public"/>
+        <Method name="affecterHall" returnType="void" visibility="public">
+          <Argument type="Hall" name="h"/>
+        </Method>
+        <Method name="desaffecterHall" returnType="void" visibility="public"/>
+        <Method name="afficherLesPortes" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="toStringLesPortes" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="getPorte" returnType="Porte" visibility="public" isStatic="true">
+          <Argument type="String" name="num_porte"/>
+        </Method>
+        <Method name="creerPortes" returnType="void" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="PorteContact" package="packaeroport" visibility="public" xPosition="2390.0" yPosition="68.0">
+      <Fields>
+        <Field name="parkingC" type="ParkingContact" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="p"/>
+          <Argument type="String" name="ze"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getParkingC" returnType="ParkingContact" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="toStringSansParkings" returnType="String" visibility="public"/>
+        <Method name="affecterParking" returnType="void" visibility="public">
+          <Argument type="ParkingContact" name="p"/>
+        </Method>
+        <Method name="desaffecterParking" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PorteHorsContact" package="packaeroport" visibility="public" xPosition="1957.0" yPosition="529.0">
+      <Fields>
+        <Field name="lesParkingsHC" type="ArrayList&lt;ParkingHorsContact&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="p"/>
+          <Argument type="String" name="ze"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getParkingHC" returnType="ParkingHorsContact" visibility="public"/>
+        <Method name="toStringSansParkings" returnType="String" visibility="public"/>
+        <Method name="ajouterParking" returnType="void" visibility="public">
+          <Argument type="ParkingHorsContact" name="p"/>
+        </Method>
+        <Method name="retirerParking" returnType="void" visibility="public">
+          <Argument type="ParkingHorsContact" name="p"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PorteInvalide" package="packaeroport" visibility="public" xPosition="20.0" yPosition="31.0">
+      <Fields>
+        <Field name="num_porte" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="num_porte"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Controleur" package="packcontrole" visibility="public" xPosition="486.0" yPosition="1521.0">
+      <Fields>
+        <Field name="maFenetre" type="FenetrePrincipale" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="toStringLesAvions" returnType="String" visibility="public"/>
+        <Method name="toStringLesHalls" returnType="String" visibility="public"/>
+        <Method name="toStringLesPortes" returnType="String" visibility="public"/>
+        <Method name="toStringLesParkings" returnType="String" visibility="public"/>
+        <Method name="toStringLesVols" returnType="String" visibility="public"/>
+        <Method name="toStringLesVolsArrivee" returnType="String" visibility="public"/>
+        <Method name="toStringLesVolsDepart" returnType="String" visibility="public"/>
+        <Method name="toStringLesSejours" returnType="String" visibility="public"/>
+        <Method name="toStringEcranLesVols" returnType="String" visibility="public"/>
+        <Method name="toStringEcranVolsArrivee" returnType="String" visibility="public"/>
+        <Method name="toStringEcranVolsDepart" returnType="String" visibility="public"/>
+        <Method name="getNumHallString" returnType="String" visibility="public">
+          <Argument type="String" name="numHall"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Duree" package="packhoraires" visibility="public" xPosition="1996.0" yPosition="1663.0">
+      <Fields>
+        <Field name="heures" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="h"/>
+          <Argument type="int" name="m"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="m"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="dureeEnMinutes" returnType="int" visibility="public"/>
+        <Method name="ajout" returnType="Duree" visibility="public">
+          <Argument type="Duree" name="d"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="afficher" returnType="void" visibility="public"/>
+        <Method name="compareTo" returnType="int" visibility="public">
+          <Argument type="Object" name="o"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Horaire" package="packhoraires" visibility="public" xPosition="1056.0" yPosition="1560.0">
+      <Fields>
+        <Field name="heures" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="h"/>
+          <Argument type="int" name="m"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="m"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="horaireEnMinutes" returnType="int" visibility="public"/>
+        <Method name="ajout" returnType="Horaire" visibility="public">
+          <Argument type="Duree" name="d"/>
+        </Method>
+        <Method name="retrait" returnType="Horaire" visibility="public">
+          <Argument type="Duree" name="d"/>
+        </Method>
+        <Method name="retrait" returnType="Duree" visibility="public">
+          <Argument type="Horaire" name="h"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="afficher" returnType="void" visibility="public"/>
+        <Method name="compareTo" returnType="int" visibility="public">
+          <Argument type="Object" name="o"/>
+        </Method>
+        <Method name="clone" returnType="Object" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="o"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TrancheHoraire" package="packhoraires" visibility="public" xPosition="1518.0" yPosition="1335.0">
+      <Fields>
+        <Field name="debut" type="Horaire" visibility="private"/>
+        <Field name="fin" type="Horaire" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Horaire" name="d"/>
+          <Argument type="Horaire" name="f"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDebutTrancheHoraire" returnType="Horaire" visibility="public"/>
+        <Method name="getFinTrancheHoraire" returnType="Horaire" visibility="public"/>
+        <Method name="contientStrictement" returnType="boolean" visibility="public">
+          <Argument type="Horaire" name="h"/>
+        </Method>
+        <Method name="contient" returnType="boolean" visibility="public">
+          <Argument type="Horaire" name="h"/>
+        </Method>
+        <Method name="dansTrancheHoraire" returnType="boolean" visibility="public">
+          <Argument type="TrancheHoraire" name="t"/>
+        </Method>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="o"/>
+        </Method>
+        <Method name="contient" returnType="boolean" visibility="public">
+          <Argument type="TrancheHoraire" name="t"/>
+        </Method>
+        <Method name="nombrePartitions" returnType="int" visibility="public">
+          <Argument type="TrancheHoraire" name="t"/>
+        </Method>
+        <Method name="dansTrancheHoraire" returnType="boolean" visibility="public">
+          <Argument type="Horaire" name="d"/>
+          <Argument type="Horaire" name="f"/>
+        </Method>
+        <Method name="intersection" returnType="TrancheHoraire" visibility="public">
+          <Argument type="TrancheHoraire" name="t"/>
+        </Method>
+        <Method name="getDuree" returnType="Duree" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Pcc" package="packpcc" visibility="public" xPosition="22.0" yPosition="894.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Avion" package="packvols" visibility="public" xPosition="264.0" yPosition="55.0">
+      <Fields>
+        <Field name="immat" type="String" visibility="private"/>
+        <Field name="modele" type="String" visibility="private"/>
+        <Field name="lesAvions" type="Hashtable&lt;String, Avion&gt;" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="i"/>
+          <Argument type="String" name="m"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="afficher" returnType="void" visibility="public"/>
+        <Method name="getImmat" returnType="String" visibility="public"/>
+        <Method name="getAvion" returnType="Avion" visibility="public" isStatic="true">
+          <Argument type="String" name="num_avion"/>
+        </Method>
+        <Method name="getModele" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="creerLesAvions" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="toStringLesAvions" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="afficherLesAvions" returnType="void" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="AvionInvalide" package="packvols" visibility="public" xPosition="20.0" yPosition="366.0">
+      <Fields>
+        <Field name="num_avion" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="num_avion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Sejour" package="packvols" visibility="public" xPosition="1256.0" yPosition="575.0">
+      <Fields>
+        <Field name="dureeSejour" type="TrancheHoraire" visibility="private"/>
+        <Field name="parking" type="Parking" visibility="private"/>
+        <Field name="num_volArrivee" type="String" visibility="private"/>
+        <Field name="avion" type="Avion" visibility="private"/>
+        <Field name="volArrivee" type="VolArrivee" visibility="private"/>
+        <Field name="volDepart" type="VolDepart" visibility="private"/>
+        <Field name="lesSejours" type="Hashtable&lt;String, Sejour&gt;" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="TrancheHoraire" name="t"/>
+          <Argument type="VolArrivee" name="va"/>
+          <Argument type="VolDepart" name="vd"/>
+          <Argument type="Parking" name="p"/>
+          <Argument type="Avion" name="a"/>
+          <Argument type="String" name="num_va"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="compareTo" returnType="int" visibility="public">
+          <Argument type="Sejour" name="v"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getParking" returnType="Parking" visibility="public"/>
+        <Method name="getNumVolArrivee" returnType="String" visibility="public"/>
+        <Method name="getNumVolDepart" returnType="String" visibility="public"/>
+        <Method name="getAvion" returnType="Avion" visibility="public"/>
+        <Method name="afficher" returnType="void" visibility="public"/>
+        <Method name="getLesSejours" returnType="Hashtable&lt;String, Sejour&gt;" visibility="public" isStatic="true"/>
+        <Method name="getSejour" returnType="Sejour" visibility="public" isStatic="true">
+          <Argument type="String" name="s"/>
+        </Method>
+        <Method name="creerLesSejours" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="afficherLesSejours" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="toStringLesSejours" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="associerSejoursParkings" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="getTrancheHoraire" returnType="TrancheHoraire" visibility="public"/>
+        <Method name="affecterParking" returnType="void" visibility="public">
+          <Argument type="Parking" name="p"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SejourInvalide" package="packvols" visibility="public" xPosition="22.0" yPosition="548.0">
+      <Fields>
+        <Field name="num_sejour" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="id_sejour"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Vol" package="packvols" visibility="public" isAbstract="true" xPosition="291.0" yPosition="945.0">
+      <Fields>
+        <Field name="num_vol" type="String" visibility="private"/>
+        <Field name="horaire" type="Horaire" visibility="private"/>
+        <Field name="avion" type="Avion" visibility="private"/>
+        <Field name="sejour" type="Sejour" visibility="private"/>
+        <Field name="lesVols" type="Hashtable&lt;String, Vol&gt;" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="num_vol"/>
+          <Argument type="Horaire" name="horaire"/>
+          <Argument type="Avion" name="avion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="affecterSejour" returnType="void" visibility="public">
+          <Argument type="Sejour" name="s"/>
+        </Method>
+        <Method name="compareTo" returnType="int" visibility="public">
+          <Argument type="Vol" name="v"/>
+        </Method>
+        <Method name="getNum_vol" returnType="String" visibility="public"/>
+        <Method name="getHoraire" returnType="Horaire" visibility="public"/>
+        <Method name="getAvion" returnType="Avion" visibility="public"/>
+        <Method name="getSejour" returnType="Sejour" visibility="public"/>
+        <Method name="getVol" returnType="Vol" visibility="public" isStatic="true">
+          <Argument type="String" name="v"/>
+        </Method>
+        <Method name="getLesVols" returnType="Hashtable&lt;String, Vol&gt;" visibility="public" isStatic="true"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="afficher" returnType="void" visibility="public"/>
+        <Method name="creerLesVols" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="toStringEcranLesVols" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="afficherEcranLesVols" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="toStringLesVols" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="afficherLesVols" returnType="void" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="VolArrivee" package="packvols" visibility="public" xPosition="498.0" yPosition="643.0">
+      <Fields>
+        <Field name="provenance" type="String" visibility="package"/>
+        <Field name="lesVolsArrivee" type="Hashtable&lt;String, VolArrivee&gt;" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="num_vol"/>
+          <Argument type="Horaire" name="horaire"/>
+          <Argument type="Avion" name="avion"/>
+          <Argument type="String" name="prov"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getProvenance" returnType="String" visibility="public"/>
+        <Method name="toStringLesVols" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="toStringEcranLesVols" returnType="String" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="VolDepart" package="packvols" visibility="public" xPosition="986.0" yPosition="1228.0">
+      <Fields>
+        <Field name="destination" type="String" visibility="package"/>
+        <Field name="lesVolsDepart" type="Hashtable&lt;String, VolDepart&gt;" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="num_vol"/>
+          <Argument type="Horaire" name="horaire"/>
+          <Argument type="Avion" name="avion"/>
+          <Argument type="String" name="dep"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getdestination" returnType="String" visibility="public"/>
+        <Method name="toStringLesVols" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="toStringEcranLesVols" returnType="String" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="VolInvalide" package="packvols" visibility="public" xPosition="20.0" yPosition="719.0">
+      <Fields>
+        <Field name="num_vol" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="num_vol"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="FenetrePrincipale" package="packvue" visibility="public" xPosition="33.0" yPosition="1473.0">
+      <Fields>
+        <Field name="monControleur" type="Controleur" visibility="private"/>
+        <Field name="monEcouteur" type="Ecouteur" visibility="private"/>
+        <Field name="menu" type="JMenuBar" visibility="private"/>
+        <Field name="menuAffichage" type="JMenu" visibility="private"/>
+        <Field name="afficherLesAvions" type="JMenuItem" visibility="private"/>
+        <Field name="zoneTexte" type="JTextArea" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Controleur" name="c"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="afficherLesAvions" returnType="void" visibility="public"/>
+        <Method name="afficherLesHalls" returnType="void" visibility="public"/>
+        <Method name="afficherLesPortes" returnType="void" visibility="public"/>
+        <Method name="afficherLesParkings" returnType="void" visibility="public"/>
+        <Method name="afficherLesVols" returnType="void" visibility="public"/>
+        <Method name="afficherLesVolsArrivee" returnType="void" visibility="public"/>
+        <Method name="afficherLesVolsDepart" returnType="void" visibility="public"/>
+        <Method name="afficherLesSejours" returnType="void" visibility="public"/>
+        <Method name="afficherEcranLesVols" returnType="void" visibility="public"/>
+        <Method name="afficherEcranVolsArrivee" returnType="void" visibility="public"/>
+        <Method name="afficherEcranVolsDepart" returnType="void" visibility="public"/>
+        <Method name="afficherEcranHall" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="packvols.Vol" target="packvols.Sejour" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="packaeroport.PorteHorsContact" target="packaeroport.Porte"/>
+    <HasRelation name="lesPortes" source="packaeroport.Hall" target="packaeroport.Porte" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Porte&gt;"/>
+    <HasRelation name="sejour" source="packvols.Vol" target="packvols.Sejour" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="packaeroport.ParkingHorsContact" target="packaeroport.Parking"/>
+    <UseRelation source="packvols.Avion" target="packvols.Avion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lesVols" source="packvols.Vol" target="packvols.Vol" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tranche" source="packaeroport.Parking" target="packhoraires.TrancheHoraire" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;TrancheHoraire&gt;"/>
+    <HasRelation name="debut" source="packhoraires.TrancheHoraire" target="packhoraires.Horaire" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.ParkingContact" target="packaeroport.ParkingContact" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="avion" source="packvols.Sejour" target="packvols.Avion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.ParkingHorsContact" target="packaeroport.ParkingHorsContact" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packvols.Sejour" target="packvols.Avion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.PorteHorsContact" target="packaeroport.ParkingHorsContact" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.Aeroport" target="packvols.Avion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="porteC" source="packaeroport.ParkingContact" target="packaeroport.PorteContact" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packvols.Sejour" target="packhoraires.TrancheHoraire" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lesSejours" source="packvols.Sejour" target="packvols.Sejour" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.Porte" target="packaeroport.Hall" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packvols.Vol" target="packvols.Vol" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="hall" source="packaeroport.Porte" target="packaeroport.Hall" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="packvols.VolDepart" target="packvols.Vol"/>
+    <UseRelation source="packhoraires.Duree" target="packhoraires.Duree" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packhoraires.TrancheHoraire" target="packhoraires.TrancheHoraire" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packvols.Sejour" target="packaeroport.Parking" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lesParkingsHC" source="packaeroport.PorteHorsContact" target="packaeroport.ParkingHorsContact" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;ParkingHorsContact&gt;"/>
+    <HasRelation name="lesParkingsHorsContact" source="packaeroport.ParkingHorsContact" target="packaeroport.ParkingHorsContact" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="avion" source="packvols.Vol" target="packvols.Avion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packhoraires.Horaire" target="packhoraires.Horaire" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.Parking" target="packvols.Sejour" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dureeSejour" source="packvols.Sejour" target="packhoraires.TrancheHoraire" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.Parking" target="packaeroport.Parking" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lesVolsArrivee" source="packvols.VolArrivee" target="packvols.VolArrivee" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="volArrivee" source="packvols.Sejour" target="packvols.VolArrivee" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.ParkingContact" target="packaeroport.PorteContact" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lesTranchessAffectes" source="packaeroport.Parking" target="packhoraires.TrancheHoraire" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="volDepart" source="packvols.Sejour" target="packvols.VolDepart" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lesHalls" source="packaeroport.Hall" target="packaeroport.Hall" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="parkingC" source="packaeroport.PorteContact" target="packaeroport.ParkingContact" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.Hall" target="packaeroport.Hall" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="monControleur" source="packvue.FenetrePrincipale" target="packcontrole.Controleur" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lesAvions" source="packvols.Avion" target="packvols.Avion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lesSejoursAffectes" source="packaeroport.Parking" target="packvols.Sejour" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Sejour&gt;"/>
+    <HasRelation name="lesAvions" source="packaeroport.Aeroport" target="packvols.Avion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fin" source="packhoraires.TrancheHoraire" target="packhoraires.Horaire" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.Parking" target="packhoraires.TrancheHoraire" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lesHalls" source="packaeroport.Aeroport" target="packaeroport.Hall" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packvols.Sejour" target="packvols.Sejour" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.Hall" target="packaeroport.Porte" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="packvols.VolArrivee" target="packvols.Vol"/>
+    <UseRelation source="packhoraires.TrancheHoraire" target="packhoraires.Horaire" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packhoraires.TrancheHoraire" target="packhoraires.Duree" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.Porte" target="packaeroport.Porte" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="packaeroport.PorteContact" target="packaeroport.Porte"/>
+    <HasRelation name="lesParkings" source="packaeroport.Parking" target="packaeroport.Parking" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.PorteContact" target="packaeroport.ParkingContact" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.ParkingHorsContact" target="packaeroport.Porte" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packvols.Vol" target="packvols.Avion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lesPortes" source="packaeroport.Porte" target="packaeroport.Porte" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.ParkingContact" target="packaeroport.Porte" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lesParkingsContact" source="packaeroport.ParkingContact" target="packaeroport.ParkingContact" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="packaeroport.ParkingContact" target="packaeroport.Parking"/>
+    <HasRelation name="trancheOccupee" source="packaeroport.Parking" target="packhoraires.TrancheHoraire" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packvols.Vol" target="packhoraires.Horaire" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="parking" source="packvols.Sejour" target="packaeroport.Parking" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dispo" source="packaeroport.Parking" target="packhoraires.TrancheHoraire" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="maFenetre" source="packcontrole.Controleur" target="packvue.FenetrePrincipale" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="horaire" source="packvols.Vol" target="packhoraires.Horaire" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="packaeroport.Aeroport" target="packaeroport.Hall" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lesVolsDepart" source="packvols.VolDepart" target="packvols.VolDepart" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
