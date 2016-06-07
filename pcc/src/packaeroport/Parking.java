@@ -9,9 +9,8 @@ import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.StringTokenizer;
-import packhoraires.Horaire;
-import packhoraires.TrancheHoraire;
-import packvols.Sejour;
+import packhoraires.*;
+import packvols.*;
 
 public abstract class Parking {
 
@@ -19,11 +18,12 @@ public abstract class Parking {
     private String zone;
     private TrancheHoraire dispo;
     private ArrayList<TrancheHoraire> tranche;
-    private Hashtable <String, TrancheHoraire> trancheOccupee = new Hashtable<String, TrancheHoraire>();
-    private static Hashtable<String, Parking> lesParkings = new Hashtable<String, Parking>();
-    private static Hashtable <String, TrancheHoraire> lesTranchessAffectés = new Hashtable<String, TrancheHoraire>();
-    
     private ArrayList <Sejour> lesSejoursAffectés = new ArrayList <Sejour>();
+    private Hashtable <String, TrancheHoraire> trancheOccupee = new Hashtable<String, TrancheHoraire>();
+    private static final Hashtable<String, Parking> lesParkings = new Hashtable<String, Parking>();
+    private static Hashtable <String, TrancheHoraire> lesTranchessAffectés = new Hashtable<>();
+    
+    
 
     public Parking(String p, String z){
         code_park = p; zone = z;
