@@ -18,19 +18,19 @@ public abstract class Parking {
     private String zone;
     private TrancheHoraire dispo;
     private ArrayList<TrancheHoraire> tranche;
-    private ArrayList <Sejour> lesSejoursAffectés = new ArrayList <Sejour>();
+    private ArrayList <Sejour> lesSejoursAffectes = new ArrayList <Sejour>();
     private Hashtable <String, TrancheHoraire> trancheOccupee = new Hashtable<String, TrancheHoraire>();
     private static final Hashtable<String, Parking> lesParkings = new Hashtable<String, Parking>();
-    private static Hashtable <String, TrancheHoraire> lesTranchessAffectés = new Hashtable<>();
+    private static Hashtable <String, TrancheHoraire> lesTranchessAffectes = new Hashtable<>();
     
     
 
     public Parking(String p, String z){
         code_park = p; zone = z;
         lesParkings.put(p, this);
-        lesTranchessAffectés = new Hashtable <String, TrancheHoraire>();
+        lesTranchessAffectes = new Hashtable <String, TrancheHoraire>();
         trancheOccupee = new Hashtable <String, TrancheHoraire>() ;
-        lesSejoursAffectés = new ArrayList <Sejour>();
+        lesSejoursAffectes = new ArrayList <Sejour>();
         tranche = new ArrayList<TrancheHoraire>() ;
         Horaire h = new Horaire(0,0);
         TrancheHoraire t = new TrancheHoraire(h,h);
@@ -54,7 +54,7 @@ public abstract class Parking {
     }
     
     public ArrayList <Sejour> getLesSejours(){
-        return lesSejoursAffectés;
+        return lesSejoursAffectes;
     }
 
     public static Hashtable <String, Parking> getLesParkings(){
@@ -68,16 +68,16 @@ public abstract class Parking {
     }
     
     public void majSejour(Sejour s){
-        lesSejoursAffectés.add(s);
+        lesSejoursAffectes.add(s);
         
     }
     
     public void majTrancheOccupee(TrancheHoraire t, String n){
-        lesTranchessAffectés.put(n, t);   
+        lesTranchessAffectes.put(n, t);   
     }
     
     public void AffecterSejour(Hashtable <String, TrancheHoraire> liste){        
-        lesTranchessAffectés = liste;        
+        lesTranchessAffectes = liste;        
     }
         
     public String toString() {
