@@ -24,6 +24,25 @@ public class Hall {
         lesPortes = new ArrayList<Porte>(); 
         lesHalls.put(n, this);
     }
+    
+    public static Hall getHall(String num_hall) throws HallInvalide {
+        if (!lesHalls.containsKey(num_hall))
+            throw new HallInvalide(num_hall);
+        else
+            return (Hall)lesHalls.get(num_hall);
+    } 
+    
+    public String getNum_hall(){
+       return num_hall;
+    }
+    
+    public String getZone_enreg(){
+       return zone_enreg;
+    }
+    
+    public ArrayList<Porte> getLesPortes(){
+        return lesPortes;
+    }
 
     public void afficher(){
         System.out.println(this.toString());
@@ -38,6 +57,14 @@ public class Hall {
             info += it.next().toString();
 	}
         return info;
+    }
+    
+    public void ajouterPorte(Porte p){
+        lesPortes.add(p);
+    }
+    
+    public void retirerPorte(Porte p){
+        lesPortes.remove(p);
     }
     
     public static void afficherLesHalls(){
@@ -74,34 +101,7 @@ public class Hall {
 		System.out.println("Erreur de lecture fichier: "+file+"\n");
 	}
     }
-    
-    public static Hall getHall(String num_hall) throws HallInvalide {
-        if (!lesHalls.containsKey(num_hall))
-            throw new HallInvalide(num_hall);
-        else
-            return (Hall)lesHalls.get(num_hall);
-    } 
-    
-    public String getNum_hall(){
-       return num_hall;
-    }
-    
-    public String getZone_enreg(){
-       return zone_enreg;
-    }
-    
-    public ArrayList<Porte> getLesPortes(){
-        return lesPortes;
-    }
-    
-    public void ajouterPorte(Porte p){
-        lesPortes.add(p);
-    }
-    
-    public void retirerPorte(Porte p){
-        lesPortes.remove(p);
-    }
-    
+
     public static String toStringEcranHall(String numHall){
         //String info = "Affichages des parkings : \n";
         String info = null;
@@ -168,14 +168,5 @@ public class Hall {
         
         return info;
     }
-    
-    
-/*    
-    public static void afficherEcranHallParkings(){
-        System.out.println(toStringEcranHallParkings("1"));
-        System.out.println(toStringEcranHallParkings("2"));
-        System.out.println(toStringEcranHallParkings("3"));
-        System.out.println(toStringEcranHallParkings("4"));
-    }
-*/
+
 }

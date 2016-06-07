@@ -24,7 +24,8 @@ public class Aeroport {
         lesAvions = new Vector<Avion>(); 
         lesHalls = new Vector<Hall>();
     }
-
+    
+    //Ajouter un avion au hall 
     public void ajouter(Avion a){
         lesAvions.add(a);
     }
@@ -33,6 +34,7 @@ public class Aeroport {
         lesHalls.add(h);
     }
 
+    
     public String toString(){
         String info = "Aéroport : "+nom+"\n Liste des avions de cet aéroport : \n";
 
@@ -166,20 +168,4 @@ public class Aeroport {
 	}
       }
     
-
-/*    TRANSFERE DANS SEJOUR -> A CONFIRMER 
-    public static void associerSejoursParkings(){
-        Hashtable <String, Sejour> lesSejours = Sejour.getLesSejours();
-        ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
-        Collections.sort(sejours);
-        Iterator<Sejour> it = sejours.iterator(); 
-        while(it.hasNext()){
-           Sejour s = it.next();
-           //System.out.println (s.toString()+"\n");   
-           // ALGO A CONTINUER...
-           
-           
-        }
-    }
-*/
 }

@@ -65,7 +65,6 @@ public abstract class Parking {
         dispo = t;
         tranche.add(hd);
         trancheOccupee.put("0", hd);
-        
     }
     
     public void majSejour(Sejour s){
@@ -73,10 +72,8 @@ public abstract class Parking {
         
     }
     
-    
     public void majTrancheOccupee(TrancheHoraire t, String n){
-        lesTranchessAffectés.put(n, t);
-        
+        lesTranchessAffectés.put(n, t);   
     }
     
     public void AffecterSejour(Hashtable <String, TrancheHoraire> liste){        
@@ -103,25 +100,19 @@ public abstract class Parking {
             info += "\n Programme de la journée : ";
             Horaire h = new Horaire(0,0);
             
-            
             TrancheHoraire th = new TrancheHoraire(h,h);
             if(p.dispo.equals(th)){
                 info += " N/A \n";    
             }
             else {
                 info += p.getDispo();
-                //ArrayList<TrancheHoraire> lesSejours = new ArrayList<TrancheHoraire>(trancheOccupee.values());
-                //Iterator<TrancheHoraire> itSejour = p.getTest().iterator();
                 Iterator<TrancheHoraire> itTranche = p.getTranche().iterator(); 
                 while(itTranche.hasNext()){
                     TrancheHoraire t = itTranche.next();
                     //recupère le toString d'un parking Contact ou Hors Contact
                     info += "\n"+t.toString();
                     }
-                }
-            
-           
-            
+                }   
         }
         return info;
     }
@@ -139,17 +130,14 @@ public abstract class Parking {
             while((ligne= parkings.readLine()) != null){//WHILE LIGNE des zones
                 StringTokenizer tokenPark = new StringTokenizer (ligne);
                 String zone = tokenPark.nextToken();
-                //System.out.println("\nZone enregistrement: "+zone);
                 while (tokenPark.hasMoreTokens()){//liste des parkings sur la ligne des zones
                     String num_park = tokenPark.nextToken();
                     if (zone.equals("Mike")){
                         //parking Hors contact
-                        //System.out.println("\nParking hors contact: "+num_park);
                         ParkingHorsContact unPark = new ParkingHorsContact (num_park, zone);
                     }
                     else{
                         //porte contact
-                        //System.out.println("\nPorte contact: "+num_porte);
                         ParkingContact unePorte = new ParkingContact (num_park, zone);
                     }
                 }
@@ -168,6 +156,5 @@ public abstract class Parking {
         else
             return (Parking)lesParkings.get(num_park);
     }
-    
-    
+     
 }
