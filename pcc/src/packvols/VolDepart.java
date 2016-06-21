@@ -45,7 +45,7 @@ public class VolDepart extends Vol {
         
     public static String toStringEcranLesVols(){
         // Affichage de la hastable Vols
-        String info = String.format("\n%-8s %-8s %-20s %-10s %-10s",
+        String info = String.format("\n %-8s  %-8s %-20s %-10s %-10s",
                 "Horaire","Vol","Destination","Hall","Porte");
         //String info = "Horaire    Vol  Destination            Hall  Porte ";
         ArrayList<VolDepart> vols = new ArrayList<VolDepart>(lesVolsDepart.values());
@@ -66,7 +66,7 @@ public class VolDepart extends Vol {
                 hall = porteHC.getHall().getNum_hall();
                 porte = porteHC.getNum_porte();
             }
-            info += String.format("\n%-8s %-8s %-20s %-10s %-10s",
+            info += String.format("\n%8s   %-8s %-20s %-10s %-10s",
                    v.getHoraire(),v.getNum_vol(),v.destination, hall,porte);
         }   
         return(info);

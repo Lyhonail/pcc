@@ -1,8 +1,8 @@
 PI Papa 
 P2 Papa
 P4 Papa
-RI Roméo
-R2 Roméo
+RI Romeo
+R2 Romeo
 S4 Sierra
 S5 Sierra
 T3 Tango

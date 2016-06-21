@@ -194,41 +194,49 @@ public  class FenetrePrincipale extends JFrame {
     public void afficherLesAvions(){
         String info=monControleur.toStringLesAvions();
         zoneTexte.setText(info);
+        zoneTexte.setCaretPosition(0);
     }
     
     public void afficherLesHalls(){
         String info=monControleur.toStringLesHalls();
         zoneTexte.setText(info);
+        zoneTexte.setCaretPosition(0);
     }
     
     public void afficherLesPortes(){
         String info=monControleur.toStringLesPortes();
         zoneTexte.setText(info);
+        zoneTexte.setCaretPosition(0);
     }
     
     public void afficherLesParkings(){
         String info=monControleur.toStringLesParkings();
         zoneTexte.setText(info);
+        zoneTexte.setCaretPosition(0);
     }
     
     public void afficherLesVols(){
         String info=monControleur.toStringLesVols();
         zoneTexte.setText(info);
+        zoneTexte.setCaretPosition(0);
     }
     
     public void afficherLesVolsArrivee(){
         String info=monControleur.toStringLesVolsArrivee();
         zoneTexte.setText(info);
+        zoneTexte.setCaretPosition(0);
     }
 
     public void afficherLesVolsDepart(){
         String info=monControleur.toStringLesVolsDepart();
         zoneTexte.setText(info);
+        zoneTexte.setCaretPosition(0);
     }
     
     public void afficherLesSejours(){
         String info=monControleur.toStringLesSejours();
         zoneTexte.setText(info);
+        zoneTexte.setCaretPosition(0);
     }
     
     public void afficherEcranLesVols(){

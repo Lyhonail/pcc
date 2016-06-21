@@ -151,7 +151,7 @@ public class Hall {
                         }
                         Sejour s = itSejour.next();
                         s.getAvion().getImmat();
-                        info += String.format("\n%-8s %-14s %-9s %-13s %-10s %-10s",
+                        info += String.format("\n%-8s %9s      %-9s  %8s     %-10s %-10s",
                                 "        ",
                                 s.getTrancheHoraire().getDebutTrancheHoraire(),
                                 s.getNumVolArrivee(),

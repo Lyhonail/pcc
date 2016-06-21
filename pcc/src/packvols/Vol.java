@@ -137,7 +137,7 @@ public abstract class Vol implements Comparable<Vol>  {
   
     public static String toStringEcranLesVols(){
         // Affichage de la hastable lesVols
-        String info = String.format("\n%-8s %-8s %-15s %-25s %-10s %-10s",
+        String info = String.format("\n %-8s  %-8s %-15s %-25s %-10s %-10s",
             "Horaire","Vol","Arrivée/Départ","Destination/Provenance","Hall","Porte");
         ArrayList<Vol> vols = new ArrayList<Vol>(lesVols.values());
         Collections.sort(vols);
@@ -145,7 +145,7 @@ public abstract class Vol implements Comparable<Vol>  {
         while(it.hasNext()){
            String hall = null, porte = null;
            Vol v = it.next();
-           info += String.format("\n%-8s %-14s ",v.getHoraire(),v.getNum_vol());
+           info += String.format("\n%8s   %-14s ",v.getHoraire(),v.getNum_vol());
            if (v instanceof VolArrivee)
                info += String.format("%-9s %-25s ", "A",((VolArrivee) v).provenance);
            else
