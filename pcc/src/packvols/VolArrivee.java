@@ -70,6 +70,5 @@ public class VolArrivee extends Vol {
                    v.getHoraire(),v.getNum_vol(),v.provenance, hall,porte);
         }   
         return(info);
-        }  
-    
+        }    
 }

@@ -44,9 +44,7 @@ public  class FenetrePrincipale extends JFrame {
         //menu.add(menuSaisie); 
         menu.add(menuAffichage);
 
-        //cr�ation des composants
-        //saisieEtudiant=new JMenuItem("SaisieXXX"); 
-        //saisieNotes=new JMenuItem("SaisieYYY");
+        //création des composants
         afficherLesAvions=new JMenuItem("afficher les avions");
         afficherLesHalls=new JMenuItem("afficher les halls");
         afficherLesPortes=new JMenuItem("afficher les portes");
@@ -59,24 +57,15 @@ public  class FenetrePrincipale extends JFrame {
         afficherEcranVolsArrivee=new JMenuItem("afficher Ecran Passagers les vols d'arrivee");
         afficherEcranVolsDepart=new JMenuItem("afficher Ecran Passagers les vols de depart");
         afficherEcranHall=new JMenuItem("afficher Ecran Hall");
-        //Pour affichage image de fond
-        //JLabel label1 = new JLabel(new ImageIcon("avion.jpg"));
-
 
         //creation de la zone d'affichage
         zoneTexte=new JTextArea();
         JScrollPane texteAsc=new JScrollPane(zoneTexte);
         // pour affichage image de fond
-        //zoneTexte.add(label1);
-        //System.setProperty("myColor", "0X87CEFA");
-        //zoneTexte.setBackground(Color.getColor("myColor"));
         zoneTexte.setBackground(Color.blue);
         zoneTexte.setForeground(Color.WHITE);
-        //zoneTexte.setFont(new Font("Cambria", Font.BOLD, 16));
         
         //Ajout des �couteur
-        //saisieEtudiant.addActionListener(monEcouteur); 
-        //saisieNotes.addActionListener(monEcouteur); 
         afficherLesAvions.addActionListener(monEcouteur);
         afficherLesHalls.addActionListener(monEcouteur);
         afficherLesPortes.addActionListener(monEcouteur);
@@ -92,8 +81,6 @@ public  class FenetrePrincipale extends JFrame {
         
         //Ajouts des composants
         // affectation des sous-menus
-        //menuSaisie.add(saisieEtudiant); 
-        //menuSaisie.add(saisieNotes);
         menuAffichage.add(afficherLesAvions);
         menuAffichage.add(afficherLesHalls);
         menuAffichage.add(afficherLesPortes);
@@ -114,7 +101,6 @@ public  class FenetrePrincipale extends JFrame {
         setVisible(true);
         this.setTitle("Aeroport ORLY W") ;
  
-
         //arr�t de l'ex�cution sur fermeture de la fen�tre
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -122,16 +108,6 @@ public  class FenetrePrincipale extends JFrame {
     private class Ecouteur implements ActionListener{
         public void actionPerformed(ActionEvent ev){
             Object source=ev.getSource();
-            /*if(source==saisieEtudiant){
-                System.out. println("saisie xxxx");
-                //saisirEtudiant();
-                return;
-            }
-            if(source==saisieNotes){ 
-                System.out.println("saisie yyyy");
-                //saisirNotes();
-                return;
-            }*/
             if(source==afficherLesAvions) { 
                 System.out.println("afficher les Avions");
                 afficherLesAvions();
@@ -197,8 +173,6 @@ public  class FenetrePrincipale extends JFrame {
 
     //  les attributs
     private JMenuBar menu;
-    //private JMenu menuSaisie,menuAffichage;
-    //private JMenuItem   saisieEtudiant,saisieNotes,
     private JMenu menuAffichage;  
     private JMenuItem   afficherLesAvions,
                         afficherLesHalls,

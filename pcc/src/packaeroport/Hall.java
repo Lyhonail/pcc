@@ -146,14 +146,11 @@ public class Hall {
                     while(itSejour.hasNext()){
                         // Affichage du parking une seule fois
                         if (parkAffiche == false){
-                            //info += "\n  "+p.getCode_park()+"\n";
                             info += String.format("\n%-8s",p.getCode_park());
                             parkAffiche = true;
                         }
                         Sejour s = itSejour.next();
                         s.getAvion().getImmat();
-                        //info += "            " + s.getNumVolArrivee()+"   | "+ s.getTrancheHoraire().getDebutTrancheHoraire();               
-                        //info += "       |  "+s.getNumVolDepart()+"  |     "+s.getTrancheHoraire().getFinTrancheHoraire()+"   |    "+s.getAvion().getImmat()+"\n";
                         info += String.format("\n%-8s %-14s %-9s %-13s %-10s %-10s",
                                 "        ",
                                 s.getTrancheHoraire().getDebutTrancheHoraire(),

@@ -33,8 +33,7 @@ public class Aeroport {
     public void ajouterHall(Hall h){
         lesHalls.add(h);
     }
-
-    
+  
     public String toString(){
         String info = "Aéroport : "+nom+"\n Liste des avions de cet aéroport : \n";
 
@@ -58,9 +57,7 @@ public class Aeroport {
 
     public String getNom(){
         return nom;
-    }
-    
-    
+    } 
 
     public static void associerHallslPortes(){
         String File = "04-assos-halls-et-portes.txt";

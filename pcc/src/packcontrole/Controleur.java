@@ -60,24 +60,10 @@ public class Controleur {
     public String toStringEcranVolsDepart(){
         return VolDepart.toStringEcranLesVols();
     }
-/*
-    public String toStringEcranHall(){
-        // ODX: no de hall En dur pour l'instant
-        String info = Hall.toStringEcranHall("1");
-        info += Hall.toStringEcranHall("2");
-        info += Hall.toStringEcranHall("3");
-        info += Hall.toStringEcranHall("4");
-        return info;
-    }
-*/    
+
     public String getNumHallString(String numHall){ 
         String info=null;
-        //try{
-            //info=Hall.getHall(numHall).toString();
             info = Hall.toStringEcranHall(numHall);
-        //}
-        //catch(HallInvalide e){
-        //}
         return info;
     }
 

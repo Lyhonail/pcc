@@ -39,10 +39,6 @@ public class Sejour implements Comparable<Sejour> {
     }
     
     public String toString(){
-
-        //String info = "\n Séjour du vol: "+ num_volArrivee + "\n";
-        //info += volArrivee.toString()+"\n";
-        //info += volDepart.toString()+"\n";
         String info = "\n Séjour du vol: "+ num_volArrivee+ " Durée du séjour:" + dureeSejour;
         info += volArrivee.toString();
         info += volDepart.toString();
@@ -112,21 +108,19 @@ public class Sejour implements Comparable<Sejour> {
                     String num_volDepart = tokenVolDepart.nextToken();                        
                     //récupération du vol de depart
                     try {
-                        
                         VolDepart vol_depart = (VolDepart) Vol.getVol(num_volDepart);
                         //récupération de l'horaire de départ
                         Horaire hd = vol_depart.getHoraire();
 
                         //création de la tranche horaire
                         TrancheHoraire tranche = new TrancheHoraire(ha, hd);
-                        
-                        
-                            // Recuperation d'un parking pour test
-                            Parking objet_parking = null;
-                            ParkingContact objPC = (ParkingContact)objet_parking;                                               
+                                               
+                        // Recuperation d'un parking pour test
+                        Parking objet_parking = null;
+                        ParkingContact objPC = (ParkingContact)objet_parking;                                               
                             
-                            // Creation du sejour
-                            Sejour s = new Sejour(tranche, vol_arrivee, vol_depart, objPC, avion_find, num_volArrivee );
+                        // Creation du sejour
+                        Sejour s = new Sejour(tranche, vol_arrivee, vol_depart, objPC, avion_find, num_volArrivee );
                            
                     } catch (    VolInvalide e){ //fin try Vol.getVol(num_volDepart);
                         System.out.println(e.toString());
@@ -214,9 +208,7 @@ public class Sejour implements Comparable<Sejour> {
      
             }// fin if(s.parking == null)
         }//fin it.hasNext() >> on lit les sejours
-    }//Fin methode
-    
-    
+    }//Fin methode   
     
     public TrancheHoraire getTrancheHoraire(){
         return dureeSejour;
@@ -225,37 +217,5 @@ public class Sejour implements Comparable<Sejour> {
     public void affecterParking(Parking p){
         parking = p;
     }
-/*    
-    public static String toStringEcranHall(String numHall){
-        // Affichage de la hastable lesSejours
-        // numHall = "3";
-        //String info = "Liste des séjours au  Hall "+numHall;
-        String format = "dd/MM/yy HH:mm:ss";
-        java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
-        java.util.Date date = new java.util.Date();
-        String dateCourante= formater.format( date ); 
-
-        String info = "\nSéjours du Hall "+numHall+ "        "+ dateCourante;
-        info += String.format("\n%-8s %-14s %-9s %-13s %-10s %-10s",
-            "Parking","Heure Arrivee","No Vol","Heure Départ","No Vol","No Avion");
-        ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
-        Collections.sort(sejours);
-        Iterator<Sejour> it = sejours.iterator(); 
-        while(it.hasNext()){
-           Sejour s = (Sejour)it.next();
-           Parking objet_parking =s.parking;
-           if (objet_parking instanceof ParkingContact&&((ParkingContact) objet_parking).getPorteC().getHall().getNum_hall().startsWith(numHall)
-               ||
-               objet_parking instanceof ParkingHorsContact&&((ParkingHorsContact) objet_parking).getPorteHC().getHall().getNum_hall().startsWith(numHall)     
-              )   
-               info += String.format("\n%-8s %-14s %-9s %-13s %-10s %-10s",
-                       s.parking.getCode_park(),
-                       s.volArrivee.getHoraire(),s.volArrivee.getNum_vol(),
-                       s.volDepart.getHoraire(),s.volDepart.getNum_vol(),
-                       s.avion.getImmat());
-        }
-        return(info);
-    }
-*/
 }
 

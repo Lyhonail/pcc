@@ -15,7 +15,7 @@ public class ParkingContact extends Parking {
 
    public String toString(){
         String info = "\n PARKING CONTACT:  "+ super.toString() +
-                  "\n   Porte Contact associée: ";;
+                  "\n   Porte Contact associée: ";
         if (porteC != null) 
             info += porteC.toStringSansParkings();
         else

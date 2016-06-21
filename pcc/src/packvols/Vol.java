@@ -168,7 +168,6 @@ public abstract class Vol implements Comparable<Vol>  {
         return(info);
     }
 
-    
     public static void afficherEcranLesVols(){
         System.out.println(toStringLesVols());
     }   

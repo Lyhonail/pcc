@@ -71,5 +71,4 @@ public class VolDepart extends Vol {
         }   
         return(info);
     }       
-   
 }
