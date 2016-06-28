@@ -114,13 +114,9 @@ public class Sejour implements Comparable<Sejour> {
 
                         //création de la tranche horaire
                         TrancheHoraire tranche = new TrancheHoraire(ha, hd);
-                                               
-                        // Recuperation d'un parking pour test
-                        Parking objet_parking = null;
-                        ParkingContact objPC = (ParkingContact)objet_parking;                                               
-                            
+                                                                                             
                         // Creation du sejour
-                        Sejour s = new Sejour(tranche, vol_arrivee, vol_depart, objPC, avion_find, num_volArrivee );
+                        Sejour s = new Sejour(tranche, vol_arrivee, vol_depart, null, avion_find, num_volArrivee );
                            
                     } catch (    VolInvalide e){ //fin try Vol.getVol(num_volDepart);
                         System.out.println(e.toString());
@@ -157,6 +153,7 @@ public class Sejour implements Comparable<Sejour> {
     public static void associerSejoursParkings(){
         // on ouvre la liste des séjours
         ArrayList<Sejour> sejours = new ArrayList<Sejour>(lesSejours.values());
+        // tri de la liste des séjours dans l'odre croissant des horaires de début
         Collections.sort(sejours);
         Iterator<Sejour> it = sejours.iterator();
         while(it.hasNext()){

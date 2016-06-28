@@ -12,7 +12,7 @@ import packaeroport.PorteHorsContact;
 import packhoraires.Horaire; 
 
 public class VolDepart extends Vol {
-    String destination;
+    private String destination;
     private static Hashtable <String, VolDepart> lesVolsDepart = new Hashtable<String, VolDepart>();
     
     public VolDepart(String num_vol, Horaire horaire, Avion avion,String dep) {

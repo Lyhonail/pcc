@@ -147,9 +147,9 @@ public abstract class Vol implements Comparable<Vol>  {
            Vol v = it.next();
            info += String.format("\n%8s   %-14s ",v.getHoraire(),v.getNum_vol());
            if (v instanceof VolArrivee)
-               info += String.format("%-9s %-25s ", "A",((VolArrivee) v).provenance);
+               info += String.format("%-9s %-25s ", "A",((VolArrivee) v).getProvenance());
            else
-               info += String.format("%-9s %-25s ", "D",((VolDepart) v).destination);
+               info += String.format("%-9s %-25s ", "D",((VolDepart) v).getdestination());
                
            if (v.sejour.getParking() instanceof ParkingContact  ){
                ParkingContact p = (ParkingContact) v.sejour.getParking();

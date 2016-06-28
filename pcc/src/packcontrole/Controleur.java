@@ -62,9 +62,7 @@ public class Controleur {
     }
 
     public String getNumHallString(String numHall){ 
-        String info=null;
-            info = Hall.toStringEcranHall(numHall);
+        String info = Hall.toStringEcranHall(numHall);
         return info;
     }
-
 }

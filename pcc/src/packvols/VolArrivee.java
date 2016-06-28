@@ -13,7 +13,7 @@ import packhoraires.Horaire;
 
 public class VolArrivee extends Vol {
 
-    String provenance;
+    private String provenance;
     private static Hashtable <String, VolArrivee> lesVolsArrivee = new Hashtable<String, VolArrivee>();
 
     public VolArrivee(String num_vol, Horaire horaire, Avion avion, String prov) {

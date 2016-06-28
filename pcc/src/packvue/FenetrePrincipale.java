@@ -39,9 +39,7 @@ public  class FenetrePrincipale extends JFrame {
         // cr�ation des menus associ�s aux bandeau de la JFrame
         menu=new JMenuBar();
         this.setJMenuBar(menu);
-        //menuSaisie=new  JMenu ("Saisie") ;
         menuAffichage=new JMenu("Affichage"); 
-        //menu.add(menuSaisie); 
         menu.add(menuAffichage);
 
         //création des composants
@@ -188,7 +186,6 @@ public  class FenetrePrincipale extends JFrame {
                         afficherEcranHall;
                         
     private JTextArea zoneTexte;
-    private JLabel label1;
 
     // les  méthodes
     public void afficherLesAvions(){
@@ -242,31 +239,29 @@ public  class FenetrePrincipale extends JFrame {
     public void afficherEcranLesVols(){
         String info=monControleur.toStringEcranLesVols();
         zoneTexte.setText(info);
-        //positionner l'ascenceur en position 
+        //positionner l'ascenceur en position haute
         zoneTexte.setCaretPosition(0);
     }
     public void afficherEcranVolsArrivee(){
         String info=monControleur.toStringEcranVolsArrivee();
         zoneTexte.setText(info);
-        //positionner l'ascenceur en position 
+        //positionner l'ascenceur en position haute
         zoneTexte.setCaretPosition(0);
     }
     public void afficherEcranVolsDepart(){
         String info=monControleur.toStringEcranVolsDepart();
         zoneTexte.setText(info);
-        //positionner l'ascenceur en position 
+        //positionner l'ascenceur en position haute 
         zoneTexte.setCaretPosition(0);
     }
     public void afficherEcranHall(){
-        //String info=monControleur.toStringEcranHall();
-        //zoneTexte.setText(info);
         
         String numHall=JOptionPane.showInputDialog(this,  "No Hall?",
                 "Saisie No Hall");
         if(numHall!=null){
             String info=monControleur.getNumHallString(numHall);
             if (info!=null){
-                // recup carateristique de OptionPanel pour les restituer après
+                // recup caractéristique de OptionPanel pour les restituer après
                 Object optionPaneBG = UIManager.get("OptionPane.background");
                 Object panelBG = UIManager.get("Panel.background");
                 Object msgFor = UIManager.get("OptionPane.messageForeground");
@@ -275,14 +270,14 @@ public  class FenetrePrincipale extends JFrame {
                 UI.put("OptionPane.background", Color.BLUE);
                 UI.put("Panel.background", Color.BLUE);
                 UI.put("OptionPane.messageForeground", Color.WHITE);
-                // Modif Police pour que l'affichage ne soit pas décaler
+                // Modif Police pour que l'affichage ne soit pas décalé
                 Font f1 = new Font("Monospaced",Font.BOLD,12);
                 UI.put("OptionPane.messageFont",f1);
                 
                 // affichage boite d'affichage
                 
                 JOptionPane.showMessageDialog(this, info,"Ecran Hall no "+numHall ,JOptionPane.PLAIN_MESSAGE);
-                // Restitution des caratèristiaues
+                // Restitution des caractéristiques
                 UI.put("OptionPane.background", optionPaneBG);
                 UI.put("Panel.background", panelBG);
                 UI.put("OptionPane.messageForeground",msgFor);
